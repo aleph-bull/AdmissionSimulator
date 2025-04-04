@@ -12,9 +12,13 @@ public class MainWorld extends World
      * Construct the world!
      * 
      */
+    private GreenfootImage background;
+    
     public MainWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
+        background = new GreenfootImage("emptyBackground.png");
+        setBackground (background);
+        
     }
 }
