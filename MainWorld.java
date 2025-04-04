@@ -1,9 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Hi guys!
- * Asonfin
- * hello walalalal bardilo crocodilo crocodilo
  */
 public class MainWorld extends World
 {
@@ -14,7 +11,6 @@ public class MainWorld extends World
      */
     public MainWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
     }
 }
