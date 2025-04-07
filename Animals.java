@@ -48,7 +48,7 @@ public abstract class Animals extends SuperSmoothMover
             movementDirectionInRadians = Math.toRadians(movementDirection);
             updateDyDx();
     
-            // Nudge inward slightly to prevent sticking
+            // nudge inward slightly to prevent sticking
             setLocation(getPreciseX() + dx * 0.01, getPreciseY() - dy * 0.01);
         }
     
