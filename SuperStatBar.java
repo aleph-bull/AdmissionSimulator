@@ -46,6 +46,10 @@ import java.util.Arrays;
  */
 public class SuperStatBar extends Actor
 {
+    
+    /**
+     * Mr. Cohen borrowed code start
+     */
 
     // When using the simplest constructor, this allows control of whether bars
     // should hide by default when at 100%
@@ -379,4 +383,3 @@ public class SuperStatBar extends Actor
 
     }
 }
- 
