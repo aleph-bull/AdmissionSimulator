@@ -20,22 +20,49 @@ public abstract class Animals extends SuperSmoothMover
         maxSpeed = 1;
         speed = maxSpeed;
         movementDirection = Greenfoot.getRandomNumber(360+1);
-        getRandomDirection ();
+        updateDyDx ();
     }
     
     public void act()
     {
         moveToward(speed, getPreciseX() + dx, getPreciseY() - dy);
+        hitEdge();
     }
     
-    public boolean hitEdge(int rangeX, int rangeY, int offset) {
-        if(getPreciseX() <= offset || getPreciseX() >= rangeX)
-            return true;
-        return false;
+    public boolean hitEdge(int rangeX, int rangeY, int xOffset, int yOffset) {
+        // rangeX and rangeY is the area of the space considered to be the edge
+        boolean bounced = false;
+    
+        if (getPreciseX() - image.getWidth()/2 <= xOffset || getPreciseX() + image.getWidth()/2 >= rangeX) {
+            movementDirection = 180 - movementDirection;
+            bounced = true;
+        }
+    
+        if (getPreciseY() - image.getHeight()/2 <= yOffset || getPreciseY() + image.getHeight()/2 >= rangeY) {
+            movementDirection = 360 - movementDirection;
+            bounced = true;
+        }
+    
+        if (bounced) {
+            movementDirection = (movementDirection + Greenfoot.getRandomNumber(30) - 15 + 360) % 360; // add randomness
+            movementDirectionInRadians = Math.toRadians(movementDirection);
+            updateDyDx();
+    
+            // Nudge inward slightly to prevent sticking
+            setLocation(getPreciseX() + dx * 0.01, getPreciseY() - dy * 0.01);
+        }
+    
+        return bounced;
     }
     
-    public void getRandomDirection () {
-        movementDirection += Greenfoot.getRandomNumber(180+1);
+    //generic version of hit edge, gets the range of the world
+    public boolean hitEdge() {
+        return hitEdge(getWorld().getWidth() - 244, getWorld().getHeight(), 0, 0);
+    }
+    
+    // changes direction completely randomly
+    public void getRandomDirection (int range) {
+        movementDirection += Greenfoot.getRandomNumber(range+1) - (range/2);
         if(movementDirection>=360) {
             movementDirection -= 360;
         }
