@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Pet here.
+ * Write a description of class Computer here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Pet extends Relative
+public class Computer extends Item
 {
     /**
-     * Act - do whatever the Pet wants to do. This method is called whenever
+     * Act - do whatever the Computer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
