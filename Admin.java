@@ -16,4 +16,12 @@ public class Admin extends Animals
     {
         // Add your action code here.
     }
+    
+    public boolean compareStats(){
+        boolean result = false;
+        //Compares the university standards and the student's stats to consider if 
+        //the student should be acceped or rejected
+        // 
+        return result; 
+    }
 }
