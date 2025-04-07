@@ -44,7 +44,7 @@ public abstract class Animals extends SuperSmoothMover
         }
     
         if (bounced) {
-            movementDirection = (movementDirection + Greenfoot.getRandomNumber(30) - 15 + 360) % 360; // add randomness
+            getRandomDirection(60); // add randomness
             movementDirectionInRadians = Math.toRadians(movementDirection);
             updateDyDx();
     
