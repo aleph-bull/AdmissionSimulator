@@ -18,5 +18,7 @@ public class MainWorld extends World
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
         
+        addObject(new Student(), 500, 400);
+        
     }
 }
