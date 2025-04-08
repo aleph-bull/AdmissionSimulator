@@ -28,12 +28,11 @@ public class MainWorld extends World
 
         relativeCountdown = 500;
         relativeMinCountdown = 500; 
-
     }
 
     public void act()
     {
-        spawnRelative(); 
+        
     }
 
     public void spawnRelative()
