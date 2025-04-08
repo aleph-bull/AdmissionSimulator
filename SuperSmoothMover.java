@@ -45,12 +45,15 @@ public abstract class SuperSmoothMover extends Actor
     private boolean staticRotation = false;
     private double cosRotation;
     private double sinRotation;
+    protected int movementDirection; //direction of movement -- not rotation
+    protected double movementDirectionInRadians;
 
     /**
      * Default constructor - set staticRotation to false.
      */
     public SuperSmoothMover (){
         staticRotation = false;
+        movementDirection = 0;
     }
     
     /**
@@ -343,7 +346,7 @@ public abstract class SuperSmoothMover extends Actor
         double distance = getDistance(x, y);
         
         // avoids jittering
-        if((int) distance < 5){
+        if((int) distance <= 3){
             return;  // avoid dividing by 0
         }
         
