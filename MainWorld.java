@@ -11,11 +11,16 @@ public class MainWorld extends World
      * 
      */
     private GreenfootImage background;
+
     private int relativeCountdown;
     private int relativeMinCountdown; 
+    private Relative r;
+
+
     private Relative relative;
     private String cat;
     private GreenfootImage image;
+
 
     public MainWorld()
     {    
@@ -24,10 +29,8 @@ public class MainWorld extends World
         setBackground (background);
 
         relativeCountdown = 10;
-        relativeMinCountdown = 500; 
-        
+        relativeMinCountdown = 500;         
         cat = "Cat.png"; 
-
     }
 
     public void act()
@@ -48,4 +51,5 @@ public class MainWorld extends World
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200); 
         }
     }
+
 }
