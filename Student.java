@@ -16,12 +16,14 @@ public class Student extends Animals
     private int gpa;
     
     public Student(){
+        super();
         gpa = 50;
-        
+
     }
     
     public void act()
     {
+        super.act();
         // Add your action code here.
     }
 }

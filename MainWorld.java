@@ -11,9 +11,14 @@ public class MainWorld extends World
      * 
      */
     private GreenfootImage background;
+
     private int relativeCountdown;
     private int relativeMinCountdown; 
+    private Relative r;
+
+
     private Relative relative;
+
 
     public MainWorld()
     {    
@@ -23,12 +28,11 @@ public class MainWorld extends World
 
         relativeCountdown = 10;
         relativeMinCountdown = 500; 
-
     }
 
     public void act()
     {
-        spawnRelative(); 
+        
     }
 
     public void spawnRelative()
@@ -39,9 +43,16 @@ public class MainWorld extends World
         }
         else
         {
+
             relative = new Relative();
             addObject(relative, 50, 200); 
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200); 
         }
+
+
+            relative = new Relative();
+            addObject(relative, 100, 200); 
+            relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200); 
     }
+
 }
