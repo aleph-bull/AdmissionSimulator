@@ -16,4 +16,9 @@ public class Brother extends Relative
     {
         // Add your action code here.
     }
+    public Brother(String image)
+    {
+        super(image); 
+        
+    }
 }

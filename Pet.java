@@ -16,4 +16,8 @@ public class Pet extends Relative
     {
         // Add your action code here.
     }
+    public Pet(String image)
+    {
+        super(image);  
+    }
 }
