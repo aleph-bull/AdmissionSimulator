@@ -16,4 +16,18 @@ public class External extends SuperSmoothMover
     {
         // Add your action code here.
     }
+    
+    public External()
+     {
+         
+         
+     }
+     
+    public void takeSpot()
+    {
+         //if (takeSpot == true)
+         //{
+             
+         //}
+    }
 }
