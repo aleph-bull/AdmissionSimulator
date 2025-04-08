@@ -12,6 +12,11 @@ public class Admin extends Animals
      * Act - do whatever the Admin wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    
+    public Admin(){
+        
+    }
+    
     public void act()
     {
         // Add your action code here.
