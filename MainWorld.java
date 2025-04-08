@@ -14,7 +14,7 @@ public class MainWorld extends World
 
     private int relativeCountdown;
     private int relativeMinCountdown; 
-    private External external;
+    private Relative r;
 
 
     private Relative relative;
@@ -45,8 +45,8 @@ public class MainWorld extends World
         else
         {
 
-            external = new External();
-            addObject(external, 100, 200); 
+            relative = new Relative();
+            addObject(relative, 100, 200); 
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200); 
         }
 
