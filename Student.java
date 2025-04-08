@@ -8,8 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Student extends Animals
 {
-    public Student() {
+    /**
+     * Act - do whatever the Student wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    
+    private int gpa;
+    
+    public Student(){
         super();
+        gpa = 50;
+
     }
     
     public void act()

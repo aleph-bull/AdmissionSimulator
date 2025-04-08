@@ -3,12 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Animals here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Daniel Wang
+ * @version 1.1.1
  */
 public abstract class Animals extends SuperSmoothMover
 {
-    GreenfootImage image = new GreenfootImage(35, 35); // temp placeholder, remove later
+GreenfootImage image = new GreenfootImage(35, 35); // temp placeholder, remove later
     double dy, dx; 
     double maxSpeed;
     double speed;
