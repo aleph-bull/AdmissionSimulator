@@ -28,6 +28,8 @@ public class MainWorld extends World
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
 
+        addObject(new Student(), 400, 200);
+
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png"; 
@@ -35,7 +37,6 @@ public class MainWorld extends World
 
     public void act()
     {
-        spawnRelative();
     }
 
     public void spawnRelative()
