@@ -25,14 +25,14 @@ public class MainWorld extends World
         super(1024, 800, 1); 
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
-
+        addObject(new Student(), 400, 200);
         relativeCountdown = 500;
         relativeMinCountdown = 500; 
     }
 
     public void act()
     {
-        spawnRelative(); 
+        
     }
 
     public void spawnRelative()
