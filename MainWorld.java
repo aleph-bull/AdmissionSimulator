@@ -14,11 +14,10 @@ public class MainWorld extends World
 
     private int relativeCountdown;
     private int relativeMinCountdown; 
-    private Relative r;
-
 
     private Relative relative;
     private String cat;
+    private String mom;
     private GreenfootImage image;
 
 
@@ -32,7 +31,9 @@ public class MainWorld extends World
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "Cat.png"; 
+        cat = "Cat.png";
+        mom = "Mom.png";
+        
     }
 
     public void act()
