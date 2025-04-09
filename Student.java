@@ -26,4 +26,10 @@ public class Student extends Animals
         super.act();
         // Add your action code here.
     }
+    
+    public void rest(){}
+    
+    public void work(){}
+    
+    public void usePhone(){}
 }

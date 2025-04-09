@@ -9,12 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bed extends Item
 {
     private GreenfootImage image;
-    public Bed(Animals animal){
-        super(animal);
+    public Bed(){
+        super();
         image = new GreenfootImage("computer.png");
        }
+    
     public void act()
     {
-        // Add your action code here.
+        if (this.getUser() != null){
+            if (this.getUser() instanceof Student){
+            this.getUser().rest();
+            }
+        }
     }
 }
