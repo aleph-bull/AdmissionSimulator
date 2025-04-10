@@ -36,11 +36,11 @@ public class MainWorld extends World
         setBackground (background);
         
         studentTop = new Student();
-        bedTop = new Bed(studentTop);
-        chairTop = new Chair(studentTop);
-        computerTop = new Computer(studentTop);
-        deskTop = new Desk(studentTop);
-        mirrorTop = new Mirror(studentTop);
+        bedTop = new Bed();
+        chairTop = new Chair();
+        computerTop = new Computer();
+        deskTop = new Desk();
+        mirrorTop = new Mirror();
         
         addObject(studentTop, 400, 200);
         addObject(bedTop, 90 + studentTop.getImage().getWidth()/2, 220);

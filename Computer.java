@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Computer extends Item
 {
     private GreenfootImage image;
-    public Computer(Animals animal){
-        super(animal);
+    public Computer(){
+        super();
     }
     
     public void act()

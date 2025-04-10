@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bed extends Item
 {
     private GreenfootImage image;
-    public Bed(Animals animal){
-        super(animal);
+    public Bed(){
+        super();
         image = new GreenfootImage("bed.png");
         setImage(image);
     }

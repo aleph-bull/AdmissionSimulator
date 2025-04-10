@@ -46,4 +46,8 @@ public class Student extends Animals
         gpa --;
         happiness += 2;
     }
+    
+    public int getGPA(){
+        return gpa;
+    }
 }
