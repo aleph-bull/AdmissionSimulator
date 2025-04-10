@@ -29,6 +29,7 @@ public class Admin extends Animals
             acceptanceR-=5;
         }
         
+        
     }
     
     public void act()
@@ -36,13 +37,23 @@ public class Admin extends Animals
         
     }
     
-    /*
-    public void sendLetter(){
-        
-    }
-    */
     
-    public boolean compareStats(Student student1){
+    //A method for shooting letters to the students
+    public void sendLetter(){
+        Letter l = new Letter(10);
+        getWorld().addObject(l, getX(), getY() - 20);
+        l.setRotation(getRotation());
+    }
+    
+    //When the student hit by a letter
+    public void hurtByStudent(){
+        Student student = (Student) getOneIntersectingObject(Student.class);
+        if(student != null){
+            student.reduceHealth(10);
+        }
+    }
+    
+    public boolean compareStats(Student student){
         boolean result = false;
         //Compares the university standards and the student's stats to consider if 
         //the student should be acceped or rejected
