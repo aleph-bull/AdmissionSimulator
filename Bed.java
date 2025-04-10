@@ -29,6 +29,7 @@ public class Bed extends Item
     
     @Override
     public void stopUsing() {
+        // push off the user and send them toward a random direction away from the bed
         user.setLocation(getX() + 80, getY());
         user.setDirection(0);
         user.setRandomDirection(60);

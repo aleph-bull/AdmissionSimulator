@@ -25,6 +25,7 @@ public class Item extends Actor
     {
         if(isBeingUsed) {
             beingUsedActCount++;
+            // when the act count exceeds duration, get off
             if(beingUsedActCount >= useActCountDuration) {
                 beingUsedActCount = 0;
                 stopUsing();
