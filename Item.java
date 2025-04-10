@@ -8,12 +8,31 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Item extends Actor
 {
-    /**
-     * Act - do whatever the Item wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private boolean isBeingUsed;
+    private Animals user;
+    private int posX;
+    private int posY;
+    public Item(){
+        isBeingUsed = false;
+        user = animal;
+    }
+    
     public void act()
     {
         // Add your action code here.
+    }
+    
+    public Animals getUser(){
+        return this.user;
+    }
+    
+    public void use(Animals a){
+        isBeingUsed = true;
+        user = a;
+    }
+    
+    public void stopUsing(){
+        isBeingUsed = false;
+        user = null;
     }
 }

@@ -8,12 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bed extends Item
 {
-    /**
-     * Act - do whatever the Bed wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage image;
+    public Bed(Animals animal){
+        super(animal);
+        image = new GreenfootImage("bed.png");
+        setImage(image);
+    }
+
     public void act()
     {
-        // Add your action code here.
+        Animals usr = this.getUser();
+        if (usr != null){
+            if (usr instanceof Student){
+                ((Student)usr).rest();
+            }
+        }
     }
 }

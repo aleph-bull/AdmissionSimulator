@@ -14,6 +14,10 @@ public class Student extends Animals
      */
     
     private int gpa;
+    private int happiness;
+    private int nextItem;
+    private int nextItemCD;
+    private int nextItemMinCD = 1000;
     
     
     //SuperStatBar:
@@ -31,13 +35,18 @@ public class Student extends Animals
     public Student(){
         super();
         gpa = 50;
+
         productive = true; 
         //bar = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
+
+        happiness = 100;
+
     }
     
     public void act()
     {
         super.act();
+
         
     }
     
@@ -47,6 +56,25 @@ public class Student extends Animals
     
     public void setGpa(int updatedGpa){
         this.gpa = updatedGpa;
+
+        // Add your action code here.
+        nextItem = Greenfoot.getRandomNumber(3);
+        
+    }
+    
+    public void rest(){
+        happiness ++;
+    }
+    
+    public void work(){
+        gpa ++;
+        happiness --;
+    }
+    
+    public void usePhone(){
+        gpa --;
+        happiness += 2;
+
     }
     
     public void reduceHealth(int amount){

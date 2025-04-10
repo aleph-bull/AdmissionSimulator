@@ -8,12 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Phone extends Item
 {
-    /**
-     * Act - do whatever the Phone wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage image;
+    public Phone(){
+        super();
+        image  = new GreenfootImage("phone.png");
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        Animals usr = this.getUser();
+        if (usr != null){
+            if (usr instanceof Student){
+                ((Student)usr).usePhone();
+            }
+        }
     }
 }
