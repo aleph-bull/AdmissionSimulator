@@ -12,8 +12,13 @@ public class Computer extends Item
     public Computer(Animals animal){
         super(animal);
     }
+    
     public void act()
     {
-        // Add your action code here.
+        if (this.getUser() != null){
+            if (this.getUser() instanceof Student){
+            this.getUser().work();
+            }
+        }
     }
 }

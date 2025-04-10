@@ -14,8 +14,13 @@ public class Bed extends Item
         image = new GreenfootImage("bed.png");
         setImage(image);
     }
+
     public void act()
     {
-        // Add your action code here.
+        if (this.getUser() != null){
+            if (this.getUser() instanceof Student){
+            this.getUser().rest();
+            }
+        }
     }
 }

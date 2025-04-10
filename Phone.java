@@ -9,13 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Phone extends Item
 {
     private GreenfootImage image;
-    public Phone(Animals animal){
-        super(animal);
+    public Phone(){
+        super();
         image  = new GreenfootImage("phone.png");
     }
     
     public void act()
     {
-        // Add your action code here.
+        if (this.getUser() != null){
+            if (this.getUser() instanceof Student){
+            this.getUser().usePhone();
+            }
+        }
     }
 }

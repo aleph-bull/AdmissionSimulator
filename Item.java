@@ -12,7 +12,7 @@ public class Item extends Actor
     private Animals user;
     private int posX;
     private int posY;
-    public Item(Animals animal){
+    public Item(){
         isBeingUsed = false;
         user = animal;
     }
@@ -24,5 +24,15 @@ public class Item extends Actor
     
     public Animals getUser(){
         return this.user;
+    }
+    
+    public void use(Animals a){
+        isBeingUsed = true;
+        user = a;
+    }
+    
+    public void stopUsing(){
+        isBeingUsed = false;
+        user = null;
     }
 }
