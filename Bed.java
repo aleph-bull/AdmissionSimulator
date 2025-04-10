@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bed extends Item
 {
     private GreenfootImage image;
+    
     public Bed(){
         super();
         image = new GreenfootImage("bed.png");
@@ -17,11 +18,22 @@ public class Bed extends Item
 
     public void act()
     {
-        Animals usr = this.getUser();
-        if (usr != null){
-            if (usr instanceof Student){
-                ((Student)usr).rest();
+        if (user != null){
+            if (user instanceof Student){
+                ((Student)user).rest();
             }
         }
+        super.act();
+    }
+    
+    
+    @Override
+    public void stopUsing() {
+        user.setLocation(getX() + 80, getY());
+        user.setDirection(0);
+        user.setRandomDirection(60);
+        
+        System.out.println("stopped");
+        super.stopUsing();
     }
 }

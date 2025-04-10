@@ -1,0 +1,3 @@
+public enum ActionState {
+    SLEEPING, WORKING, PLAYING, BRAINROTTING, NOTHING
+}
