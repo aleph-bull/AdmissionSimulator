@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Desk extends Item
 {
-    public Desk (Animals animal) {
-        super(animal);
+    public Desk () {
+        super();
     }
     
     public void act()

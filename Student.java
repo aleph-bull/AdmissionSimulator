@@ -81,4 +81,7 @@ public class Student extends Animals
         this.studentHealth-=amount;
     }
     
+    public int getGPA(){
+        return gpa;
+    }
 }

@@ -14,7 +14,6 @@ public class Item extends Actor
     private int posY;
     public Item(){
         isBeingUsed = false;
-        user = animal;
     }
     
     public void act()

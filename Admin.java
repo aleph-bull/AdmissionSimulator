@@ -57,7 +57,7 @@ public class Admin extends Animals
         boolean result = false;
         //Compares the university standards and the student's stats to consider if 
         //the student should be acceped or rejected
-        if(student.getGpa() >= this.requirement){
+        if(student1.getGPA() >= this.requirement){
             result = true;
         }
         return result; 
