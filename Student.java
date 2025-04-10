@@ -14,22 +14,36 @@ public class Student extends Animals
      */
     
     private int gpa;
+    private int happiness;
+    private int nextItem;
+    private int nextItemCD;
+    private int nextItemMinCD = 1000;
     
     public Student(){
         super();
         gpa = 50;
-
+        happiness = 100;
     }
     
     public void act()
     {
         super.act();
         // Add your action code here.
+        nextItem = Greenfoot.getRandomNumber(3);
+        
     }
     
-    public void rest(){}
+    public void rest(){
+        happiness ++;
+    }
     
-    public void work(){}
+    public void work(){
+        gpa ++;
+        happiness --;
+    }
     
-    public void usePhone(){}
+    public void usePhone(){
+        gpa --;
+        happiness += 2;
+    }
 }
