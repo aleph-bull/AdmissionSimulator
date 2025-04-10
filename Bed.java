@@ -17,9 +17,10 @@ public class Bed extends Item
 
     public void act()
     {
-        if (this.getUser() != null){
-            if (this.getUser() instanceof Student){
-            this.getUser().rest();
+        Animals usr = this.getUser();
+        if (usr != null){
+            if (usr instanceof Student){
+                ((Student)usr).rest();
             }
         }
     }
