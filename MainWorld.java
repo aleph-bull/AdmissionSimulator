@@ -20,21 +20,44 @@ public class MainWorld extends World
     private Relative relative;
     private String cat;
     private GreenfootImage image;
-
+    Student studentTop;
+    Bed bedTop;
+    Chair chairTop;
+    Computer computerTop;
+    Desk deskTop;
+    Mirror mirrorTop;
 
     public MainWorld()
     {    
         super(1024, 800, 1); 
+        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+        
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
-
-        addObject(new Student(), 400, 200);
-
+        
+        studentTop = new Student();
+        bedTop = new Bed(studentTop);
+        chairTop = new Chair(studentTop);
+        computerTop = new Computer(studentTop);
+        deskTop = new Desk(studentTop);
+        mirrorTop = new Mirror(studentTop);
+        
+        addObject(studentTop, 400, 200);
+        addObject(bedTop, 90 + studentTop.getImage().getWidth()/2, 220);
+        addObject(chairTop, 400, 220);
+        addObject(computerTop, 400, 120);
+        addObject(deskTop, 400, 180);
+        addObject(mirrorTop, 600, 150);
+        
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png"; 
     }
 
+    public void addedToWorld() {
+            
+    }
+    
     public void act()
     {
     }

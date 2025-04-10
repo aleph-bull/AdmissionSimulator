@@ -17,11 +17,13 @@ public abstract class Animals extends SuperSmoothMover
     boolean justHitX, justHitY;
     boolean isInTopRoom;    // coordinates of top room are top left (36, 168) and bottom right (736, 382) 
                             // coordinates of bottom room are top left (36, 551) and bottom right (736, 763)
+    int []  topRoomTopLeft = {36, 168},
+            topRoomBottomRight = {736, 382};
     public Animals () {
         image.setColor(Color.RED);
         image.fill();
         setImage(image);
-        maxSpeed = 1;
+        maxSpeed = 5;
         speed = maxSpeed;
         setRandomCooldown (); // random number from 200-500
         setRandomDirection(360);
@@ -34,7 +36,7 @@ public abstract class Animals extends SuperSmoothMover
             setRandomCooldown ();
             setRandomDirection(100);
         }
-        hitEdge(new int[] {36, 168}, new int[] {736, 382});
+        hitEdge(topRoomTopLeft, topRoomBottomRight);
         actCount++;
     }
     
@@ -43,20 +45,18 @@ public abstract class Animals extends SuperSmoothMover
         boolean bounced = false;
         
         if (getPreciseX() - image.getWidth()/2 <= xOffset || getPreciseX() + image.getWidth()/2 >= rangeX + xOffset) {
-            //movementDirection = 180 - movementDirection;
-            dx *= -1;
+            movementDirection = 180 - movementDirection;
             bounced = true;
         }
     
         if (getPreciseY() - image.getHeight()/2 <= yOffset || getPreciseY() + image.getHeight()/2 >= rangeY + yOffset) {
-            //movementDirection = 360 - movementDirection;
-            dy *= -1;
+            movementDirection = 360 - movementDirection;
             bounced = true;
         }
     
         if (bounced) {          
-            //movementDirectionInRadians = Math.toRadians(movementDirection);
-            //updateDyDx();
+            movementDirectionInRadians = Math.toRadians(movementDirection);
+            updateDyDx();
     
             // nudge inward slightly to prevent sticking
             setLocation(getPreciseX() + dx * 0.01, getPreciseY() - dy * 0.01);
