@@ -15,8 +15,6 @@ public class Item extends Actor
     public Item(Animals animal){
         isBeingUsed = false;
         user = animal;
-        posX = this.getX();
-        posY = this.getY();
     }
     
     public void act()

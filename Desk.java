@@ -1,19 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bed here.
+ * Write a description of class Desk here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bed extends Item
+public class Desk extends Item
 {
-    private GreenfootImage image;
-    public Bed(Animals animal){
+    public Desk (Animals animal) {
         super(animal);
-        image = new GreenfootImage("bed.png");
-        setImage(image);
     }
+    
     public void act()
     {
         // Add your action code here.

@@ -11,7 +11,6 @@ public class Computer extends Item
     private GreenfootImage image;
     public Computer(Animals animal){
         super(animal);
-        image = new GreenfootImage("computer.png");
     }
     public void act()
     {
