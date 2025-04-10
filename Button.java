@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Button extends Actor
 {
     private GreenfootImage image, hoverImage;
+    private GreenfootSound[] clicks;
     private String text;
     private Font font = new Font(40);
     private Cursor cursor;
+    private int curIndex;
     
     //pass the mouse to buttons to know if mouse is hovering
     public Button(Cursor cursor){
@@ -26,6 +28,14 @@ public class Button extends Actor
         hoverImage.fill();
         
         this.cursor = cursor;
+        
+        //array of click sounds --> can click quickly
+        clicks = new GreenfootSound[10];
+        for (int i = 0; i < 10; i++){
+            clicks[i] = new GreenfootSound("click.mp3");
+        }
+        
+        curIndex = 0;
     }
     
     /**
@@ -37,7 +47,18 @@ public class Button extends Actor
         //if the cursor is hovering over the button, change the image
         if (cursor.getHoveredActors().contains(this)){
             setImage(hoverImage);
+            
+            //if button is clicked, play sound
+            if (Greenfoot.mouseClicked(this)){
+                curIndex++;
+                //if current index exceeds maximum possible index, reset to 0
+                if (curIndex > clicks.length - 1){
+                    curIndex = 0;
+                }
+                clicks[curIndex].play();
+            }
         } else {
+            //if not hovered over, normal image
             setImage(image);
         }
     }
