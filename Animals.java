@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
 
 /**
  * Write a description of class Animals here.
@@ -8,17 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Animals extends SuperSmoothMover
 {
-    GreenfootImage image = new GreenfootImage(35, 35); // temp placeholder, remove later
-    double dy, dx; 
-    double maxSpeed;
-    double speed;
-    int actCount;
-    int changeDirectionCooldown;
-    boolean justHitX, justHitY;
-    boolean isInTopRoom;    // coordinates of top room are top left (36, 168) and bottom right (736, 382) 
-                            // coordinates of bottom room are top left (36, 551) and bottom right (736, 763)
-    int []  topRoomTopLeft = {36, 168},
-            topRoomBottomRight = {736, 382};
+    private GreenfootImage image = new GreenfootImage(35, 35); // temp placeholder, remove later
+    private double dy, dx; //direction values involved with movement
+    protected double maxSpeed;
+    protected double speed;
+    protected int actCount;
+    private int changeDirectionCooldown;
+    private boolean justHitX, justHitY;
+    private boolean isInTopRoom;    // coordinates of top room are top left (36, 168) and bottom right (736, 382) 
+                                    // coordinates of bottom room are top left (36, 551) and bottom right (736, 763)
+    private int []  topRoomTopLeft = {36, 168},
+                    topRoomBottomRight = {736, 382};
+    
+    protected Item itemInUse;
+    
+    protected ActionState currentAction = ActionState.NOTHING;
+    
     public Animals () {
         image.setColor(Color.RED);
         image.fill();
@@ -31,12 +37,20 @@ public abstract class Animals extends SuperSmoothMover
     
     public void act()
     {
-        moveToward(speed, getPreciseX() + dx, getPreciseY() - dy);
-        if(actCount % changeDirectionCooldown == 0) {
-            setRandomCooldown ();
-            setRandomDirection(100);
+        if(currentAction == ActionState.NOTHING) {
+            moveToward(speed, getPreciseX() + dx, getPreciseY() - dy);
+            if(actCount % changeDirectionCooldown == 0) {
+                setRandomCooldown ();
+                setRandomDirection(100);
+            }
+            hitEdge(topRoomTopLeft, topRoomBottomRight);
+        } else {
+            setLocation(itemInUse.getX(), itemInUse.getY());
+             if (itemInUse.getUser() == null) {
+                itemInUse.setUser(this);
+            }
         }
-        hitEdge(topRoomTopLeft, topRoomBottomRight);
+        checkHitObject();
         actCount++;
     }
     
@@ -46,16 +60,18 @@ public abstract class Animals extends SuperSmoothMover
         
         if (getPreciseX() - image.getWidth()/2 <= xOffset || getPreciseX() + image.getWidth()/2 >= rangeX + xOffset) {
             movementDirection = 180 - movementDirection;
+            //reflect horizontally
             bounced = true;
         }
     
         if (getPreciseY() - image.getHeight()/2 <= yOffset || getPreciseY() + image.getHeight()/2 >= rangeY + yOffset) {
             movementDirection = 360 - movementDirection;
+            //reflect vertically
             bounced = true;
         }
     
         if (bounced) {          
-            movementDirectionInRadians = Math.toRadians(movementDirection);
+            movementDirectionInRadians = Math.toRadians(movementDirection); // java trig is in radians so
             updateDyDx();
     
             // nudge inward slightly to prevent sticking
@@ -80,18 +96,45 @@ public abstract class Animals extends SuperSmoothMover
     
     // changes direction completely randomly
     public void setRandomDirection (int range) {
-        movementDirection += Greenfoot.getRandomNumber(range+1) - (range/2);
+        int randomDirection = movementDirection + Greenfoot.getRandomNumber(range+1) - (range/2);
+        setDirection(randomDirection);
+    }
+    
+    public void setDirection(int direction) {
+        movementDirection = direction;
         if(movementDirection >= 360) {
-            movementDirection -= 360;
+            movementDirection -= 360; //keeps within the 360 degree unit circle
         } else if(movementDirection < 0) {
             movementDirection += 360;
         }
         movementDirectionInRadians = (double)movementDirection * (Math.PI/180);
-        updateDyDx ();
+        updateDyDx (); // updates the actual direction values to match
     }
     
     public void setRandomCooldown () {
         changeDirectionCooldown = Greenfoot.getRandomNumber(1001) + 500; // random number from 500-1000
+    }
+    
+    public void setAction(ActionState action) {
+        currentAction = action;
+    }
+    
+    protected void checkHitObject() {
+        ArrayList<Item> items = (ArrayList<Item>)getIntersectingObjects(Item.class);
+        Item hitItem;
+        if(items.size() > 0) 
+            hitItem = items.get(0); //just get the first item, no need for multiple
+        else {
+            currentAction = ActionState.NOTHING;
+            itemInUse = null;
+            return;
+        }
+        if(hitItem instanceof Bed){
+            if(itemInUse != hitItem) {
+                currentAction = ActionState.SLEEPING;
+                itemInUse = hitItem;
+            }
+        }
     }
     
     public void updateDyDx () {
