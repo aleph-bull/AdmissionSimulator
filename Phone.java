@@ -22,5 +22,6 @@ public class Phone extends Item
                 ((Student)usr).usePhone();
             }
         }
+        super.act();
     }
 }

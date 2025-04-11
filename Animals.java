@@ -22,6 +22,7 @@ public abstract class Animals extends SuperSmoothMover
                     topRoomBottomRight = {736, 382};
     
     protected Item itemInUse;
+    protected ActionState lastAction;
     
     protected ActionState currentAction = ActionState.NOTHING;
     
@@ -45,8 +46,8 @@ public abstract class Animals extends SuperSmoothMover
             }
             hitEdge(topRoomTopLeft, topRoomBottomRight);
         } else {
-            setLocation(itemInUse.getX(), itemInUse.getY());
              if (itemInUse.getUser() == null) {
+                setLocation(itemInUse.getX(), itemInUse.getY());
                 itemInUse.setUser(this);
             }
         }
@@ -130,9 +131,20 @@ public abstract class Animals extends SuperSmoothMover
             return;
         }
         if(hitItem instanceof Bed){
-            if(itemInUse != hitItem) {
-                currentAction = ActionState.SLEEPING;
-                itemInUse = hitItem;
+            if(itemInUse != hitItem){
+                if (lastAction != ActionState.SLEEPING){
+                    currentAction = ActionState.SLEEPING;
+                    lastAction = ActionState.SLEEPING;
+                    itemInUse = hitItem;
+                }
+            }
+        } else if(hitItem instanceof Chair){
+            if(itemInUse != hitItem){
+                if (lastAction != ActionState.WORKING){
+                    currentAction = ActionState.WORKING;
+                    lastAction = ActionState.WORKING;
+                    itemInUse = hitItem;
+                }
             }
         }
     }

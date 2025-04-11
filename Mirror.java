@@ -14,6 +14,6 @@ public class Mirror extends Item
     
     public void act()
     {
-        // Add your action code here.
+        super.act();
     }
 }

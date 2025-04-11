@@ -13,6 +13,12 @@ public class Chair extends Item
     }
     public void act()
     {
-        // Add your action code here.
+        super.act();
+        Animals usr = this.getUser();
+        if (usr != null){
+            if (usr instanceof Student){
+                ((Student)usr).work();
+            }
+        }
     }
 }
