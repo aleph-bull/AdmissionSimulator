@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SettingsWorld extends World
 {
-
+    private GreenfootImage image;
+    private GreenfootSound music;
+    
     /**
      * Constructor for objects of class SettingsWorld.
      * 
@@ -18,6 +20,10 @@ public class SettingsWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
         
+        music = new GreenfootSound("settingsmusic.mp3");
+        music.setVolume(30);
+        music.playLoop();
+        
         //testing buttons
         Cursor cursor = new Cursor();
         addObject(cursor, 0, 0);
@@ -25,5 +31,11 @@ public class SettingsWorld extends World
         addObject(button, 512, 400);
     }
     
+    public void started(){
+        music.playLoop();
+    }
     
+    public void stopped(){
+        music.pause();
+    }
 }
