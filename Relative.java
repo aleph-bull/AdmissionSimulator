@@ -9,10 +9,12 @@ public class Relative extends Animals
 
     public void act()
     {
+        super.act();
     }
 
     public Relative(String image)
     {
+        super(); 
         this.image = new GreenfootImage (image); 
         setImage(image); 
     }
