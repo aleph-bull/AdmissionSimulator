@@ -9,12 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Computer extends Item
 {
     private GreenfootImage image;
-    public Computer(Animals animal){
-        super(animal);
-        image = new GreenfootImage("computer.png");
+    public Computer(){
+        super();
     }
+    
     public void act()
     {
-        // Add your action code here.
+        Animals usr = this.getUser();
+        if (usr != null){
+            if (usr instanceof Student){
+                ((Student)usr).work();
+            }
+        }
     }
 }
