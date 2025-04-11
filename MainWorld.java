@@ -16,8 +16,10 @@ public class MainWorld extends World
     private int relativeMinCountdown; 
     private Relative r;
 
+
     private Relative relative;
     private String cat;
+    private String mom;
     private GreenfootImage image;
     Student studentTop;
     Bed bedTop;
@@ -52,6 +54,9 @@ public class MainWorld extends World
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
+        cat = "Cat.png";
+        mom = "Mom.png";
+        
         cat = "Cat.png"; 
 
         setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
@@ -66,6 +71,7 @@ public class MainWorld extends World
 
     public void act()
     {
+        spawnRelative();
         actNum++;
 
         //every 10, can change as needed

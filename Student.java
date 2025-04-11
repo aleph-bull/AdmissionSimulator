@@ -12,7 +12,6 @@ public class Student extends Animals
      * Act - do whatever the Student wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
     private int gpa;
     private int happiness;
     private int nextItem;
@@ -31,6 +30,7 @@ public class Student extends Animals
     //Student health that appears when they are avoiding the letters
     int studentHealth;
     
+    public GreenfootImage image; 
     
     public Student(){
         super();
@@ -42,7 +42,6 @@ public class Student extends Animals
         happiness = 100;
 
     }
-    
     public void act()
     {
         super.act();
@@ -83,5 +82,6 @@ public class Student extends Animals
     
     public int getGPA(){
         return gpa;
+
     }
 }
