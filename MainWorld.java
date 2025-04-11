@@ -61,6 +61,7 @@ public class MainWorld extends World
     
     public void act()
     {
+        spawnRelative();
     }
 
     public void spawnRelative()
