@@ -14,6 +14,8 @@ public class MainWorld extends World
 
     private int relativeCountdown;
     private int relativeMinCountdown; 
+    private Relative r;
+
 
     private Relative relative;
     private String cat;
@@ -26,42 +28,56 @@ public class MainWorld extends World
     Desk deskTop;
     Mirror mirrorTop;
 
+    private int actNum;
+
     public MainWorld()
     {    
         super(1024, 800, 1); 
         setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
-        
+
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
-        
+
         studentTop = new Student();
         bedTop = new Bed();
         chairTop = new Chair();
         computerTop = new Computer();
         deskTop = new Desk();
         mirrorTop = new Mirror();
-        
+
         addObject(studentTop, 400, 200);
         addObject(bedTop, 90 + studentTop.getImage().getWidth()/2, 220);
         addObject(chairTop, 400, 220);
         addObject(computerTop, 400, 120);
         addObject(deskTop, 400, 180);
         addObject(mirrorTop, 600, 150);
-        
+
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png";
         mom = "Mom.png";
         
+        cat = "Cat.png"; 
+
+        setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+        addObject(new Walls(), getWidth() / 2, getHeight() / 2);
+        
+        actNum = 0;
     }
 
     public void addedToWorld() {
-            
+
     }
-    
+
     public void act()
     {
         spawnRelative();
+        actNum++;
+
+        //every 10, can change as needed
+        if (actNum % (60 * 10) == 0){
+            spawnDisease();
+        }
     }
 
     public void spawnRelative()
@@ -78,4 +94,15 @@ public class MainWorld extends World
         }
     }
 
+    /**
+     * Spawn Sickness in random room
+     */
+    public void spawnDisease(){
+        int y;
+        int room = Greenfoot.getRandomNumber(1) + 1;
+        if (room == 1) y = Effect.ROOM_1_Y;
+        else y = Effect.ROOM_2_Y;
+
+        addObject(new Sickness(room), Effect.ROOM_X, y);
+    }
 }
