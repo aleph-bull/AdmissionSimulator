@@ -18,15 +18,10 @@ public class Button extends Actor
     //pass the mouse to buttons to know if mouse is hovering
     public Button(Cursor cursor){
         //placeholder images
-        image = new GreenfootImage(50, 50);
-        image.setColor(Color.BLUE);
-        image.fill();
+        image = new GreenfootImage("SettingsArrow.png"); 
         setImage(image);
         
-        hoverImage = new GreenfootImage(50, 50);
-        hoverImage.setColor(Color.RED);
-        hoverImage.fill();
-        
+        hoverImage = new GreenfootImage("SettingsArrowHover.png"); 
         this.cursor = cursor;
         
         //array of click sounds --> can click quickly

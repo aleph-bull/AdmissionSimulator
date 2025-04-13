@@ -32,7 +32,7 @@ public class SettingsArrow extends Actor
         {
             setImage(imageHover); 
         }
-        else
+        else if(mouse!= null && mouse.getActor() != this)
         {
             setImage(image); 
         }
