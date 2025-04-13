@@ -48,4 +48,8 @@ public class Item extends Actor
         beingUsedActCount = 0;
         user = null;
     }
+    
+    public boolean isOccupied(){
+        return this.isBeingUsed;
+    }
 }

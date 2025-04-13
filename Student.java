@@ -45,8 +45,19 @@ public class Student extends Animals
     public void act()
     {
         super.act();
-
+        if (happiness > 75){
+            productive = true;
+        } else {
+            productive = false;
+        }
         
+        if (currentAction == ActionState.SLEEPING){
+            this.rest();
+        } else if (currentAction == ActionState.WORKING){
+            this.work();
+        } else if (currentAction == ActionState.BRAINROTTING){
+            this.usePhone();
+        }
     }
     
     public int getGpa(){
@@ -66,7 +77,11 @@ public class Student extends Animals
     }
     
     public void work(){
-        gpa ++;
+        if (productive){
+            gpa += 4;
+        } else{
+            gpa ++;
+        }
         happiness --;
     }
     
@@ -78,10 +93,5 @@ public class Student extends Animals
     
     public void reduceHealth(int amount){
         this.studentHealth-=amount;
-    }
-    
-    public int getGPA(){
-        return gpa;
-
     }
 }
