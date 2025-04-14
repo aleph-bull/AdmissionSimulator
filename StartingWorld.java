@@ -4,8 +4,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class StartingWorld here.
  * 
  * ============CREDITS============
- * - Button: https://youtu.be/PA2PsADo11E?feature=shared
- * 
+ * - Button sfx: https://youtu.be/PA2PsADo11E?feature=shared
+ * - Cloud image: https://www.freepik.com/premium-vector/pixel-art-cartoon-crying-rainy-cloud-character_214146407.htm
+ * - Germ image: https://www.freepik.com/premium-vector/bacteria-virus-pixel-art-set-germ-microbe-collection-infectious-pathogen-8-bit-sprite_33822375.htm
+ * - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
  * @author Angela Wang
  * @version 04.09.25
  */
@@ -55,7 +57,7 @@ public class StartingWorld extends World
         
         if (Greenfoot.isKeyDown("e")){
             music.stop();
-            Greenfoot.setWorld(new SettingsWorld());
+            Greenfoot.setWorld(new SettingWorld());
         }
     }
 

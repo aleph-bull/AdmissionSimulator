@@ -8,20 +8,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Rain extends EffectItem
 {
     private int width, height;
-    private static final int PIXEL_WIDTH = 5;
-    private static final int PIXEL_HEIGHT = 5;
-    private static final Color COLOUR = new Color(222, 239, 245, 120);
-    private int speed;
+    private static final int PIXEL_WIDTH = 3;
+    private static final int PIXEL_HEIGHT = 3;
+    private static final Color COLOUR = new Color(222, 239, 245, 100);
     
-    public Rain(int level){
-        height = 80;
+    //to keep rain in bounds of room
+    public static final int R1_BORDER_Y = 390;
+    private int edge;
+    
+    public Rain(){
+        height = 20;
         width = PIXEL_WIDTH;
-        speed = 10;
-        
-        drawImage();
-        
+                
         enableStaticRotation();
         turn(90);
+        
+        drawImage();
+    }
+    
+    public void addedToWorld(World w){
+        if (getY() < R1_BORDER_Y){
+            //if starting above room 1 border, rain is in room 1
+            edge = R1_BORDER_Y;
+        } else {
+            //rain is in room 2 --> disappear at world edge
+            edge = getWorld().getHeight();
+        }
     }
     
     /**
@@ -30,10 +42,8 @@ public class Rain extends EffectItem
      */
     public void act()
     {
-        move(speed);
-        if (isAtEdge()){
-            getWorld().removeObject(this);
-        }
+        move(6);
+        checkEdge();
     }
     
     //draw rain image based on width and height
@@ -50,5 +60,12 @@ public class Rain extends EffectItem
             currentY += rectHeight;
         }
         setImage(image);
+    }
+    
+    private void checkEdge(){
+        //remove rain at bottom of room
+        if (getY() >= edge){
+            getWorld().removeObject(this);
+        }
     }
 }
