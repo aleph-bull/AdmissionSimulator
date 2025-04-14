@@ -129,7 +129,7 @@ public class MainWorld extends World
      */
     public void spawnDisease(){
         int y;
-        int room = Greenfoot.getRandomNumber(2) + 1;
+        int room = Greenfoot.getRandomNumber(2);
         if (room == 1) y = Effect.ROOM_1_Y;
         else y = Effect.ROOM_2_Y;
 
