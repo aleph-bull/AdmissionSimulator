@@ -27,13 +27,13 @@ public class MainWorld extends World
     Computer computerTop;
     Desk deskTop;
     Mirror mirrorTop;
+    Phone phoneTop;
 
     private int actNum;
 
     public MainWorld()
     {    
         super(1024, 800, 1); 
-        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
 
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
@@ -44,21 +44,23 @@ public class MainWorld extends World
         computerTop = new Computer();
         deskTop = new Desk();
         mirrorTop = new Mirror();
+        phoneTop = new Phone();
 
         addObject(studentTop, 400, 200);
         addObject(bedTop, 90 + studentTop.getImage().getWidth()/2, 220);
         addObject(chairTop, 400, 220);
-        addObject(computerTop, 400, 120);
         addObject(deskTop, 400, 180);
         addObject(mirrorTop, 600, 150);
+        addObject(phoneTop, 300, 300);
+        addObject(computerTop, 400, 120);
+        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "LeftButton.png";
         mom = "Mom.png";
         
-        cat = "Cat.png"; 
-
         setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         

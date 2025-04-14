@@ -63,7 +63,11 @@ public class Student extends Animals
     }
 
     public void work(){
-        gpa ++;
+        if (productive){
+            gpa += 4;
+        } else{
+            gpa ++;
+        }
         happiness --;
     }
 
@@ -75,10 +79,5 @@ public class Student extends Animals
 
     public void reduceHealth(int amount){
         this.studentHealth-=amount;
-    }
-
-    public int getGPA(){
-        return gpa;
-
     }
 }
