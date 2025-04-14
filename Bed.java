@@ -34,7 +34,6 @@ public class Bed extends Item
         user.setDirection(0);
         user.setRandomDirection(60);
         
-        System.out.println("stopped");
         super.stopUsing();
     }
 }
