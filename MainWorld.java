@@ -76,9 +76,10 @@ public class MainWorld extends World
         spawnRelative();
         actNum++;
 
-        //every 10, can change as needed
+        //every 15, can change as needed
         if (actNum % (60 * 10) == 0){
-            spawnDisease();
+            int random = Greenfoot.getRandomNumber(2);
+            if (random == 0) spawnDisease(); else spawnDepression();
         }
     }
 
@@ -101,10 +102,16 @@ public class MainWorld extends World
      */
     public void spawnDisease(){
         int y;
-        int room = Greenfoot.getRandomNumber(1) + 1;
+        int room = Greenfoot.getRandomNumber(2) + 1;
         if (room == 1) y = Effect.ROOM_1_Y;
         else y = Effect.ROOM_2_Y;
 
         addObject(new Sickness(room), Effect.ROOM_X, y);
+    }
+    
+    //currently only spawning in top room as test (can change to be spawned only when 
+    //student happiness is low
+    public void spawnDepression(){
+        addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
     }
 }
