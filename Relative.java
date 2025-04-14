@@ -12,9 +12,9 @@ public class Relative extends Animals
         super.act();
     }
 
-    public Relative(String image)
+    public Relative(String image, boolean isTop)
     {
-        super(); 
+        super(isTop); 
         this.image = new GreenfootImage (image); 
         setImage(image); 
     }

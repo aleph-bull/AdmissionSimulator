@@ -19,14 +19,17 @@ public abstract class Animals extends SuperSmoothMover
     private boolean isInTopRoom;    // coordinates of top room are top left (36, 168) and bottom right (736, 382) 
                                     // coordinates of bottom room are top left (36, 551) and bottom right (736, 763)
     private int []  topRoomTopLeft = {36, 168},
-                    topRoomBottomRight = {736, 382};
+                    topRoomBottomRight = {736, 382},
+                    BottomRoomTopLeft = {36, 551},
+                    BottomRoomBottomRight = {736, 763};
     
     protected Item itemInUse;
     protected ActionState lastAction;
     
     protected ActionState currentAction = ActionState.NOTHING;
+    protected boolean top;
     
-    public Animals () {
+    public Animals (boolean isTop) {
         image.setColor(Color.RED);
         image.fill();
         setImage(image);
@@ -34,6 +37,7 @@ public abstract class Animals extends SuperSmoothMover
         speed = maxSpeed;
         setRandomCooldown (); // random number from 200-500
         setRandomDirection(360);
+        top = isTop;
     }
     
     public void act()
@@ -44,7 +48,11 @@ public abstract class Animals extends SuperSmoothMover
                 setRandomCooldown ();
                 setRandomDirection(100);
             }
-            hitEdge(topRoomTopLeft, topRoomBottomRight);
+            if (this.top){
+                hitEdge(topRoomTopLeft, topRoomBottomRight);
+            } else {
+                hitEdge(BottomRoomTopLeft, BottomRoomBottomRight);
+            }
         } else {
              if (itemInUse != null){
                 if (itemInUse.getUser() == null) {
