@@ -31,22 +31,25 @@ public class Student extends Animals
     //Student health that appears when they are avoiding the letters
     int studentHealth;
     
-    
     public Student(){
         super();
+        //the student begins with a 50
         gpa = 50;
-
         productive = true; 
-        //bar = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
-
+        //GPA Bar:
+        bar1 = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
+        
+        //Happiness Bar:
+        bar2 = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
         happiness = 100;
+        
 
     }
     
     public void act()
     {
         super.act();
-
+        nextItem = Greenfoot.getRandomNumber(3);
         
     }
     
@@ -56,23 +59,21 @@ public class Student extends Animals
     
     public void setGpa(int updatedGpa){
         this.gpa = updatedGpa;
-
-        // Add your action code here.
-        nextItem = Greenfoot.getRandomNumber(3);
+        
         
     }
     
     public void rest(){
-        happiness ++;
+        happiness++;
     }
     
     public void work(){
-        gpa ++;
-        happiness --;
+        gpa++;
+        happiness--;
     }
     
     public void usePhone(){
-        gpa --;
+        gpa--;
         happiness += 2;
 
     }
