@@ -14,6 +14,7 @@ public class Item extends Actor
     protected int posY;
     protected int beingUsedActCount;
     protected int useActCountDuration;
+    protected SuperStatBar usageBar;
     
     public Item(){
         beingUsedActCount = 0;
@@ -25,6 +26,7 @@ public class Item extends Actor
     {
         if(isBeingUsed) {
             beingUsedActCount++;
+            usageBar.update(beingUsedActCount);
             // when the act count exceeds duration, get off
             if(beingUsedActCount >= useActCountDuration) {
                 beingUsedActCount = 0;
@@ -40,12 +42,15 @@ public class Item extends Actor
     public void setUser(Animals a){
         isBeingUsed = true;
         user = a;
+        usageBar = new SuperStatBar (useActCountDuration, beingUsedActCount, a, 70, 10, -a.getImage().getHeight(),  new Color(50,84,168), Color.BLACK, false, new Color(30,38,59), 3);
+        getWorld().addObject(usageBar, a.getX(), a.getY());
     }
     
     public void stopUsing(){
         isBeingUsed = false;
         user.setAction(ActionState.NOTHING);
         beingUsedActCount = 0;
+        getWorld().removeObject(usageBar);
         user = null;
     }
 }
