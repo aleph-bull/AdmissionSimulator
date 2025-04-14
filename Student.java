@@ -30,8 +30,8 @@ public class Student extends Animals
 
     public GreenfootImage image; 
 
-    public Student(){
-        super();
+    public Student(boolean isTop){
+        super(isTop);
         gpa = 50;
 
         productive = true; 
