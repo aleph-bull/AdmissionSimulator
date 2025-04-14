@@ -8,10 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Phone extends Item
 {
-    private GreenfootImage image;
+    //private GreenfootImage image;
     public Phone(){
         super();
-        image  = new GreenfootImage("phone.png");
+        //image  = new GreenfootImage("phone.png");
     }
     
     public void act()
@@ -22,5 +22,6 @@ public class Phone extends Item
                 ((Student)usr).usePhone();
             }
         }
+        super.act();
     }
 }

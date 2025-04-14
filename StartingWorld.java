@@ -37,7 +37,7 @@ public class StartingWorld extends World
 
     public void act(){
         if (Greenfoot.isKeyDown("e")){
-            Greenfoot.setWorld(new SettingsWorld());
+            Greenfoot.setWorld(new SettingsWorldGeneral());
             //end music
         }
     }
