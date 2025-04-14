@@ -46,9 +46,11 @@ public abstract class Animals extends SuperSmoothMover
             }
             hitEdge(topRoomTopLeft, topRoomBottomRight);
         } else {
-             if (itemInUse.getUser() == null) {
-                setLocation(itemInUse.getX(), itemInUse.getY());
-                itemInUse.setUser(this);
+             if (itemInUse != null){
+                if (itemInUse.getUser() == null) {
+                    setLocation(itemInUse.getX(), itemInUse.getY());
+                    itemInUse.setUser(this);
+                }
             }
         }
         checkHitObject();
@@ -121,11 +123,18 @@ public abstract class Animals extends SuperSmoothMover
     }
     
     protected void checkHitObject() {
-        ArrayList<Item> items = (ArrayList<Item>)getIntersectingObjects(Item.class);
-        Item hitItem;
-        if(items.size() > 0) 
-            hitItem = items.get(0); //just get the first item, no need for multiple
-        else {
+        ArrayList<Item> items = (ArrayList<Item>) getIntersectingObjects(Item.class);
+    
+        if (items.size() == 0) {
+            currentAction = ActionState.NOTHING;
+            itemInUse = null;
+            return;
+        }
+    
+        Item hitItem = items.get(0); // Only consider the first intersecting item
+    
+        // If this is a different item than the one we used before, and someone else is using it, just pass through
+        if (hitItem != itemInUse && hitItem.getUser() != null && hitItem.getUser() != this) {
             currentAction = ActionState.NOTHING;
             itemInUse = null;
             return;
@@ -143,6 +152,14 @@ public abstract class Animals extends SuperSmoothMover
                 if (lastAction != ActionState.WORKING){
                     currentAction = ActionState.WORKING;
                     lastAction = ActionState.WORKING;
+                    itemInUse = hitItem;
+                }
+            }
+        } else if (hitItem instanceof Phone){
+            if (itemInUse != hitItem){
+                if (lastAction != ActionState.BRAINROTTING){
+                    currentAction = ActionState.BRAINROTTING;
+                    lastAction = ActionState.BRAINROTTING;
                     itemInUse = hitItem;
                 }
             }
