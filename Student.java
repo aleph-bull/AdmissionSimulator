@@ -28,6 +28,8 @@ public class Student extends Animals
     //Student health that appears when they are avoiding the letters
     int studentHealth;
 
+    public GreenfootImage image; 
+
     public Student(){
         super();
         gpa = 50;
@@ -42,7 +44,6 @@ public class Student extends Animals
     public void act()
     {
         super.act();
-
     }
 
     public int getGpa(){
@@ -78,5 +79,6 @@ public class Student extends Animals
 
     public int getGPA(){
         return gpa;
+
     }
 }

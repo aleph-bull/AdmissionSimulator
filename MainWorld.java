@@ -54,7 +54,7 @@ public class MainWorld extends World
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "Cat.png";
+        cat = "LeftButton.png";
         mom = "Mom.png";
         
         cat = "Cat.png"; 

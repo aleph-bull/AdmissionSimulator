@@ -19,12 +19,22 @@ public class SettingsArrow extends Actor
         hoverChange(); 
     }
 
-    public SettingsArrow()
+    public SettingsArrow(boolean isLeft)
     {
-        image = new GreenfootImage ("SettingsArrow.png"); 
-        setImage(image);
-        imageHover = new GreenfootImage("SettingsArrowHover.png"); 
+        if (isLeft == true)
+        {
+            image = new GreenfootImage ("SettingsArrowL.png"); 
+            setImage(image);
+            imageHover = new GreenfootImage("SettingsArrowHoverL.png"); 
+        }
+        else 
+        {
+            image = new GreenfootImage ("SettingsArrowR.png"); 
+            setImage(image);
+            imageHover = new GreenfootImage("SettingsArrowHoverR.png"); 
+        }
     }
+
     public void hoverChange()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo(); 
