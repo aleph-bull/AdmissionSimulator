@@ -11,14 +11,14 @@ public class Cursor extends Actor
 {
     private MouseInfo mouse;
     private GreenfootImage image;
-    private boolean showCursor = true;
+    private boolean showCursor = false;
     
     public Cursor(){
         image = new GreenfootImage(50, 50);
         image.setColor(Color.GREEN);
-        image.fill();
+        if (showCursor) image.fill();
         
-        if (showCursor)setImage(image);
+        setImage(image);
     }
     
     /**

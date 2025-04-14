@@ -58,7 +58,7 @@ public class MainWorld extends World
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "Cat.png";
+        cat = "LeftButton.png";
         mom = "Mom.png";
         
         setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
