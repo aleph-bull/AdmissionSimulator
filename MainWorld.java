@@ -34,6 +34,7 @@ public class MainWorld extends World
     public MainWorld()
     {    
         super(1024, 800, 1); 
+        setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
