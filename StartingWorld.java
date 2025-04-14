@@ -3,16 +3,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class StartingWorld here.
  * 
- * ============CREDITS============
- * - Button: https://youtu.be/PA2PsADo11E?feature=shared
- * 
  * @author Angela Wang
  * @version 04.09.25
  */
 public class StartingWorld extends World
 {
-    private GifImage background;
-    private GreenfootSound music;
+    private GreenfootImage image;
     private TextBox title;
     private Button button;
     private Cursor cursor;
@@ -25,13 +21,10 @@ public class StartingWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
-
-        background = new GifImage("bg.gif");
-        background.getCurrentImage().scale(1024, 800);
-        setBackground(background.getCurrentImage());
-
-        music = new GreenfootSound("startmusic.mp3");
-        music.setVolume(50);
+        
+        //random placeholder image
+        image = new GreenfootImage("emptyBackground.png");
+        setBackground(image);
 
         //title + start
         //OBVIOUSLY VERY SCUFFED but this was mostly to test TextBox
@@ -42,25 +35,10 @@ public class StartingWorld extends World
         addObject(startText, 660, 750);
     }
 
-    public void started(){
-        music.playLoop();
-    }
-
-    public void stopped(){
-        music.pause();
-    }
-
     public void act(){
-        animate();
-        
         if (Greenfoot.isKeyDown("e")){
-            music.stop();
-            Greenfoot.setWorld(new SettingsWorld());
+            Greenfoot.setWorld(new SettingsWorldGeneral());
+            //end music
         }
-    }
-
-    public void animate(){
-        background.getCurrentImage().scale(1024, 800);
-        setBackground(background.getCurrentImage());
     }
 }

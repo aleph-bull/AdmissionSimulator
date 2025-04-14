@@ -3,8 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Student here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author 
  */
 public class Student extends Animals
 {
@@ -17,8 +16,7 @@ public class Student extends Animals
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
-    
-    
+
     //SuperStatBar:
     //GPA Bar:
     private SuperStatBar bar1; 
@@ -26,12 +24,12 @@ public class Student extends Animals
     private SuperStatBar bar2;
     //Productivity
     boolean productive;
-    
+
     //Student health that appears when they are avoiding the letters
     int studentHealth;
-    
+
     public GreenfootImage image; 
-    
+
     public Student(){
         super();
         gpa = 50;
@@ -42,40 +40,28 @@ public class Student extends Animals
         happiness = 100;
 
     }
+
     public void act()
     {
         super.act();
-        if (happiness > 75){
-            productive = true;
-        } else {
-            productive = false;
-        }
-        
-        if (currentAction == ActionState.SLEEPING){
-            this.rest();
-        } else if (currentAction == ActionState.WORKING){
-            this.work();
-        } else if (currentAction == ActionState.BRAINROTTING){
-            this.usePhone();
-        }
     }
-    
+
     public int getGpa(){
         return this.gpa;
     }
-    
+
     public void setGpa(int updatedGpa){
         this.gpa = updatedGpa;
 
         // Add your action code here.
         nextItem = Greenfoot.getRandomNumber(3);
-        
+
     }
-    
+
     public void rest(){
         happiness ++;
     }
-    
+
     public void work(){
         if (productive){
             gpa += 4;
@@ -84,13 +70,13 @@ public class Student extends Animals
         }
         happiness --;
     }
-    
+
     public void usePhone(){
         gpa --;
         happiness += 2;
 
     }
-    
+
     public void reduceHealth(int amount){
         this.studentHealth-=amount;
     }
