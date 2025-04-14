@@ -16,17 +16,20 @@ public class Button extends Actor
     private int curIndex;
     
     //pass the mouse to buttons to know if mouse is hovering
-    public Button(Cursor cursor){
-        //placeholder images
-        image = new GreenfootImage(50, 50);
-        image.setColor(Color.BLUE);
-        image.fill();
-        setImage(image);
+    public Button(Cursor cursor, boolean isLeft){
         
-        hoverImage = new GreenfootImage(50, 50);
-        hoverImage.setColor(Color.RED);
-        hoverImage.fill();
-        
+        if (isLeft == true)
+        {
+            image = new GreenfootImage ("SettingsArrowL.png"); 
+            setImage(image);
+            hoverImage = new GreenfootImage("SettingsArrowHoverL.png"); 
+        }
+        else 
+        {
+            image = new GreenfootImage ("SettingsArrowR.png"); 
+            setImage(image);
+            hoverImage = new GreenfootImage("SettingsArrowHoverR.png"); 
+        }
         this.cursor = cursor;
         
         //array of click sounds --> can click quickly

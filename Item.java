@@ -53,4 +53,8 @@ public class Item extends Actor
         getWorld().removeObject(usageBar);
         user = null;
     }
+    
+    public boolean isOccupied(){
+        return this.isBeingUsed;
+    }
 }
