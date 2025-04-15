@@ -16,8 +16,9 @@ public class Admin extends Animals {
     private boolean mood;
     private String uni;
     private int acceptanceR;
-
-    public Admin(int requirement, int acceptanceR, boolean mood, String uni) {
+  
+    public Admin(int requirement,int acceptanceR,boolean mood, String uni, boolean isTop){
+        super(isTop);
         this.requirement = requirement;
         this.acceptanceR = acceptanceR;
         this.mood = mood;
