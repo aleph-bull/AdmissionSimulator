@@ -143,7 +143,7 @@ public abstract class Animals extends SuperSmoothMover {
     
         Item hitItem = items.get(0); // Only consider the first intersecting item
     
-        /
+        
 
             currentAction = ActionState.NOTHING;
 
@@ -179,6 +179,36 @@ public abstract class Animals extends SuperSmoothMover {
     
     public void updateDyDx () {
         dx = Math.cos(movementDirectionInRadians) * 100;
+
      
 
     
+
+        dy = Math.sin(movementDirectionInRadians) * 100;
+    }
+    
+    /**
+     * Get the current x direction
+     * @return double dx 
+     */
+    public double getDx(){
+        return dx;
+    }
+    
+    /**
+     * Get current y direction
+     * @return double dy
+     */
+    public double getDy(){
+        return dy;
+    }
+    
+    /**
+     * Get current ActionState 
+     * @return ActionState currentAction
+     */
+    public ActionState getActionState(){
+        return currentAction;
+    }
+}
+

@@ -31,7 +31,13 @@ public class Student extends Animals {
     // Student health that appears when they are avoiding the letters
     int studentHealth;
 
+
     private GreenfootImage image;
+
+
+    //animation variables
+    private GreenfootImage[] walkAnimations = new GreenfootImage[6];
+    private int countdown, frame;
 
 
     public Student(boolean isTop){
@@ -47,6 +53,7 @@ public class Student extends Animals {
 
         // Happiness Bar:`
         happiness = 100;
+
         bar2 = new SuperStatBar(100, happiness, null, 100, 30, -32, Color.YELLOW, Color.RED, true, Color.BLACK, 5);
         
         
@@ -62,11 +69,24 @@ public class Student extends Animals {
         w.addObject(bar2, 700, 100);
         bar2.update(happiness);
         
+
+
+        prepareAnimations();
+
+        countdown = 5;
+
+        frame = 0;
+
     }
 
     public void act() {
         super.act();
+
         
+
+
+        animate();
+
     }
 
     public int getGpa() {
@@ -115,4 +135,40 @@ public class Student extends Animals {
         
         
     }
+
+    //add animation frames
+    private void prepareAnimations(){
+        String fileName = "bob_run";
+        int fileNumber = 18;
+        for (int j = 0; j < walkAnimations.length; j++){
+            walkAnimations[j] = new GreenfootImage(fileName + fileNumber + ".png");
+            walkAnimations[j].scale(35, 55);
+            fileNumber++;
+        }
+
+        setImage(walkAnimations[0]);
+    }
+
+    //change frames
+    private void animate(){
+        //if Student is doing nothing but walking around, walk animation
+        if (getActionState() == ActionState.NOTHING){
+            if (countdown > 0){
+                countdown--;
+            } else {
+                setImage(walkAnimations[frame]);
+                frame++;
+                //return to 0th frame once all frames have been displayed
+                if (frame > 5){
+                    frame = 0;
+                }
+                countdown = 5;
+            }
+        } else {
+            //if Student is not moving, set to still frame
+            frame = 0;
+            setImage(walkAnimations[frame]);
+        }
+    }
+
 }
