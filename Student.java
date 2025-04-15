@@ -1,93 +1,139 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Write a description of class Student here.
  * 
- * @author 
+ * @author
  */
-public class Student extends Animals
-{
+public class Student extends Animals {
     /**
      * Act - do whatever the Student wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    //Basic variables
     private int gpa;
     private int happiness;
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
+    
+    //Text
+    
 
-    //SuperStatBar:
-    //GPA Bar:
-    private SuperStatBar bar1; 
-    //Happiness Bar:
+    // SuperStatBar:
+    // GPA Bar:
+    private SuperStatBar bar1;
+    // Happiness Bar:
     private SuperStatBar bar2;
-    //Productivity
+    // Productivity
     boolean productive;
 
-    //Student health that appears when they are avoiding the letters
+    // Student health that appears when they are avoiding the letters
     int studentHealth;
+
+
+    private GreenfootImage image;
+
 
     //animation variables
     private GreenfootImage[] walkAnimations = new GreenfootImage[6];
     private int countdown, frame;
 
+
     public Student(boolean isTop){
         super(isTop);
         gpa = 50;
+        productive = true;
+        
+        // GPA Bar:
+        bar1 = new SuperStatBar(100, gpa, null, 100, 30, -32, Color.GREEN, Color.RED, true, Color.BLACK, 5);
+        
+        //Text for the simulation
+        
 
-        productive = true; 
-        //bar = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
-
+        // Happiness Bar:`
         happiness = 100;
+
+        bar2 = new SuperStatBar(100, happiness, null, 100, 30, -32, Color.YELLOW, Color.RED, true, Color.BLACK, 5);
+        
+        
+        
+        
+    }
+    
+    public void addedToWorld(World w){
+        w.addObject(bar1, 950, 120);
+        bar1.update(gpa);
+        
+        
+        w.addObject(bar2, 700, 100);
+        bar2.update(happiness);
+        
+
 
         prepareAnimations();
 
         countdown = 5;
 
         frame = 0;
+
     }
 
-    public void act()
-    {
+    public void act() {
         super.act();
 
+        
+
+
         animate();
+
     }
 
-    public int getGpa(){
+    public int getGpa() {
         return this.gpa;
     }
 
-    public void setGpa(int updatedGpa){
+    public void setGpa(int updatedGpa) {
         this.gpa = updatedGpa;
 
-        // Add your action code here.
-        nextItem = Greenfoot.getRandomNumber(3);
-
     }
 
-    public void rest(){
-        happiness ++;
+    public void rest() {
+        happiness++;
     }
 
-    public void work(){
-        if (productive){
+    public void work() {
+
+        gpa++;
+        happiness--;
+
+        if (productive) {
             gpa += 4;
-        } else{
-            gpa ++;
+        } else {
+            gpa++;
         }
-        happiness --;
+        happiness--;
+
     }
 
-    public void usePhone(){
-        gpa --;
+    public void usePhone() {
+        gpa--;
         happiness += 2;
 
     }
 
-    public void reduceHealth(int amount){
-        this.studentHealth-=amount;
+    public void reduceHealth(int amount) {
+        this.studentHealth -= amount;
+    }
+    
+    public void studentSick(){
+        MainWorld w = new MainWorld();
+        if(w.isSick()){
+            gpa-=10;
+            happiness-=10;
+        }
+        
+        
     }
 
     //add animation frames
