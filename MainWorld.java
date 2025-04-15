@@ -90,16 +90,14 @@ public class MainWorld extends World {
         cat = "LeftButton.png";
         mom = "Mom.png";
 
-        setPaintOrder(SuperStatBar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
-
-        relativeMinCountdown = 500;         
-        cat = "Cat.png";
-        mom = "Mom.png";
-
-        setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
-
+        
+        setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
-
+        addObject(new Sidebar(), 898, 400);
+        
+        addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
+        
+        
         actNum = 0;
 
 
@@ -125,12 +123,8 @@ public class MainWorld extends World {
                 spawnDisease();
             else
                 spawnDepression();
-
-        //every 15, can change as needed
-        if (actNum % (60 * 10) == 0){
-            spawnEffect();
-
-        }
+            }
+    
     }
 
     public void spawnRelative() {
@@ -152,8 +146,6 @@ public class MainWorld extends World {
      * Spawn either Sickness or Depression in random room
      */
 
-    public void spawnDisease() {
-
     private void spawnEffect(){
         //get random room number + assign y coordinate of effect accordingly
 
@@ -169,27 +161,20 @@ public class MainWorld extends World {
         sickness = true;
     }
 
-    public boolean isSick() {
-        return sickness;
+    public void spawnDisease(){
+        int y;
+        int room = Greenfoot.getRandomNumber(2) + 1;
+        if (room == 1) y = Effect.ROOM_1_Y;
+        else y = Effect.ROOM_2_Y;
+
+        addObject(new Sickness(room), Effect.ROOM_X, y);
     }
+    
 
-    // currently only spawning in top room as test (can change to be spawned only
-    // when
-    // student happiness is low
-    public void spawnDepression() {
+    //currently only spawning in top room as test (can change to be spawned only when 
+    //student happiness is low
+    public void spawnDepression(){
         addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
-
-        //50/50 chance of either effect
-        int effect = Greenfoot.getRandomNumber(2);
-        if (effect == 1){
-            if (room == 1){
-                addObject(new Depression(1, studentTop), Effect.ROOM_X, y);   
-            } else {
-                addObject(new Depression(2, studentBot), Effect.ROOM_X, y);
-            }
-        } else {
-            addObject(new Sickness(room), Effect.ROOM_X, y);
-        }
     }
     
     /**
@@ -198,6 +183,5 @@ public class MainWorld extends World {
      */
     private void prepare()
     {
-
     }
-}
+    }
