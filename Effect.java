@@ -18,8 +18,9 @@ public abstract class Effect extends Actor
     public static final int ROOM_X = 395;
     public static final int ROOM_2_Y = 586;
     protected int room;
+    protected int duration;
 
-    private int duration, acts;
+    private int acts;
 
     protected boolean fadingIn, fadingOut;
 
@@ -31,7 +32,6 @@ public abstract class Effect extends Actor
         
         y = room == 1? ROOM_1_Y : ROOM_2_Y;
 
-        duration = 60 * 5;
         acts = 0;
 
         fadingIn = true;

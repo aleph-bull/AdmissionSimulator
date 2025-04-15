@@ -10,7 +10,7 @@ public class Rain extends EffectItem
     private int width, height;
     private static final int PIXEL_WIDTH = 3;
     private static final int PIXEL_HEIGHT = 3;
-    private static final Color COLOUR = new Color(222, 239, 245, 100);
+    private static final Color COLOUR = new Color(222, 239, 245, 150);
     
     //to keep rain in bounds of room
     public static final int R1_BORDER_Y = 390;

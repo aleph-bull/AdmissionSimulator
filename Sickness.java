@@ -11,6 +11,7 @@ public class Sickness extends Effect
     private int actNum;
     private Germ[][] germs;
     private int curIndex, wave;
+    
 
     public Sickness(int room){
         super(room, new Color(20, 100, 20, 70));
@@ -20,6 +21,8 @@ public class Sickness extends Effect
 
         actNum = 0;
         wave = 0;
+
+        duration = 60 * 6;
     }
 
     public void addedToWorld(World w){
@@ -28,13 +31,15 @@ public class Sickness extends Effect
                 int y = 0;
                 if (room == 1) y = 90 + 80 * row;
                 else y = 480 + 80 * row;
-                
+
                 Germ germ = new Germ(y, Greenfoot.getRandomNumber(60) + 90 * col);
                 getWorld().addObject(germ, 0, y);
                 germs[row][col] = germ;
             }
         }
     }
+    
+    
 
     /**
      * Act - do whatever the Sickness wants to do. This method is called whenever
