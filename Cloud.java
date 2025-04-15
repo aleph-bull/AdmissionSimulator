@@ -29,4 +29,7 @@ public class Cloud extends EffectItem
     {
         setLocation(student.getX(), student.getY() - yOffset);
     }
+    
+    
+
 }
