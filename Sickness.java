@@ -11,6 +11,7 @@ public class Sickness extends Effect
     private int actNum;
     private Germ[][] germs;
     private int curIndex, wave;
+    
 
     public Sickness(int room){
         super(room, new Color(20, 100, 20, 70));
@@ -35,6 +36,8 @@ public class Sickness extends Effect
             }
         }
     }
+    
+    
 
     /**
      * Act - do whatever the Sickness wants to do. This method is called whenever
