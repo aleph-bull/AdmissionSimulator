@@ -16,7 +16,6 @@ public class MainWorld extends World
     private int relativeMinCountdown; 
     private Relative r;
 
-
     private Relative relative;
     private String cat;
     private String mom;
@@ -55,16 +54,18 @@ public class MainWorld extends World
         addObject(computerTop, 400, 120);
         setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
 
-
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "LeftButton.png";
+        cat = "Cat.png";
         mom = "Mom.png";
-        
+
         setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
-        
+
         actNum = 0;
+
+        addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
+        prepare();
     }
 
     public void addedToWorld() {
@@ -108,10 +109,17 @@ public class MainWorld extends World
 
         addObject(new Sickness(room), Effect.ROOM_X, y);
     }
-    
+
     //currently only spawning in top room as test (can change to be spawned only when 
     //student happiness is low
     public void spawnDepression(){
         addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
     }
 }

@@ -170,4 +170,28 @@ public abstract class Animals extends SuperSmoothMover
         dx = Math.cos(movementDirectionInRadians) * 100;
         dy = Math.sin(movementDirectionInRadians) * 100;
     }
+    
+    /**
+     * Get the current x direction
+     * @return double dx 
+     */
+    public double getDx(){
+        return dx;
+    }
+    
+    /**
+     * Get current y direction
+     * @return double dy
+     */
+    public double getDy(){
+        return dy;
+    }
+    
+    /**
+     * Get current ActionState 
+     * @return ActionState currentAction
+     */
+    public ActionState getActionState(){
+        return currentAction;
+    }
 }
