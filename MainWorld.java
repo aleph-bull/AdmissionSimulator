@@ -10,6 +10,11 @@ public class MainWorld extends World
      * Construct the world!
      * 
      */
+    
+    
+    public static final boolean SHOW_BARS = true;
+    
+    
     private GreenfootImage background;
 
     private int relativeCountdown;
@@ -21,16 +26,18 @@ public class MainWorld extends World
     private String cat;
     private String mom;
     private GreenfootImage image;
-    Student studentTop;
-    Bed bedTop;
-    Chair chairTop;
-    Computer computerTop;
-    Desk deskTop;
-    Mirror mirrorTop;
-    Phone phoneTop;
+    private Student studentTop;
+    private Bed bedTop;
+    private Chair chairTop;
+    private Computer computerTop;
+    private Desk deskTop;
+    private Mirror mirrorTop;
+    private Phone phoneTop;
 
     private int actNum;
-
+    
+    private boolean sickness;
+    
     public MainWorld()
     {    
         super(1024, 800, 1); 
@@ -53,7 +60,7 @@ public class MainWorld extends World
         addObject(mirrorTop, 600, 150);
         addObject(phoneTop, 300, 300);
         addObject(computerTop, 400, 120);
-        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+        
 
 
         relativeCountdown = 10;
@@ -61,10 +68,13 @@ public class MainWorld extends World
         cat = "LeftButton.png";
         mom = "Mom.png";
         
-        setPaintOrder(Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
+        setPaintOrder(SuperStatBar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         
         actNum = 0;
+        
+        sickness = false;
     }
 
     public void addedToWorld() {
@@ -106,5 +116,10 @@ public class MainWorld extends World
         else y = Effect.ROOM_2_Y;
 
         addObject(new Sickness(room), Effect.ROOM_X, y);
+        sickness = true;
+    }
+    
+    public boolean isSick(){
+        return sickness;
     }
 }
