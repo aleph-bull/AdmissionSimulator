@@ -122,6 +122,14 @@ public abstract class Animals extends SuperSmoothMover
         currentAction = action;
     }
     
+    public void stopMoving() {
+        speed = 0;
+    }
+    
+    public void resumeMoving() {
+        speed = maxSpeed;
+    }
+    
     protected void checkHitObject() {
         ArrayList<Item> items = (ArrayList<Item>) getIntersectingObjects(Item.class);
     
