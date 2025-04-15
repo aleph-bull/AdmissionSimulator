@@ -30,7 +30,7 @@ public class Admin extends Animals {
     }
 
     public void act() {
-
+        
     }
 
     // A method for shooting letters to the students
@@ -53,13 +53,12 @@ public class Admin extends Animals {
         // Compares the university standards and the student's stats to consider if
         // the student should be acceped or rejected
 
-        if (student.getGPA() >= this.requirement) {
+        if (student.getGpa() >= this.requirement) {
 
             if (student.getGpa() >= this.requirement) {
-
                 result = true;
             }
-            return result;
         }
+        return result;
     }
 }

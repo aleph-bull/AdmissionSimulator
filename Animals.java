@@ -34,6 +34,7 @@ public abstract class Animals extends SuperSmoothMover
         speed = maxSpeed;
         setRandomCooldown (); // random number from 200-500
         setRandomDirection(360);
+        
     }
     
     public void act()
