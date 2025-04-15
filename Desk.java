@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Desk extends Item
 {
+    private GreenfootImage image;
     public Desk () {
         super();
+        image = new GreenfootImage("desk.png");
+        setImage(image);
     }
     
     public void act()
