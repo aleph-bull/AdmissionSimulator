@@ -33,9 +33,9 @@ public class Student extends Animals {
 
     private GreenfootImage image;
 
-    public Student() {
-        super();
-        // the student begins with a 50
+
+    public Student(boolean isTop){
+        super(isTop);
         gpa = 50;
         productive = true;
         
