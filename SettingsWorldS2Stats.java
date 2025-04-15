@@ -1,16 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SettingsWorldS1Stats here.
+ * Write a description of class SettingsWorldS2Stats here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class SettingsWorldS1Stats extends World
+public class SettingsWorldS2Stats extends World
 {
 
     /**
-     * Constructor for objects of class SettingsWorldS1Stats.
+     * Constructor for objects of class SettingsWorldS2Stats.
      * 
      */
 
@@ -45,12 +45,12 @@ public class SettingsWorldS1Stats extends World
     private SettingsImages happiness;
      */
 
-    private SettingsWorldS1Stats.StatChooseNumber happiness, productivity, gpa; 
+    private SettingsWorldS2Stats.StatChooseNumber happiness, productivity, gpa; 
     private int happinessNumber, productivityNumber, gpaNumber;
 
-    private SettingsWorldS1Stats.StatChooseImage relative1, relative2, relative3; 
+    private SettingsWorldS2Stats.StatChooseImage relative1, relative2, relative3; 
     private int relative1Number, relative2Number, relative3Number; 
-    public SettingsWorldS1Stats()
+    public SettingsWorldS2Stats()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
@@ -62,39 +62,8 @@ public class SettingsWorldS1Stats extends World
         back = new Button (cursor, true); 
         addObject(back, 100, 670); 
 
-        background = new GreenfootImage ("SettingsPg2.png"); 
+        background = new GreenfootImage ("SettingsPg3.png"); 
         setBackground(background); 
-
-        /*
-        gpa = new SettingsImages(); 
-        gpaNumber = 5; 
-        gpa.numberDisplay(gpaNumber); 
-        addObject(gpa, 280, 250); 
-        gpaLeft = new Button(cursor, true); 
-        gpaRight = new Button(cursor, false);
-        addObject(gpaLeft, 100, 250); 
-        addObject(gpaRight, 450, 250); 
-
-        /*
-        productivity = new SettingsImages(); 
-        productivityNumber = 5; 
-        productivity.numberDisplay(productivityNumber); 
-        addObject(productivity, 280, 395); 
-        productivityLeft = new Button(cursor, true); 
-        productivityRight = new Button(cursor, false);
-        addObject(productivityLeft, 100, 395); 
-        addObject(productivityRight, 450, 395);
-
-        /*
-        happiness = new SettingsImages(); 
-        happinessNumber = 5; 
-        happiness.numberDisplay(happinessNumber); 
-        addObject(happiness, 280, 395); 
-        happinessLeft = new Button(cursor, true); 
-        happinessRight = new Button(cursor, false);
-        addObject(happinessLeft, 100, 395); 
-        addObject(happinessRight, 450, 395);
-         */
 
         maximumValueReachedGraphic = new SettingsImages();
         maximumValueReachedGraphic.maxMinDisplayText("Maximum Value Reached");
@@ -102,30 +71,28 @@ public class SettingsWorldS1Stats extends World
         minimumValueReachedGraphic = new SettingsImages();
         minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
         happinessNumber = 80;
-        happiness = new SettingsWorldS1Stats.StatChooseNumber(280, 100, 450, 540, 280, 580, happinessNumber); 
+        happiness = new SettingsWorldS2Stats.StatChooseNumber(280, 100, 450, 540, 280, 580, happinessNumber); 
 
         productivityNumber = 90;
-        productivity = new SettingsWorldS1Stats.StatChooseNumber(280, 100, 450, 395, 280, 430, productivityNumber);
+        productivity = new SettingsWorldS2Stats.StatChooseNumber(280, 100, 450, 395, 280, 430, productivityNumber);
 
         gpaNumber = 90;
-        gpa = new SettingsWorldS1Stats.StatChooseNumber(280, 100, 450, 250, 280, 280, productivityNumber);
+        gpa = new SettingsWorldS2Stats.StatChooseNumber(280, 100, 450, 250, 280, 280, productivityNumber);
 
         relative1Number = 0 ; 
-        relative1 = new SettingsWorldS1Stats.StatChooseImage(775, 580, 950, 250, relative1Number); 
+        relative1 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 250, relative1Number); 
 
         relative2Number = 0;
-        relative2 = new SettingsWorldS1Stats.StatChooseImage(775, 580, 950, 395, relative2Number); 
+        relative2 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 395, relative2Number); 
 
         relative3Number = 0;
-        relative3 = new SettingsWorldS1Stats.StatChooseImage(775, 580, 950, 540, relative2Number); 
+        relative3 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 540, relative2Number); 
 
     }
 
     public void act()
     {
         backWorld(); 
-        nextWorld(); 
-        //productivityChoose(); 
         gpa.choose();
         productivity.choose(); 
         happiness.choose(); 
@@ -134,82 +101,11 @@ public class SettingsWorldS1Stats extends World
         relative3.choose(); 
     }
 
-    /*
-    public void happinessChoose()
-    {
-
-    }
-
-    /*
-    public void productivityChoose()
-    {
-    if (Greenfoot.mouseClicked(happinessRight))
-    {
-    if(happinessNumber == 100)
-    {
-    addObject(maximumValueReachedGraphic, 280, 580); 
-    }
-    else
-    {
-    happinessNumber+=5;
-    happiness.numberDisplay(happinessNumber); 
-    }
-
-    }
-    else if (Greenfoot.mouseClicked(happinessLeft))
-    {
-
-    if(happinessNumber ==0)
-    {
-    addObject(minimumValueReachedGraphic, 280, 580); 
-    }
-    else
-    {
-    happinessNumber-=5; 
-    happiness.numberDisplay(happinessNumber); 
-    }
-    }
-
-    }
-     */
-
-    /*
-    public void gpaChoose()
-    {
-    if (Greenfoot.mouseClicked(gpaRight))
-    {
-    if(gpaNumber == 100)
-    {
-    addObject(maximumValueReachedGraphic, 280, 280); 
-    }
-    else
-    {
-    gpaNumber+=5;
-    gpa.numberDisplay(gpaNumber); 
-    }
-
-    }
-    else if (Greenfoot.mouseClicked(gpaLeft))
-    {
-
-    if(gpaNumber ==0)
-    {
-    addObject(minimumValueReachedGraphic, 280, 280); 
-    }
-    else
-    {
-    gpaNumber-=5; 
-    gpa.numberDisplay(gpaNumber); 
-    }
-    }
-    }
-     */ 
-
     public void backWorld()
     {
         if (Greenfoot.mouseClicked(back))
         {
-            Greenfoot.setWorld(new SettingsWorldGeneral()); 
+            Greenfoot.setWorld(new SettingsWorldS1Stats()); 
         }
     }
 
