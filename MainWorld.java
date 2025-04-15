@@ -27,23 +27,40 @@ public class MainWorld extends World
     Desk deskTop;
     Mirror mirrorTop;
     Phone phoneTop;
+    
+    Student studentBot;
+    Bed bedBot;
+    Chair chairBot;
+    Computer computerBot;
+    Desk deskBot;
+    Mirror mirrorBot;
+    Phone phoneBot;
 
     private int actNum;
 
     public MainWorld()
     {    
         super(1024, 800, 1); 
+        setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
         background = new GreenfootImage("emptyBackground.png");
         setBackground (background);
 
-        studentTop = new Student();
+        studentTop = new Student(true);
         bedTop = new Bed();
         chairTop = new Chair();
         computerTop = new Computer();
         deskTop = new Desk();
         mirrorTop = new Mirror();
         phoneTop = new Phone();
+        
+        studentBot = new Student(false);
+        bedBot = new Bed();
+        chairBot = new Chair();
+        computerBot = new Computer();
+        deskBot = new Desk();
+        mirrorBot = new Mirror();
+        phoneBot = new Phone();
 
         addObject(studentTop, 400, 200);
         addObject(bedTop, 90 + studentTop.getImage().getWidth()/2, 220);
@@ -53,6 +70,14 @@ public class MainWorld extends World
         addObject(phoneTop, 300, 300);
         addObject(computerTop, 400, 120);
         setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+        
+        addObject(studentBot, 400, 600);
+        addObject(bedBot, 90 + studentTop.getImage().getWidth()/2, 620);
+        addObject(chairBot, 400, 620);
+        addObject(deskBot, 400, 580);
+        addObject(mirrorBot, 600, 550);
+        addObject(phoneBot, 300, 700);
+        addObject(computerBot, 400, 520);
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
@@ -92,8 +117,11 @@ public class MainWorld extends World
         }
         else
         {
-            relative = new Relative(cat);
-            addObject(relative, 50, 200); 
+            boolean isTop = Greenfoot.getRandomNumber(2) == 0;
+            relative = new Relative(cat, isTop);
+            if(isTop){
+                addObject(relative, 50, 200); 
+            } else{addObject(relative, 50, 600);}
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200); 
         }
     }
@@ -103,7 +131,7 @@ public class MainWorld extends World
      */
     public void spawnDisease(){
         int y;
-        int room = Greenfoot.getRandomNumber(2) + 1;
+        int room = Greenfoot.getRandomNumber(2);
         if (room == 1) y = Effect.ROOM_1_Y;
         else y = Effect.ROOM_2_Y;
 

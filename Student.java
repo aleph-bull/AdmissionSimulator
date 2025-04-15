@@ -30,9 +30,9 @@ public class Student extends Animals
     
     private GreenfootImage[][] walkAnimations = new GreenfootImage[4][6];
     private int countdown, frame;
-    
-    public Student(){
-        super();
+
+    public Student(boolean isTop){
+        super(isTop);
         gpa = 50;
 
         productive = true; 
