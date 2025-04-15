@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Tracks cursor movement, used in SettingsWorld to create visual effects with buttons.
  * 
- * @author Angela Wang, Neelan Thurairajah
+ * @author Angela Wang
  * @version 04.09.25
  */
 public class Cursor extends Actor
