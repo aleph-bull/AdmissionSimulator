@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Phone extends Item
 {
     //private GreenfootImage image;
-    public Phone(){
+    private GreenfootImage image;
+    public Phone () {
         super();
-        //image  = new GreenfootImage("phone.png");
+        image = new GreenfootImage("phone.png");
+        setImage(image);
     }
     
     public void act()

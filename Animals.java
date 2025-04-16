@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
-
 /**
  * Write a description of class Animals here.
  * 
@@ -27,7 +26,6 @@ public abstract class Animals extends SuperSmoothMover
     protected ActionState lastAction;
     
     protected ActionState currentAction = ActionState.NOTHING;
-    protected boolean top;
     
     public Animals (boolean isTop) {
         image.setColor(Color.RED);
@@ -37,7 +35,7 @@ public abstract class Animals extends SuperSmoothMover
         speed = maxSpeed;
         setRandomCooldown (); // random number from 200-500
         setRandomDirection(360);
-        top = isTop;
+        isInTopRoom = isTop;
     }
     
     public void act()
@@ -48,7 +46,7 @@ public abstract class Animals extends SuperSmoothMover
                 setRandomCooldown ();
                 setRandomDirection(100);
             }
-            if (this.top){
+            if (isInTopRoom){
                 hitEdge(topRoomTopLeft, topRoomBottomRight);
             } else {
                 hitEdge(BottomRoomTopLeft, BottomRoomBottomRight);
@@ -178,7 +176,7 @@ public abstract class Animals extends SuperSmoothMover
         dx = Math.cos(movementDirectionInRadians) * 100;
         dy = Math.sin(movementDirectionInRadians) * 100;
     }
-    
+
     /**
      * Get the current x direction
      * @return double dx 
@@ -186,7 +184,7 @@ public abstract class Animals extends SuperSmoothMover
     public double getDx(){
         return dx;
     }
-    
+
     /**
      * Get current y direction
      * @return double dy
@@ -194,7 +192,7 @@ public abstract class Animals extends SuperSmoothMover
     public double getDy(){
         return dy;
     }
-    
+
     /**
      * Get current ActionState 
      * @return ActionState currentAction
