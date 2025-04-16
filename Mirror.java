@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Mirror extends Item
 {
+    private GreenfootImage image;
     public Mirror () {
         super();
+        image = new GreenfootImage("mirror.png");
+        setImage(image);
     }
     
     public void act()

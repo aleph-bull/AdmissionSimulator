@@ -44,28 +44,28 @@ public class SettingsWorldGeneral extends World
         addObject(cursor, 0, 0);
         //button
         student1 = new SettingsImages(); 
-        student1.setImageFile("Cat.png"); 
-        addObject(student1, 505, 250); 
+        student1.setImageFile("bob_run18.png"); 
+        addObject(student1, 250, 290); 
         student1Left = new Button(cursor, true); 
         student1Right = new Button(cursor, false);
-        addObject(student1Left, 310, 250); 
-        addObject(student1Right, 700, 250); 
+        addObject(student1Left, 100, 290); 
+        addObject(student1Right, 400, 290); 
 
         student2 = new SettingsImages();
-        student2.setImageFile("mirror.png"); 
-        addObject(student2, 505, 450); 
+        student2.setImageFile("bob_run18.png"); 
+        addObject(student2, 250, 550); 
         student2Left = new Button(cursor, true); 
         student2Right = new Button(cursor, false);
-        addObject(student2Left, 310, 450); 
-        addObject(student2Right, 700, 450); 
+        addObject(student2Left, 100, 550); 
+        addObject(student2Right, 400, 550); 
 
         university = new SettingsImages();
-        university.setImageFile("germ1.png"); 
-        addObject(university, 505, 650); 
+        university.setImageFile("universityofcatmeme.png"); 
+        addObject(university, 725, 410); 
         universityLeft = new Button(cursor, true); 
         universityRight = new Button(cursor, false);
-        addObject(universityLeft, 310, 650); 
-        addObject(universityRight, 700, 650); 
+        addObject(universityLeft, 500, 550); 
+        addObject(universityRight, 942, 550); 
         
         next = new Button (cursor, false);
         addObject(next, 945, 670);
@@ -83,8 +83,6 @@ public class SettingsWorldGeneral extends World
         universityChoose(); 
         backWorld();
         nextWorld();
-        showText(String.valueOf(-9%3), 329, 100); 
-        showText(String.valueOf(student2ImageNumber), 200, 100); 
 
     }
     
@@ -115,7 +113,7 @@ public class SettingsWorldGeneral extends World
         }
         if(student1ImageNumber%3==0)
         {
-            student1.setImageFile("Cat.png"); 
+            student1.setImageFile("bob_run18.png"); 
         }
         else if (student1ImageNumber%3==1 || student1ImageNumber%3==-1)
         {
@@ -140,7 +138,7 @@ public class SettingsWorldGeneral extends World
         }
         if(student2ImageNumber%3==0)
         {
-            student2.setImageFile("Cat.png"); 
+            student2.setImageFile("bob_run18.png"); 
         }
         else if (student2ImageNumber%3==1 || student2ImageNumber%3==-1)
         {
@@ -165,19 +163,19 @@ public class SettingsWorldGeneral extends World
         }
         if(universityImageNumber%4==0)
         {
-            university.setImageFile("Cat.png"); 
+            university.setImageFile("universityofcatmeme.png"); 
         }
         else if (universityImageNumber%4==1 || universityImageNumber%4==-1)
         {
-            university.setImageFile("mirror.png"); 
+            university.setImageFile("universityofbigmac.png"); 
         }
         else if (universityImageNumber%4 == 2 || universityImageNumber%4==-2)
         {
-            university.setImageFile("germ1.png"); 
+            university.setImageFile("universityofducksong.png"); 
         }
         else if (universityImageNumber%4 == 3 || universityImageNumber%4==-3)
         {
-            university.setImageFile("germ1.png"); 
+            university.setImageFile("universityoflebron.png"); 
         }
 
     }

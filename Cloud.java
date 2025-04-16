@@ -41,4 +41,7 @@ public class Cloud extends EffectItem
             getWorld().addObject(new Rain(), x, getY() + image.getHeight() / 2);
         }
     }
+    
+    
+
 }
