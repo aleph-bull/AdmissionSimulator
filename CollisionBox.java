@@ -13,15 +13,17 @@ public class CollisionBox extends Item
     GreenfootImage image;
     ArrayList<Animals> touchingAnimals;
     
-    public CollisionBox (int sizeX, int sizeY) {
+    public CollisionBox (int sizeX, int sizeY, boolean transparent) {
         image = new GreenfootImage(sizeX, sizeY); 
         image.setColor(Color.RED);
         image.fill();
+        if(transparent)
+            image.setTransparency(0);
         setImage(image);
     }
     
-    public CollisionBox() {
-        this (35, 100);
+    public CollisionBox(boolean transparent) {
+        this (35, 100, transparent);
     }
     
     public void act()

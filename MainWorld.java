@@ -89,8 +89,8 @@ public class MainWorld extends World {
         relativeMinCountdown = 500;         
         cat = "Cat.png";
         mom = "Mom.png";
-        topExit = new CollisionBox();
-        botExit = new CollisionBox();
+        topExit = new CollisionBox(true);
+        botExit = new CollisionBox(true);
         addObject(topExit, 750, 280);
         addObject(botExit, 750, 640);
 
