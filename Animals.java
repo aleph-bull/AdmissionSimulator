@@ -28,9 +28,6 @@ public abstract class Animals extends SuperSmoothMover
     protected ActionState currentAction = ActionState.NOTHING;
     
     public Animals (boolean isTop) {
-        image.setColor(Color.RED);
-        image.fill();
-        setImage(image);
         maxSpeed = 5;
         speed = maxSpeed;
         setRandomCooldown (); // random number from 200-500
@@ -137,7 +134,7 @@ public abstract class Animals extends SuperSmoothMover
     }
     
     protected void checkHitObject() {
-        ArrayList<Item> items = (ArrayList<Item>) getIntersectingObjects(Item.class);
+        ArrayList<FunctionalItem> items = (ArrayList<FunctionalItem>) getIntersectingObjects(FunctionalItem.class);
     
         if (items.size() == 0) {
             currentAction = ActionState.NOTHING;

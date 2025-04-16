@@ -46,7 +46,6 @@ public class MainWorld extends World {
 
     public MainWorld() {
         super(1024, 800, 1);
-        setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
         background = new GreenfootImage("emptyBackground.png");
         setBackground(background);
@@ -75,7 +74,9 @@ public class MainWorld extends World {
         addObject(phoneTop, 300, 300);
         addObject(computerTop, 400, 120);
 
-        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+        setPaintOrder(Computer.class, Student.class, Desk.class, Chair.class);
+        setPaintOrder(Computer.class, Desk.class);
+        setPaintOrder(Computer.class, Chair.class);
 
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
@@ -84,7 +85,8 @@ public class MainWorld extends World {
         addObject(mirrorBot, 600, 550);
         addObject(phoneBot, 300, 700);
         addObject(computerBot, 400, 520);
-
+        setPaintOrder(Computer.class, Desk.class);
+        
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png";
@@ -97,13 +99,13 @@ public class MainWorld extends World {
 
         relativeMinCountdown = 500;
         
-        setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
-        
-        addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        
-        
+
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 200);
+        setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
         actNum = 0;
 
 
