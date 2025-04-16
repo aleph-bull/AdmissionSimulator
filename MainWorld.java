@@ -22,7 +22,8 @@ public class MainWorld extends World {
     private String cat;
     private String mom;
     private GreenfootImage image;
-
+    private CollisionBox topExit;
+    private CollisionBox botExit;
     Student studentTop;
     Bed bedTop;
     Chair chairTop;
@@ -85,11 +86,16 @@ public class MainWorld extends World {
         addObject(computerBot, 400, 520);
 
         relativeCountdown = 10;
+        relativeMinCountdown = 500;         
+        cat = "Cat.png";
+        mom = "Mom.png";
+        topExit = new CollisionBox(true);
+        botExit = new CollisionBox(true);
+        addObject(topExit, 750, 280);
+        addObject(botExit, 750, 640);
+
 
         relativeMinCountdown = 500;
-        cat = "LeftButton.png";
-        mom = "Mom.png";
-
         
         setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
