@@ -22,22 +22,23 @@ public class MainWorld extends World {
     private String cat;
     private String mom;
     private GreenfootImage image;
+    private CollisionBox topExit;
+    private CollisionBox botExit;
+    private Student studentTop;
+    private Bed bedTop;
+    private Chair chairTop;
+    private Computer computerTop;
+    private Desk deskTop;
+    private Mirror mirrorTop;
+    private Phone phoneTop;
 
-    Student studentTop;
-    Bed bedTop;
-    Chair chairTop;
-    Computer computerTop;
-    Desk deskTop;
-    Mirror mirrorTop;
-    Phone phoneTop;
-
-    Student studentBot;
-    Bed bedBot;
-    Chair chairBot;
-    Computer computerBot;
-    Desk deskBot;
-    Mirror mirrorBot;
-    Phone phoneBot;
+    private Student studentBot;
+    private Bed bedBot;
+    private Chair chairBot;
+    private Computer computerBot;
+    private Desk deskBot;
+    private Mirror mirrorBot;
+    private Phone phoneBot;
 
     private int actNum;
 
@@ -47,7 +48,7 @@ public class MainWorld extends World {
         super(1024, 800, 1);
         setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
-        background = new GreenfootImage("emptyBackground.png");
+        background = new GreenfootImage("background.png");
         setBackground(background);
 
         studentTop = new Student(true);
@@ -85,11 +86,16 @@ public class MainWorld extends World {
         addObject(computerBot, 400, 520);
 
         relativeCountdown = 10;
+        relativeMinCountdown = 500;         
+        cat = "Cat.png";
+        mom = "Mom.png";
+        topExit = new CollisionBox(true);
+        botExit = new CollisionBox(true);
+        addObject(topExit, 750, 280);
+        addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
-        cat = "LeftButton.png";
-        mom = "Mom.png";
-
+        
         setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
