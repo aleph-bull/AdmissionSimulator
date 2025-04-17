@@ -90,16 +90,13 @@ public class MainWorld extends World {
         cat = "LeftButton.png";
         mom = "Mom.png";
 
-        
         setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
-        
-        addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        
-        
-        actNum = 0;
 
+        addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
+
+        actNum = 0;
 
         sickness = false;
 
@@ -115,16 +112,10 @@ public class MainWorld extends World {
         spawnRelative();
         actNum++;
 
-
-        // every 15, can change as needed
-        if (actNum % (60 * 10) == 0) {
-            int random = Greenfoot.getRandomNumber(2);
-            if (random == 0)
-                spawnDisease();
-            else
-                spawnDepression();
-            }
-    
+        // every 15 spawn a random effect, can change as needed
+        if (actNum % (60 * 10) == 0){
+            spawnEffect();
+        }
     }
 
     public void spawnRelative() {
@@ -148,7 +139,6 @@ public class MainWorld extends World {
 
     private void spawnEffect(){
         //get random room number + assign y coordinate of effect accordingly
-
         int y;
         int room = Greenfoot.getRandomNumber(2);
         if (room == 1)
@@ -156,27 +146,20 @@ public class MainWorld extends World {
         else
             y = Effect.ROOM_2_Y;
 
-
+        int random = Greenfoot.getRandomNumber(2);
+        if (random == 1){
+            addObject(new Sickness(room), Effect.ROOM_X, y);
+        } else {
+            if (room == 1){
+                addObject(new Depression(room, studentTop), Effect.ROOM_X, y);
+            } else {
+                addObject(new Depression(room, studentBot), Effect.ROOM_X, y);
+            }
+        }
         addObject(new Sickness(room), Effect.ROOM_X, y);
         sickness = true;
     }
 
-    public void spawnDisease(){
-        int y;
-        int room = Greenfoot.getRandomNumber(2) + 1;
-        if (room == 1) y = Effect.ROOM_1_Y;
-        else y = Effect.ROOM_2_Y;
-
-        addObject(new Sickness(room), Effect.ROOM_X, y);
-    }
-    
-
-    //currently only spawning in top room as test (can change to be spawned only when 
-    //student happiness is low
-    public void spawnDepression(){
-        addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
-    }
-    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -184,4 +167,4 @@ public class MainWorld extends World {
     private void prepare()
     {
     }
-    }
+}
