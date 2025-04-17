@@ -24,21 +24,21 @@ public class MainWorld extends World {
     private GreenfootImage image;
     private CollisionBox topExit;
     private CollisionBox botExit;
-    Student studentTop;
-    Bed bedTop;
-    Chair chairTop;
-    Computer computerTop;
-    Desk deskTop;
-    Mirror mirrorTop;
-    Phone phoneTop;
+    private Student studentTop;
+    private Bed bedTop;
+    private Chair chairTop;
+    private Computer computerTop;
+    private Desk deskTop;
+    private Mirror mirrorTop;
+    private Phone phoneTop;
 
-    Student studentBot;
-    Bed bedBot;
-    Chair chairBot;
-    Computer computerBot;
-    Desk deskBot;
-    Mirror mirrorBot;
-    Phone phoneBot;
+    private Student studentBot;
+    private Bed bedBot;
+    private Chair chairBot;
+    private Computer computerBot;
+    private Desk deskBot;
+    private Mirror mirrorBot;
+    private Phone phoneBot;
 
     private int actNum;
 
@@ -48,7 +48,7 @@ public class MainWorld extends World {
         super(1024, 800, 1);
         setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
-        background = new GreenfootImage("emptyBackground.png");
+        background = new GreenfootImage("background.png");
         setBackground(background);
 
         studentTop = new Student(true);
