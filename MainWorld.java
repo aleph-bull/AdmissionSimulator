@@ -43,6 +43,7 @@ public class MainWorld extends World {
     private int actNum;
 
     private boolean sickness;
+    private SuperStatBar countdownBar;
 
     public MainWorld() {
         super(1024, 800, 1);
@@ -74,9 +75,7 @@ public class MainWorld extends World {
         addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
 
-        setPaintOrder(Computer.class, Student.class, Desk.class, Chair.class);
-        setPaintOrder(Computer.class, Desk.class);
-        setPaintOrder(Computer.class, Chair.class);
+        
 
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
@@ -85,7 +84,11 @@ public class MainWorld extends World {
         addObject(mirrorBot, 600, 550);
         addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
+        setPaintOrder(Computer.class, Desk.class, Chair.class);
+        setPaintOrder(Computer.class, Chair.class);
+        setPaintOrder(Desk.class, Chair.class);
         setPaintOrder(Computer.class, Desk.class);
+        
         
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
@@ -102,15 +105,16 @@ public class MainWorld extends World {
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
 
-        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 200);
-        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 500);
-        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 600);
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 275);
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 350);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 675);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
+        
+        countdownBar = new SuperStatBar(7200, 0, null, 600, 25, 0, Color.BLACK, Color.WHITE, false, Color.BLACK, 5);
+        addObject(countdownBar, 400, 401);
         setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
         actNum = 0;
-
-
         sickness = false;
 
         prepare();
@@ -133,7 +137,10 @@ public class MainWorld extends World {
                 spawnDisease();
             else
                 spawnDepression();
-            }
+        }
+        
+        countdownBar.update(actNum);
+        
     
     }
 
