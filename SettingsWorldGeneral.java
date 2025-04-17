@@ -90,7 +90,7 @@ public class SettingsWorldGeneral extends World
     {
         if (Greenfoot.mouseClicked(back))
         {
-            Greenfoot.setWorld(new InstructionWorld()); 
+            Greenfoot.setWorld(new IntroductionWorld()); 
         }
     }
     public void nextWorld()

@@ -29,7 +29,7 @@ public class Student extends Animals
     public GreenfootImage image; 
 
 
-    private GreenfootImage[][] walkAnimations = new GreenfootImage[4][6];
+    private GreenfootImage[] walkAnimations = new GreenfootImage[6];
     private int countdown, frame;
 
     public Student(boolean isTop){
@@ -85,30 +85,39 @@ public class Student extends Animals
         this.studentHealth-=amount;
     }
 
+    //add animation frames
     private void prepareAnimations(){
         String fileName = "bob_run";
-        int fileNumber = 0;
-        for (int i = 0; i < walkAnimations.length; i++){
-            for (int j = 0; j < walkAnimations[0].length; j++){
-                walkAnimations[i][j] = new GreenfootImage(fileName + fileNumber + ".png");
-                walkAnimations[i][j].scale(42, 60);
-                fileNumber++;
-            }
+        int fileNumber = 18;
+        for (int j = 0; j < walkAnimations.length; j++){
+            walkAnimations[j] = new GreenfootImage(fileName + fileNumber + ".png");
+            walkAnimations[j].scale(35, 55);
+            fileNumber++;
         }
+
+        setImage(walkAnimations[0]);
     }
 
+
+    //change frames
     private void animate(){
+        //if Student is doing nothing but walking around, walk animation
         if (getActionState() == ActionState.NOTHING){
             if (countdown > 0){
                 countdown--;
             } else {
-                setImage(walkAnimations[3][frame]);
+                setImage(walkAnimations[frame]);
                 frame++;
+                //return to 0th frame once all frames have been displayed
                 if (frame > 5){
                     frame = 0;
                 }
                 countdown = 5;
             }
+        } else {
+            //if Student is not moving, set to still frame
+            frame = 0;
+            setImage(walkAnimations[frame]);
         }
     }
     
