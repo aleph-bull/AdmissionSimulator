@@ -21,6 +21,6 @@ public class StudentStatBar extends SuperStatBar
     public void act()
     {
         if (isGpa){update((int)owner.getGpa()*100);}
-        else {update(owner.getHappiness()*100);}
+        else {update((int)owner.getHappiness()*100);}
     }
 }

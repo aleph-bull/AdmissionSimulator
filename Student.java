@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 /**
  * Write a description of class Student here.
  * 
@@ -11,7 +12,7 @@ public class Student extends Animals
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private double gpa;
-    private int happiness;
+    private double happiness;
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
@@ -59,6 +60,17 @@ public class Student extends Animals
         
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
+        
+        ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
+        if (effects.size() != 0){
+            if (effects.get(0) instanceof Sickness){
+                gpa -= 0.15;
+            } else if (effects.get(0) instanceof Depression){
+                happiness = 0;
+                gpa -= 0.05;
+            }
+        } else{}
+        gpa -= 0.05;
     }
 
     public double getGpa(){
@@ -74,15 +86,15 @@ public class Student extends Animals
     }
     public void work(){
         if (productive){
-            gpa += 0.5;
+            gpa += 0.4;
         } else{
             gpa +=0.2;
         }
-        happiness --;
+        happiness -= 0.25;
     }
     public void usePhone(){
         gpa -= 0.2;
-        happiness += 2;
+        happiness += 1.5;
     }
     public void reduceHealth(int amount){
         this.studentHealth-=amount;
@@ -115,7 +127,7 @@ public class Student extends Animals
         }
     }
     
-    public int getHappiness(){
+    public double getHappiness(){
         return happiness;
     }
 

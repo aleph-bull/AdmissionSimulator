@@ -71,7 +71,7 @@ public class MainWorld extends World {
         addObject(chairTop, 400, 220);
         addObject(deskTop, 400, 180);
         addObject(mirrorTop, 600, 150);
-        addObject(phoneTop, 300, 300);
+        addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
 
         setPaintOrder(Computer.class, Student.class, Desk.class, Chair.class);
@@ -83,7 +83,7 @@ public class MainWorld extends World {
         addObject(chairBot, 400, 620);
         addObject(deskBot, 400, 580);
         addObject(mirrorBot, 600, 550);
-        addObject(phoneBot, 300, 700);
+        addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
         setPaintOrder(Computer.class, Desk.class);
         
@@ -104,6 +104,8 @@ public class MainWorld extends World {
 
         addObject(new StudentStatBar(50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
         addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 200);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 500);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 600);
         setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
         actNum = 0;
