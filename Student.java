@@ -30,7 +30,8 @@ public class Student extends Animals
 
 
     private GreenfootImage[] walkAnimations = new GreenfootImage[6];
-    private int countdown, frame;
+    private GreenfootImage[] phoneAnimations = new GreenfootImage[9];
+    private int countdown, walkFrame, phoneFrame;
 
     public Student(boolean isTop){
         super(isTop);
@@ -44,6 +45,10 @@ public class Student extends Animals
         prepareAnimations();
 
         countdown = 5;
+        
+        phoneFrame = 0;
+        walkFrame = 0;
+        
     }
 
     public void act()
@@ -87,6 +92,7 @@ public class Student extends Animals
 
     //add animation frames
     private void prepareAnimations(){
+        //walk animations
         String fileName = "bob_run";
         int fileNumber = 18;
         for (int j = 0; j < walkAnimations.length; j++){
@@ -95,6 +101,12 @@ public class Student extends Animals
             fileNumber++;
         }
 
+        //phone animations
+        fileName = "bob_phone";
+        for (int i = 0; i < phoneAnimations.length; i++){
+             phoneAnimations[i] = new GreenfootImage(fileName + i + ".png");
+             phoneAnimations[i].scale(35, 55);
+        }
         setImage(walkAnimations[0]);
     }
 
@@ -103,21 +115,36 @@ public class Student extends Animals
     private void animate(){
         //if Student is doing nothing but walking around, walk animation
         if (getActionState() == ActionState.NOTHING){
+            //return to 0th frame after all frames have been displayed/if 
+            //doing nothing after going on phone
+            if (walkFrame > 5){
+                walkFrame = 0;
+            }
+            
             if (countdown > 0){
                 countdown--;
             } else {
-                setImage(walkAnimations[frame]);
-                frame++;
-                //return to 0th frame once all frames have been displayed
-                if (frame > 5){
-                    frame = 0;
+                setImage(walkAnimations[walkFrame]);
+                walkFrame++;
+                countdown = 5;
+            }
+        } else if (getActionState() == ActionState.BRAINROTTING){
+            if (countdown > 0){
+                countdown--;
+            } else {
+                setImage(phoneAnimations[phoneFrame]);
+                phoneFrame++;
+                
+                //MODIFY THIS SO THAT BOB DOESN'T REPEATEDLY PULL OUT/PUT AWAY PHONE
+                if (phoneFrame > 8){
+                    phoneFrame = 0;
                 }
                 countdown = 5;
             }
         } else {
             //if Student is not moving, set to still frame
-            frame = 0;
-            setImage(walkAnimations[frame]);
+            walkFrame = 0;
+            setImage(walkAnimations[walkFrame]);
         }
     }
     
