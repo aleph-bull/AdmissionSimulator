@@ -189,7 +189,8 @@ public class SuperTextBox extends Actor
         // the characters in that font. I.e. 24pt font is 24 pixels tall
         vSpace = (int)(fontSize / 3.0); //6, or 1/4 of the font's height between lines
         // padding is above and below entire text box
-        padding = (int)(fontSize / 2.0); // 8
+        //padding = (int)(fontSize / 2.0); // 8
+        padding = (int) (60);
 
         // Padding top and bottom, vSpace between rows and bottom to make up for extra space on top
         calculatedHeight = (borderThickness + padding) * 2 + (numLines * fontHeight) + ((numLines-1) * vSpace);

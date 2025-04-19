@@ -17,26 +17,28 @@ public class MainWorld extends World {
     private String cat;
     private String mom;
     private GreenfootImage image;
+    private CollisionBox topExit;
+    private CollisionBox botExit;
+    private Student studentTop;
+    private Bed bedTop;
+    private Chair chairTop;
+    private Computer computerTop;
+    private Desk deskTop;
+    private Mirror mirrorTop;
+    private Phone phoneTop;
 
-    Student studentTop;
-    Bed bedTop;
-    Chair chairTop;
-    Computer computerTop;
-    Desk deskTop;
-    Mirror mirrorTop;
-    Phone phoneTop;
-
-    Student studentBot;
-    Bed bedBot;
-    Chair chairBot;
-    Computer computerBot;
-    Desk deskBot;
-    Mirror mirrorBot;
-    Phone phoneBot;
+    private Student studentBot;
+    private Bed bedBot;
+    private Chair chairBot;
+    private Computer computerBot;
+    private Desk deskBot;
+    private Mirror mirrorBot;
+    private Phone phoneBot;
 
     private int actNum;
 
     private boolean sickness;
+
     
     private SuperWindow card;
     private Student s;
@@ -48,11 +50,13 @@ public class MainWorld extends World {
     
     
 
+    private SuperStatBar countdownBar;
+
+
     public MainWorld() {
         super(1024, 800, 1);
-        setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
-        background = new GreenfootImage("emptyBackground.png");
+        background = new GreenfootImage("background.png");
         setBackground(background);
 
         studentTop = new Student(true);
@@ -76,36 +80,59 @@ public class MainWorld extends World {
         addObject(chairTop, 400, 220);
         addObject(deskTop, 400, 180);
         addObject(mirrorTop, 600, 150);
-        addObject(phoneTop, 300, 300);
+        addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
 
-        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+        
 
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
         addObject(chairBot, 400, 620);
         addObject(deskBot, 400, 580);
         addObject(mirrorBot, 600, 550);
-        addObject(phoneBot, 300, 700);
+        addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
-
+        setPaintOrder(Computer.class, Desk.class, Chair.class);
+        setPaintOrder(Computer.class, Chair.class);
+        setPaintOrder(Desk.class, Chair.class);
+        setPaintOrder(Computer.class, Desk.class);
+        
+        
         relativeCountdown = 10;
+        relativeMinCountdown = 500;         
+        cat = "Cat.png";
+        mom = "Mom.png";
+        topExit = new CollisionBox(true);
+        botExit = new CollisionBox(true);
+        addObject(topExit, 750, 280);
+        addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
-        cat = "LeftButton.png";
-        mom = "Mom.png";
-
         
+
         setPaintOrder(SimpleTimer.class, Counter.class, SuperStatBar.class, SuperWindow.class,Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
+
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 275);
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 350);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 675);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
         
+
         //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
         
         
         actNum = 0;
 
+        countdownBar = new SuperStatBar(7200, 0, null, 600, 25, 0, Color.BLACK, Color.WHITE, false, Color.BLACK, 5);
+        addObject(countdownBar, 400, 401);
+        setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
+
+
+        actNum = 0;
         sickness = false;
 
         prepare();
@@ -138,7 +165,6 @@ public class MainWorld extends World {
         spawnRelative();
         actNum++;
 
-
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             int random = Greenfoot.getRandomNumber(2);
@@ -146,6 +172,7 @@ public class MainWorld extends World {
                 spawnDisease();
             else
                 spawnDepression();
+
             }
             
             
@@ -158,6 +185,12 @@ public class MainWorld extends World {
     
     public void started(){
         counter2.setValue(120);
+
+        }
+        
+        countdownBar.update(actNum);
+        
+
     }
     
    
@@ -183,7 +216,6 @@ public class MainWorld extends World {
 
     private void spawnEffect(){
         //get random room number + assign y coordinate of effect accordingly
-
         int y;
         int room = Greenfoot.getRandomNumber(2);
         if (room == 1)
@@ -191,27 +223,20 @@ public class MainWorld extends World {
         else
             y = Effect.ROOM_2_Y;
 
-
+        int random = Greenfoot.getRandomNumber(2);
+        if (random == 1){
+            addObject(new Sickness(room), Effect.ROOM_X, y);
+        } else {
+            if (room == 1){
+                addObject(new Depression(room, studentTop), Effect.ROOM_X, y);
+            } else {
+                addObject(new Depression(room, studentBot), Effect.ROOM_X, y);
+            }
+        }
         addObject(new Sickness(room), Effect.ROOM_X, y);
         sickness = true;
     }
 
-    public void spawnDisease(){
-        int y;
-        int room = Greenfoot.getRandomNumber(2) + 1;
-        if (room == 1) y = Effect.ROOM_1_Y;
-        else y = Effect.ROOM_2_Y;
-
-        addObject(new Sickness(room), Effect.ROOM_X, y);
-    }
-    
-
-    //currently only spawning in top room as test (can change to be spawned only when 
-    //student happiness is low
-    public void spawnDepression(){
-        addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
-    }
-    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -219,4 +244,4 @@ public class MainWorld extends World {
     private void prepare()
     {
     }
-    }
+}
