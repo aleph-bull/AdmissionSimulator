@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Chair extends Item
+public class Chair extends FunctionalItem
 {
     private GreenfootImage image;
     public Chair () {

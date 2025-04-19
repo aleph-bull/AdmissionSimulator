@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 /**
  * Write a description of class Student here.
  * 
@@ -10,8 +11,8 @@ public class Student extends Animals
      * Act - do whatever the Student wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private int gpa;
-    private int happiness;
+    private double gpa;
+    private double happiness;
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
@@ -33,7 +34,7 @@ public class Student extends Animals
     public GreenfootImage image; 
 
 
-    private GreenfootImage[][] walkAnimations = new GreenfootImage[4][6];
+    private GreenfootImage[] walkAnimations = new GreenfootImage[6];
     private int countdown, frame;
     
     public Student(){
@@ -46,6 +47,13 @@ public class Student extends Animals
         super(isTop);
         gpa = 50;
         productive = true; 
+
+        //bar = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
+        image = new GreenfootImage("bob_run21.png");
+        image.scale(42, 60);
+        setImage(image);
+
+
         happiness = 100;
         
       
@@ -69,13 +77,26 @@ public class Student extends Animals
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
         
+
     
       
         
         
+
+        ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
+        if (effects.size() != 0){
+            if (effects.get(0) instanceof Sickness){
+                gpa -= 0.15;
+            } else if (effects.get(0) instanceof Depression){
+                happiness = 0;
+                gpa -= 0.05;
+            }
+        } else{}
+        gpa -= 0.05;
+
     }
 
-    public int getGpa(){
+    public double getGpa(){
         return this.gpa;
     }
     public void setGpa(int updatedGpa){
@@ -88,49 +109,56 @@ public class Student extends Animals
     }
     public void work(){
         if (productive){
-            gpa += 4;
+            gpa += 0.4;
         } else{
-            gpa ++;
+            gpa +=0.2;
         }
-        happiness --;
+        happiness -= 0.25;
     }
     public void usePhone(){
-        gpa --;
-        happiness += 2;
+        gpa -= 0.2;
+        happiness += 1.5;
     }
     public void reduceHealth(int amount){
         this.studentHealth-=amount;
     }
 
+    //add animation frames
     private void prepareAnimations(){
         String fileName = "bob_run";
-        int fileNumber = 0;
-        for (int i = 0; i < walkAnimations.length; i++){
-            for (int j = 0; j < walkAnimations[0].length; j++){
-                walkAnimations[i][j] = new GreenfootImage(fileName + fileNumber + ".png");
-                walkAnimations[i][j].scale(42, 60);
-                fileNumber++;
-            }
+        int fileNumber = 18;
+        for (int j = 0; j < walkAnimations.length; j++){
+            walkAnimations[j] = new GreenfootImage(fileName + fileNumber + ".png");
+            walkAnimations[j].scale(35, 55);
+            fileNumber++;
         }
-    }
 
+        setImage(walkAnimations[0]);
+    }
     
+//change frames
     private void animate(){
+        //if Student is doing nothing but walking around, walk animation
         if (getActionState() == ActionState.NOTHING){
             if (countdown > 0){
                 countdown--;
             } else {
-                setImage(walkAnimations[3][frame]);
+                setImage(walkAnimations[frame]);
                 frame++;
+                //return to 0th frame once all frames have been displayed
                 if (frame > 5){
                     frame = 0;
                 }
                 countdown = 5;
             }
+        } else {
+            //if Student is not moving, set to still frame
+            frame = 0;
+            setImage(walkAnimations[frame]);
         }
     }
     
-    public int getHappiness(){
+    public double getHappiness(){
         return happiness;
     }
 
