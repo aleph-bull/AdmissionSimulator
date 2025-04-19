@@ -149,6 +149,12 @@ public class SuperWindow extends Actor
 
     public static final int DEFAULT_DRAGBAR_HEIGHT = 18;
     public static final int WINDOW_BORDER_THICKNESS = 2;
+    
+    private SuperStatBar gpaBar;
+    private SuperStatBar happyBar;
+    
+    Student s;
+    
 
     /** 
      * Default Constructor - a closable, minimizable window that can be dragged around
@@ -157,9 +163,15 @@ public class SuperWindow extends Actor
      * @param height the desired height of the window area NOT including drag bar or border
      * @param title the 
      */
-    public SuperWindow (int width, int height, String title) {
-        this (width, height,  DEFAULT_DRAGBAR_HEIGHT, WINDOW_BORDER_THICKNESS ,title, new boolean[] {true, false, true, true, false});
+    /*
+    public SuperWindow (int width, int height, String title, Student student) {
+        
+        
+        this (width, height,  DEFAULT_DRAGBAR_HEIGHT, WINDOW_BORDER_THICKNESS ,title, student, new boolean[] {true, false, true, true, false});
+        gpaBar = new SuperStatBar(100, student.getGpa(), this, 10, 20, 2, Color.GREEN, Color.RED);
+        happyBar = new SuperStatBar(100, student.getHappiness(), this, 10, 20, 2, Color.GREEN, Color.RED);
     }
+    */
 
     /**
      * <p>Create a SuperWindow. Flags are in an array to avoid very long param list.</p>
@@ -172,11 +184,13 @@ public class SuperWindow extends Actor
      * 3 - minable - can be minimized
      * 4 - spawn minimized</pre>
      */
+    /*
     public SuperWindow (int width, int height, int dragBarHeight, int borderThickness, String title, boolean[] flags){
         this (width, height, dragBarHeight, borderThickness, title, flags, WINDOW_BORDER_COLOR_ACTIVE, Color.LIGHT_GRAY);
     }
+    */
 
-    public SuperWindow (int width, int height, int dragBarHeight, int borderThickness, String title, boolean[] flags, Color borderColor, Color backgroundColor){
+    public SuperWindow (int width, int height, int dragBarHeight, int borderThickness, String title, Student student, boolean[] flags, Color borderColor, Color backgroundColor){
         // Dimensions and Title
         this.width = width;
         this.height = height;
@@ -213,12 +227,15 @@ public class SuperWindow extends Actor
         // The settable background image -- Same size, minus borders
         framedImage = new GreenfootImage (width, height);
         readd = false;
+        
+        s = student;
     }
-
+/*
     public SuperWindow (GreenfootImage fullSizeImage, int dragBarHeight, int borderThickness, String text, boolean flags[]){
         this (fullSizeImage.getWidth() + borderThickness * 2, fullSizeImage.getHeight() + borderThickness *2 + dragBarHeight, dragBarHeight, borderThickness, text, flags);
         tempImage = fullSizeImage;
     }
+    */
     
     
     /**
@@ -235,11 +252,14 @@ public class SuperWindow extends Actor
      * 3 - minable - can be minimized
      * 4 - spawn minimized</pre>
      */
+    
+    /*
     public SuperWindow (Actor fullSizeActor, int dragBarHeight, int borderThickness, String text,  boolean flags[]){
         this (fullSizeActor.getImage().getWidth() + WINDOW_BORDER_THICKNESS * 2, fullSizeActor.getImage().getHeight() + WINDOW_BORDER_THICKNESS *2 + dragBarHeight, dragBarHeight, borderThickness, text, flags);
         temp = fullSizeActor;
 
     }
+    */
 
     public static void reset () {
         managed = false;

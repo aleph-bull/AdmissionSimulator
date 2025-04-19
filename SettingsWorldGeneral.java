@@ -1,41 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SettingWorld here.
+ * Write a description of class SettingWorldGeneral here.
  * 
- * @author Stephanie Xia
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class SettingsWorldGeneral extends World
+public class SettingsWorldGeneral extends SettingsWorld
 {
 
     /**
-     * Constructor for objects of class SettingWorld.
+     * Constructor for objects of class SettingWorldGeneral.
      * 
      */
-    private Button student1Left; 
-    private Button student1Right;
-    private int student1ImageNumber; 
-    private SettingsImages student1; 
-
-    private Button student2Left; 
-    private Button student2Right;
-    private int student2ImageNumber; 
-    private SettingsImages student2; 
-
-    private Button universityLeft; 
-    private Button universityRight;
-    private int universityImageNumber; 
-    private SettingsImages university; 
-
-    private Cursor cursor;
-    private GreenfootImage background;
-    
-    private Button next; 
-    private Button back;
+    private SettingsWorld.StatChooseImage student1, student2, university;
+    private int student1Number, student2Number, universityNumber; 
 
     public SettingsWorldGeneral()
     {    
-        super(1024, 800, 1); 
         background = new GreenfootImage("SettingsPg1.png"); 
         setBackground(background); 
 
@@ -71,21 +53,24 @@ public class SettingsWorldGeneral extends World
         addObject(next, 945, 670);
         back = new Button (cursor, true); 
         addObject(back, 100, 670); 
-        
 
-        setBackground(background); 
+        student1Number = 0;
+        student1 = new SettingsWorld.StatChooseImage(250, 100, 400, 290, student1Number); 
+        student2Number = 0;
+        student2 = new SettingsWorld.StatChooseImage(250, 100, 400, 550, student2Number); 
+        universityNumber = 0; 
+        university = new SettingsWorld.StatChooseImage(725, 500, 942, 550, 410, universityNumber); 
+
     }
-
     public void act()
     {
-        student1Choose(); 
-        student2Choose(); 
-        universityChoose(); 
+        student1.choose("bob_run18.png", "Amelia_run1.png", "Alex_run1.png"); 
+        student2.choose("bob_run18.png", "Amelia_run1.png", "Alex_run1.png"); 
+        university.choose("universityofcatmeme.png", "universityofbigmac.png", "universityofducksong.png", "universityoflebron.png"); 
         backWorld();
         nextWorld();
-
     }
-    
+
     public void backWorld()
     {
         if (Greenfoot.mouseClicked(back))
@@ -93,6 +78,7 @@ public class SettingsWorldGeneral extends World
             Greenfoot.setWorld(new IntroductionWorld()); 
         }
     }
+
     public void nextWorld()
     {
         if (Greenfoot.mouseClicked(next))
@@ -100,6 +86,7 @@ public class SettingsWorldGeneral extends World
             Greenfoot.setWorld(new SettingsWorldS1Stats()); 
         }
     }
+}
 
     public void student1Choose()
     {
