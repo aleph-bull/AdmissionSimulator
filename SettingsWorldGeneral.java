@@ -44,7 +44,7 @@ public class SettingsWorldGeneral extends World
         addObject(cursor, 0, 0);
         //button
         student1 = new SettingsImages(); 
-        student1.setImageFile("bob_run18.png"); 
+        student1.setImageFile("bob_run1.png"); 
         addObject(student1, 250, 290); 
         student1Left = new Button(cursor, true); 
         student1Right = new Button(cursor, false);
@@ -52,7 +52,7 @@ public class SettingsWorldGeneral extends World
         addObject(student1Right, 400, 290); 
 
         student2 = new SettingsImages();
-        student2.setImageFile("bob_run18.png"); 
+        student2.setImageFile("bob_run1.png"); 
         addObject(student2, 250, 550); 
         student2Left = new Button(cursor, true); 
         student2Right = new Button(cursor, false);
@@ -113,7 +113,7 @@ public class SettingsWorldGeneral extends World
         }
         if(student1ImageNumber%3==0)
         {
-            student1.setImageFile("bob_run18.png"); 
+            student1.setImageFile("bob_run1.png"); 
         }
         else if (student1ImageNumber%3==1 || student1ImageNumber%3==-1)
         {
@@ -138,7 +138,7 @@ public class SettingsWorldGeneral extends World
         }
         if(student2ImageNumber%3==0)
         {
-            student2.setImageFile("bob_run18.png"); 
+            student2.setImageFile("bob_run1.png"); 
         }
         else if (student2ImageNumber%3==1 || student2ImageNumber%3==-1)
         {
