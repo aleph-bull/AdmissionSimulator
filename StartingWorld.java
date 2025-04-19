@@ -7,10 +7,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * - Button sfx: https://youtu.be/PA2PsADo11E?feature=shared
  * - Cloud image: https://www.freepik.com/premium-vector/pixel-art-cartoon-crying-rainy-cloud-character_214146407.htm
  * - Germ image: https://www.freepik.com/premium-vector/bacteria-virus-pixel-art-set-germ-microbe-collection-infectious-pathogen-8-bit-sprite_33822375.htm
+ * - Rain sfx: Light rain loop, https://mixkit.co/free-sound-effects/rain/
  * - SettingWorld music: Run Amok by Kevin MacLeod, https://www.chosic.com/download-audio/39324/
  * - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
  * - StartingWorld music: Colorful Flowers by Tokyo Music Walker, https://www.chosic.com/download-audio/45508/
- *
+ * 
  * @author Angela Wang
  * @version 04.09.25
  */
