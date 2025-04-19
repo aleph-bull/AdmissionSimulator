@@ -15,11 +15,15 @@ public class Student extends Animals
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
+    
+    /*
     //SuperStatBar:
     //GPA Bar:
-    private SuperStatBar bar1; 
+    private SuperStatBar gpaBar; 
     //Happiness Bar:
-    private SuperStatBar bar2;
+    private SuperStatBar happyBar;
+    */
+    
     //Productivity
     boolean productive;
 
@@ -31,31 +35,44 @@ public class Student extends Animals
 
     private GreenfootImage[][] walkAnimations = new GreenfootImage[4][6];
     private int countdown, frame;
+    
+    public Student(){
+        super();
+        image = new GreenfootImage("bob_run20.png");
+        prepareAnimations();
+    }
 
     public Student(boolean isTop){
         super(isTop);
         gpa = 50;
         productive = true; 
-        //bar = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
-
         happiness = 100;
+        
+      
 
 
         prepareAnimations();
 
         countdown = 5;
     }
+    
+   
 
     public void act()
     {
         super.act();
-        animate();
         
+        animate();
         if (gpa >= 100){gpa = 100;}
         else if (gpa <= 0){gpa = 0;}
         
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
+        
+    
+      
+        
+        
     }
 
     public int getGpa(){
@@ -97,6 +114,7 @@ public class Student extends Animals
         }
     }
 
+    
     private void animate(){
         if (getActionState() == ActionState.NOTHING){
             if (countdown > 0){
@@ -114,6 +132,42 @@ public class Student extends Animals
     
     public int getHappiness(){
         return happiness;
+    }
+
+    //The methods below are for students to dodge the letters during the battle phase of the simulation
+    
+    public void avoidLetters() {
+        int detectionHeight = 100; // how high to scan above
+        int detectionWidth = 30;   // how wide to scan on both sides
+        int moveSpeed = 4;
+
+        boolean dangerDetected = false;
+
+        for (int dx = -detectionWidth; dx <= detectionWidth; dx += 7) {
+            for (int dy = -detectionHeight; dy < 0; dy += 5) {
+                Actor letter = getOneObjectAtOffset(dx, dy, Letter.class);
+                if (letter != null) {
+                    dangerDetected = true;
+                    break;
+                }
+            }
+            if (dangerDetected) break;
+        }
+
+        if (dangerDetected) {
+            // Try to move away from the falling letter
+            if (canMove(moveSpeed)) {
+                setLocation(getX() + moveSpeed, getY());
+            } else if (canMove(-moveSpeed)) {
+                setLocation(getX() - moveSpeed, getY());
+            }
+        }
+    }
+    
+    
+    public boolean canMove(int dx) {
+        int newX = getX() + dx;
+        return newX >= 0 && newX < getWorld().getWidth();
     }
 
 }

@@ -12,16 +12,25 @@ public class Letter extends Actor
     private int letterSpeed;
     private int dealDamage;
     public Letter(int speed){
-        //Letter:
-        /*
-        image = new GreenfootImage("");
+        
+        
+        image = new GreenfootImage("cloud.png");
+        image.scale(70, 50);
         setImage(image);
-        */
-        letterSpeed = speed;
+        
+        this.letterSpeed = speed;
     }
     
     public void act()
     {
+        
+        setLocation(getX(), getY() + letterSpeed);
+        
+        //When teh letter is off the screen, remove it
+        if(getY() >= getWorld().getHeight()){
+            getWorld().removeObject(this);
+        }
+        
         //When the letter doesn't hit the student and hits the edge of the screen, remove the letter
         if(isAtEdge()){
             getWorld().removeObject(this);
