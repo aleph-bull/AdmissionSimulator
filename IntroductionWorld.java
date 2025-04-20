@@ -14,6 +14,7 @@ public class IntroductionWorld extends World
     private int curIndex;
     private int actNum, duration;
     private Speaker speaker1, speaker2;
+    private GreenfootSound music;
 
     /**
      * Constructor for objects of class IntroductionWorld.
@@ -26,11 +27,18 @@ public class IntroductionWorld extends World
 
         image = new GreenfootImage("introbg.jpg");
         setBackground(image);
+        
+        music = new GreenfootSound("intromusic.mp3");
+        music.setVolume(50);
+        //music.play();
 
         //string array for dialogue 
         dialogue = new String[]{
-            "It's almost time to apply to universities... Are you ready?",
-            "Not really... there's so much to consider. GPA, extracurriculars...",
+            "Wow, look at the date!",
+            "September 24th... the year is nearly over already.",
+            "Uni-application time! Are you ready?",
+            "Not really... my grades fluctuate wildly.",
+            "Same here. There are so many distractions...",
             "We can do this! Lock in.",
             "You're right. May the best person be accepted!"
         };
@@ -50,7 +58,15 @@ public class IntroductionWorld extends World
         
         addObject(speaker1, 92, 717);
         
-        duration = 180;
+        duration = 200;
+    }
+    
+    public void started(){
+        music.playLoop();
+    }
+    
+    public void stopped(){
+        music.pause();
     }
 
     public void act(){
@@ -58,6 +74,7 @@ public class IntroductionWorld extends World
         if (actNum % duration == 0){
             //if curIndex exceeds highest index, go to SettingsWorldGeneral
             if (curIndex == dialogue.length){
+                music.stop();
                 Greenfoot.setWorld(new SettingsWorldGeneral());
 
                 //don't know why but setting the world wasn't immediately going to SettingsWorldGeneral + was causing errors

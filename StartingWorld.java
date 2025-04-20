@@ -16,7 +16,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * - SettingWorld music: Run Amok by Kevin MacLeod, https://www.chosic.com/download-audio/39324/
  * - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
  * - StartingWorld music: Colorful Flowers by Tokyo Music Walker, https://www.chosic.com/download-audio/45508/
- * 
+ * - https://es.pinterest.com/pin/748723506848141834/
  * @author Angela Wang
  * @version 04.09.25
  */
