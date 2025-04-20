@@ -6,7 +6,7 @@ public class MainWorld extends World {
 
 
     public static final boolean SHOW_BARS = true;
-
+    public final int GAME_LENGTH = 120; // the length of the game, in seconds.
     private GreenfootImage background;
 
     private int relativeCountdown;
@@ -126,9 +126,9 @@ public class MainWorld extends World {
         
         actNum = 0;
 
-        countdownBar = new SuperStatBar(7200, 0, null, 600, 25, 0, Color.BLACK, Color.WHITE, false, Color.BLACK, 5);
+        countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
         addObject(countdownBar, 400, 401);
-        setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+        setPaintOrder(Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
 
 
@@ -144,12 +144,13 @@ public class MainWorld extends World {
         
         //Timer
         counter.setValue(0);
-        counter2.setValue(120);
+        counter2.setValue(GAME_LENGTH);
         st.mark();
         
         //Adding the timer: Showing the timer (how much time left till they submtit their application)
-        showText("Timer", 978, 42);
-        addObject(counter2, 978, 69);
+        // showText("Timer", 978, 42);
+        counter2.setPrefix("Time Left: ");
+        addObject(counter2, 950, 12);
 
         
 
@@ -171,22 +172,24 @@ public class MainWorld extends World {
             }
             
             
-        counter2.setValue(120 - st.millisElapsed()/1000);
-        //Switch to BattleWorld
-        if(counter2.getValue() == 0){
+        // counter2.setValue(120 - st.millisElapsed()/1000);
+        if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
+        countdownBar.update(actNum);
+        
+        if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
             Greenfoot.setWorld(new BattleWorld());
         }
     }
     
     public void started(){
-        counter2.setValue(120);
+        // counter2.setValue(120);
 
         }
         
-        countdownBar.update(actNum);
+        //countdownBar.update(actNum);
         
 
-    }
+    
     
    
 
