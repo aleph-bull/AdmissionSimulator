@@ -24,7 +24,7 @@ public class BattleWorld extends World
         setBackground(background);
         
         //Students:
-        student1 = new Student();
+        student1 = new Student(true);
         
         addObject(student1, 206, 726);
         

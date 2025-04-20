@@ -1,7 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StartingWorld here.
+ * THINGS TO CHANGE
+ * - computer paint order
+ * - bar blocking cloud
+ * - time indicator
+ * - phone placement
+ * - adding computer/phone graphics
  * 
  * ============CREDITS============
  * - Button sfx: https://youtu.be/PA2PsADo11E?feature=shared
@@ -60,7 +65,7 @@ public class StartingWorld extends World
         animate();
         if (Greenfoot.isKeyDown("e")){
             music.stop();
-            Greenfoot.setWorld(new SettingsWorldGeneral());
+            Greenfoot.setWorld(new IntroductionWorld());
         }
     }
     

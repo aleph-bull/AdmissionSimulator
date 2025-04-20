@@ -13,8 +13,7 @@ public class IntroductionWorld extends World
     private String[] dialogue;
     private int curIndex;
     private int actNum, duration;
-    private Computer computer;
-    private Bed bed;
+    private Speaker speaker1, speaker2;
 
     /**
      * Constructor for objects of class IntroductionWorld.
@@ -40,13 +39,18 @@ public class IntroductionWorld extends World
 
         actNum = 1;
 
-        duration = dialogue[curIndex].length() * 5;
+        //duration = dialogue[curIndex].length() * 5;
         
         SuperTextBox text = new SuperTextBox(dialogue[curIndex], Color.BLACK, Color.WHITE, new Font(20), true, 1024, 3, Color.YELLOW);
-        addObject(text, 512, 738);
+        addObject(text, 512, 717);
+        curIndex++;
         
-        computer = new Computer();
-        bed = new Bed();
+        speaker1 = new Speaker(0);
+        speaker2 = new Speaker(1);
+        
+        addObject(speaker1, 92, 717);
+        
+        duration = 180;
     }
 
     public void act(){
@@ -60,23 +64,20 @@ public class IntroductionWorld extends World
                 return;
             }
 
-            if (curIndex % 2 == 0){
-                //student 1 speaking
-                addObject(computer, 92, 608);
-                if (bed.getWorld() != null){
-                    //acount for 1st time student 1 speaks (student 2 has not yet been added)
-                    removeObject(bed);
-                }
-            } else {
-                addObject(bed, 900, 608);
-                removeObject(computer);
-            }
-
             //new TextBox for next line in dialogue array
             SuperTextBox text = new SuperTextBox(dialogue[curIndex], Color.BLACK, Color.WHITE, new Font(20), true, 1024, 3, Color.YELLOW);
-            addObject(text, 512, 738);
+            addObject(text, 512, 717);
             
-            duration = dialogue[curIndex].length() * 5;
+            //duration = dialogue[curIndex].length() * 5;
+            
+            if (curIndex % 2 == 0){
+                //student 1 speaking
+                addObject(speaker1, 92, 717);
+                removeObject(speaker2);
+            } else {
+                addObject(speaker2, 900, 717);
+                removeObject(speaker1);
+            }
             
             curIndex++;
 
