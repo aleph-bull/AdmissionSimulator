@@ -133,9 +133,12 @@ public class MainWorld extends World {
         if (actNum % (60 * 10) == 0) {
             int random = Greenfoot.getRandomNumber(2);
             if (random == 0)
-                spawnDisease();
-            else
-                spawnDepression();
+            {
+               // spawnDisease();
+            }
+            else{
+                //spawnDepression();
+            }
         }
         
         countdownBar.update(actNum);

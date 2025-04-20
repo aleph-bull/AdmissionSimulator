@@ -24,8 +24,6 @@ public class SettingsWorldGeneral extends SettingsWorld
 
         next = new Button (cursor, false);
         addObject(next, 945, 670);
-        back = new Button (cursor, true); 
-        addObject(back, 100, 670); 
 
         student1Number = 0;
         student1 = new SettingsWorld.StatChooseImage(250, 100, 400, 290, student1Number); 
@@ -46,10 +44,6 @@ public class SettingsWorldGeneral extends SettingsWorld
 
     public void backWorld()
     {
-        if (Greenfoot.mouseClicked(back))
-        {
-            Greenfoot.setWorld(new IntroductionWorld()); 
-        }
     }
 
     public void nextWorld()
