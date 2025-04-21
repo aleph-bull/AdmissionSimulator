@@ -123,6 +123,13 @@ public class Student extends Animals
     public boolean isSick() {
         return sick;
     }
+<<<<<<< Updated upstream
+=======
+    
+    public boolean isSick() {
+        return sick;
+    }
+>>>>>>> Stashed changes
 
     //change frames
 >>>>>>> Stashed changes
