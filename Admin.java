@@ -16,6 +16,10 @@ public class Admin extends Animals {
     private boolean mood;
     private String uni;
     private int acceptanceR;
+    
+    public Admin(){
+        super();
+    }
   
     public Admin(int requirement,int acceptanceR,boolean mood, String uni, boolean isTop){
         super(isTop);
@@ -27,7 +31,7 @@ public class Admin extends Animals {
             requirement += 2;
             acceptanceR -= 5;
         }
-
+        
     }
 
     public void act() {

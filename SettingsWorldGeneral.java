@@ -35,8 +35,8 @@ public class SettingsWorldGeneral extends SettingsWorld
     }
     public void act()
     {
-        student1.choose("bob_run18.png", "Amelia_run1.png", "Alex_run1.png"); 
-        student2.choose("bob_run18.png", "Amelia_run1.png", "Alex_run1.png"); 
+        student1.choose("bob_run1.png", "Amelia_run1.png", "Alex_run1.png"); 
+        student2.choose("bob_run1.png", "Amelia_run1.png", "Alex_run1.png"); 
         university.choose("universityofcatmeme.png", "universityofbigmac.png", "universityofducksong.png", "universityoflebron.png"); 
         backWorld();
         nextWorld();
@@ -54,4 +54,3 @@ public class SettingsWorldGeneral extends SettingsWorld
         }
     }
 }
-
