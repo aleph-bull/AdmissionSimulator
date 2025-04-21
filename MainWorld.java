@@ -89,6 +89,7 @@ public class MainWorld extends World {
         relativeMinCountdown = 500;         
         cat = "Cat.png";
         mom = "Mom.png";
+        
         topExit = new CollisionBox(true);
         botExit = new CollisionBox(true);
         addObject(topExit, 750, 280);
@@ -169,7 +170,7 @@ public class MainWorld extends World {
             relativeCountdown--;
         } else {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
-            relative = new Relative(cat, isTop);
+            relative = new Relative("amongus", isTop);
             if (isTop) {
                 addObject(relative, 50, 200);
             } else {
