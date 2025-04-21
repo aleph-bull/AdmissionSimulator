@@ -163,7 +163,6 @@ public class MainWorld extends World {
             int random = Greenfoot.getRandomNumber(2);
             spawnEffect();
         }
-
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
@@ -182,10 +181,6 @@ public class MainWorld extends World {
     public void stopped(){
         music.stop();
     }
-
-    //countdownBar.update(actNum);
-
-    
    
     public void spawnRelative() {
         if (relativeCountdown > 0) {
