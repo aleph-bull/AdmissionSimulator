@@ -80,7 +80,7 @@ public class Student extends Animals
 
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
-    }
+    
 
         
         ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
@@ -88,6 +88,7 @@ public class Student extends Animals
             if (effects.get(0) instanceof Sickness){
                 sick = true;
                 gpa -= 0.15;
+                happiness -= 0.15;
             } else if (effects.get(0) instanceof Depression){
                 happiness = 0;
                 gpa -= 0.05;
@@ -95,19 +96,6 @@ public class Student extends Animals
             }
         } else{ sick = false; }
         gpa -= 0.05;
-    }
-
-        ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
-        if (effects.size() != 0){
-            if (effects.get(0) instanceof Sickness){
-                gpa -= 0.15;
-            } else if (effects.get(0) instanceof Depression){
-                happiness = 0;
-                gpa -= 0.05;
-            }
-        } else{}
-        gpa -= 0.05;
-
     }
 
     public double getGpa(){
