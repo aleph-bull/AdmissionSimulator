@@ -1,8 +1,6 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 public class MainWorld extends World {
-
     public static final boolean SHOW_BARS = true;
     public final int GAME_LENGTH = 120; // the length of the game, in seconds.
     private GreenfootImage background;
@@ -44,9 +42,7 @@ public class MainWorld extends World {
     SimpleTimer st = new SimpleTimer();
     Counter counter2 = new Counter();
 
-    
     private SuperStatBar countdownBar;
-
     public MainWorld() {
         super(1024, 800, 1);
 
@@ -76,7 +72,6 @@ public class MainWorld extends World {
         addObject(mirrorTop, 600, 150);
         addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
-
 
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
@@ -111,13 +106,12 @@ public class MainWorld extends World {
         addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
 
         //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        
+
         actNum = 0;
 
         countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
         addObject(countdownBar, 400, 401);
         setPaintOrder(Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
-
 
         actNum = 0;
         sickness = false;
@@ -136,7 +130,6 @@ public class MainWorld extends World {
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
 
-
         
     }
 
@@ -150,18 +143,10 @@ public class MainWorld extends World {
 
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
-            int random = Greenfoot.getRandomNumber(2);
-            if (random == 0)
-            {
-                // spawnDisease();
-            }
-            else{
-                //spawnDepression();
-            }
-        }
-        spawnEffect();
+            spawnEffect();
 
-            
+        }
+
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0){ counter2.add(-1); // Decrement the counter by 1
             countdownBar.update(actNum);
@@ -178,7 +163,6 @@ public class MainWorld extends World {
 
     //countdownBar.update(actNum);
 
-    
    
     public void spawnRelative() {
         if (relativeCountdown > 0) {
