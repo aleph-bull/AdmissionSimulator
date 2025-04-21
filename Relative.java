@@ -11,6 +11,10 @@ public class Relative extends Animals
     {
         super.act();
     }
+    
+    public Relative(){
+        super();
+    }
 
     public Relative(String image, boolean isTop)
     {

@@ -27,20 +27,28 @@ public abstract class Animals extends SuperSmoothMover
     
     protected ActionState currentAction = ActionState.NOTHING;
     
-    public Animals (boolean isTop) {
-        image.setColor(Color.RED);
-        image.fill();
+    //boolean needed for battle
+    protected boolean inBattle = false;
+    
+    public Animals(){
         setImage(image);
         maxSpeed = 5;
         speed = maxSpeed;
-        setRandomCooldown (); // random number from 200-500
+        inBattle = true;
+    }
+    
+    public Animals (boolean isTop) {
+        maxSpeed = 5;
+        speed = maxSpeed;
+        setRandomCooldown(); // random number from 200-500
         setRandomDirection(360);
         isInTopRoom = isTop;
     }
     
     public void act()
-    {
-        if(currentAction == ActionState.NOTHING) {
+    {   
+        if(!inBattle){
+            if(currentAction == ActionState.NOTHING) {
             moveToward(speed, getPreciseX() + dx, getPreciseY() - dy);
             if(actCount % changeDirectionCooldown == 0) {
                 setRandomCooldown ();
@@ -51,16 +59,18 @@ public abstract class Animals extends SuperSmoothMover
             } else {
                 hitEdge(BottomRoomTopLeft, BottomRoomBottomRight);
             }
-        } else {
-             if (itemInUse != null){
-                if (itemInUse.getUser() == null) {
-                    setLocation(itemInUse.getX(), itemInUse.getY());
-                    itemInUse.setUser(this);
+            } else {
+                 if (itemInUse != null){
+                    if (itemInUse.getUser() == null) {
+                        setLocation(itemInUse.getX(), itemInUse.getY());
+                        itemInUse.setUser(this);
+                    }
                 }
             }
+            checkHitObject();
+            actCount++;
         }
-        checkHitObject();
-        actCount++;
+        
     }
     
     public boolean hitEdge(int rangeX, int rangeY, int xOffset, int yOffset) {
@@ -137,7 +147,7 @@ public abstract class Animals extends SuperSmoothMover
     }
     
     protected void checkHitObject() {
-        ArrayList<Item> items = (ArrayList<Item>) getIntersectingObjects(Item.class);
+        ArrayList<FunctionalItem> items = (ArrayList<FunctionalItem>) getIntersectingObjects(FunctionalItem.class);
     
         if (items.size() == 0) {
             currentAction = ActionState.NOTHING;

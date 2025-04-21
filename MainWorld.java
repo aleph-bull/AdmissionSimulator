@@ -1,17 +1,12 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * 
- */
+
+
 public class MainWorld extends World {
 
-    /**
-     * Construct the world!
-     * 
-     */
 
     public static final boolean SHOW_BARS = true;
-
+    public final int GAME_LENGTH = 120; // the length of the game, in seconds.
     private GreenfootImage background;
 
     private int relativeCountdown;
@@ -48,9 +43,22 @@ public class MainWorld extends World {
 
     private boolean sickness;
 
+    
+    private SuperWindow card;
+    private Student s;
+    
+    public static Counter counter = new Counter();
+    SimpleTimer st = new SimpleTimer();
+    Counter counter2 = new Counter();
+    
+    
+    
+
+    private SuperStatBar countdownBar;
+
+
     public MainWorld() {
         super(1024, 800, 1);
-        setPaintOrder(SuperStatBar.class, Computer.class, Desk.class, Student.class, Chair.class);
 
         background = new GreenfootImage("background.png");
         setBackground(background);
@@ -80,35 +88,23 @@ public class MainWorld extends World {
         addObject(chairTop, 400, 220);
         addObject(deskTop, 400, 180);
         addObject(mirrorTop, 600, 150);
-        addObject(phoneTop, 300, 300);
+        addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
         addObject(displayTop, 855, 145);
         addObject(moodTop, 960, 150);
     
 
-        setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
+        
 
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
         addObject(chairBot, 400, 620);
         addObject(deskBot, 400, 580);
         addObject(mirrorBot, 600, 550);
-        addObject(phoneBot, 300, 700);
+        addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         addObject(displayBot, 855, 545);
         addObject(moodBot, 960, 550);
-        
-        
->>>>>>> Stashed changes
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png";
@@ -118,31 +114,60 @@ public class MainWorld extends World {
         addObject(topExit, 750, 280);
         addObject(botExit, 750, 640);
 
-
         relativeMinCountdown = 500;
         
-        setPaintOrder(SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
+        setPaintOrder(SimpleTimer.class, Counter.class, SuperStatBar.class, SuperWindow.class,Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
+
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 275);
+        addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 350);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 675);
+        addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
         
-<<<<<<< Updated upstream
-        addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
+
+        //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
         
         
-=======
         countdownBar = new SuperStatBar(7200, 0, null, 600, 25, 0, Color.BLACK, Color.WHITE, false, Color.BLACK, 5);
         addObject(countdownBar, 400, 401);
         setPaintOrder(DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Computer.class, Shadow.class, Effect.class);
 
 
->>>>>>> Stashed changes
         actNum = 0;
 
+        countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
+        addObject(countdownBar, 400, 401);
+        setPaintOrder(Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
+
+
+        actNum = 0;
         sickness = false;
 
         prepare();
+        
+        
+        card = new SuperWindow (250, 370, 24,2, "Student 1", studentTop, new boolean[]{true, false, true, true, false}, Color.BLACK, Color.WHITE);
+        
+        addObject (card, 900, 200);
+        
+        //Timer
+        counter.setValue(0);
+        counter2.setValue(GAME_LENGTH);
+        st.mark();
+        
+        //Adding the timer: Showing the timer (how much time left till they submtit their application)
+        // showText("Timer", 978, 42);
+        counter2.setPrefix("Time Left: ");
+        addObject(counter2, 950, 12);
 
+        
+
+        
+        
     }
 
     public void addedToWorld() {
@@ -153,34 +178,44 @@ public class MainWorld extends World {
         spawnRelative();
         actNum++;
 
-
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             int random = Greenfoot.getRandomNumber(2);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
             if (random == 0)
                 spawnDisease();
             else
                 spawnDepression();
             }
     
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-            //if (random == 0)
-                //spawnDisease();
-            //else
-                //spawnDepression();
-        }
         
         countdownBar.update(actNum);
         
->>>>>>> Stashed changes
+
+            spawnEffect();
+            }
+            
+            
+        // counter2.setValue(120 - st.millisElapsed()/1000);
+        if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
+        countdownBar.update(actNum);
+        
+        if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
+            Greenfoot.setWorld(new BattleWorld());
+        }
     }
+    
+    public void started(){
+        // counter2.setValue(120);
+
+        }
+        
+        //countdownBar.update(actNum);
+        
+
+    
+    
+   
 
     public void spawnRelative() {
         if (relativeCountdown > 0) {
@@ -203,7 +238,6 @@ public class MainWorld extends World {
 
     private void spawnEffect(){
         //get random room number + assign y coordinate of effect accordingly
-
         int y;
         int room = Greenfoot.getRandomNumber(2);
         if (room == 1)
@@ -211,27 +245,20 @@ public class MainWorld extends World {
         else
             y = Effect.ROOM_2_Y;
 
-
+        int random = Greenfoot.getRandomNumber(2);
+        if (random == 1){
+            addObject(new Sickness(room), Effect.ROOM_X, y);
+        } else {
+            if (room == 1){
+                addObject(new Depression(room, studentTop), Effect.ROOM_X, y);
+            } else {
+                addObject(new Depression(room, studentBot), Effect.ROOM_X, y);
+            }
+        }
         addObject(new Sickness(room), Effect.ROOM_X, y);
         sickness = true;
     }
 
-    public void spawnDisease(){
-        int y;
-        int room = Greenfoot.getRandomNumber(2) + 1;
-        if (room == 1) y = Effect.ROOM_1_Y;
-        else y = Effect.ROOM_2_Y;
-
-        addObject(new Sickness(room), Effect.ROOM_X, y);
-    }
-    
-
-    //currently only spawning in top room as test (can change to be spawned only when 
-    //student happiness is low
-    public void spawnDepression(){
-        addObject(new Depression(1, studentTop), Effect.ROOM_X, Effect.ROOM_1_Y);
-    }
-    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -239,4 +266,4 @@ public class MainWorld extends World {
     private void prepare()
     {
     }
-    }
+}

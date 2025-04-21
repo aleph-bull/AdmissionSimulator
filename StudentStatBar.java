@@ -11,8 +11,8 @@ public class StudentStatBar extends SuperStatBar
     boolean top;
     Student owner;
     boolean isGpa;
-    public StudentStatBar(int maxVal,  int currVal, Student theOwner, int width, int height, Color filledColor, Color missingColor, Color borderColor, int borderThickness, boolean isTop, boolean isGPA){
-        super(maxVal, currVal, null, width, height, 0, filledColor, missingColor, false, borderColor, borderThickness);
+    public StudentStatBar(int currVal, Student theOwner, int width, int height, Color filledColor, Color missingColor, Color borderColor, int borderThickness, boolean isTop, boolean isGPA){
+        super(10000, currVal*100, null, width, height, 0, filledColor, missingColor, false, borderColor, borderThickness);
         top = isTop;
         owner = theOwner;
         isGpa = isGPA;
@@ -20,7 +20,7 @@ public class StudentStatBar extends SuperStatBar
     
     public void act()
     {
-        if (isGpa){update(owner.getGpa());}
-        else {update(owner.getHappiness());}
+        if (isGpa){update((int)owner.getGpa()*100);}
+        else {update((int)owner.getHappiness()*100);}
     }
 }
