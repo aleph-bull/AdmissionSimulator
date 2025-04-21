@@ -27,6 +27,8 @@ public class Student extends Animals
     
     //Productivity
     boolean productive;
+    
+    boolean sick;
 
     //Student health that appears when they are avoiding the letters
     int studentHealth;
@@ -78,6 +80,22 @@ public class Student extends Animals
 
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
+    }
+
+        
+        ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
+        if (effects.size() != 0){
+            if (effects.get(0) instanceof Sickness){
+                sick = true;
+                gpa -= 0.15;
+            } else if (effects.get(0) instanceof Depression){
+                happiness = 0;
+                gpa -= 0.05;
+                sick = false;
+            }
+        } else{ sick = false; }
+        gpa -= 0.05;
+    }
 
         ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
         if (effects.size() != 0){
@@ -142,6 +160,13 @@ public class Student extends Animals
         setImage(walkAnimations[0]);
     }
 
+    
+    public boolean isSick() {
+        return sick;
+    }
+
+
+    //change frames
     //updates curActionState and prevActionState to know if change has occurred
     private void checkActionState(){
         curActionState = getActionState();
@@ -153,7 +178,7 @@ public class Student extends Animals
         } 
     }
 
-    //change frames
+
     private void animate(){
         //if Student is doing nothing but walking around, walk animation
         //if (curActionState == ActionState.NOTHING){
