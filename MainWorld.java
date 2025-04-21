@@ -87,9 +87,7 @@ public class MainWorld extends World {
 
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "Cat.png";
-        mom = "Mom.png";
-        
+
         topExit = new CollisionBox(true);
         botExit = new CollisionBox(true);
         addObject(topExit, 750, 280);
@@ -131,14 +129,16 @@ public class MainWorld extends World {
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
 
-        
     }
-
     public void addedToWorld() {
-
     }
-
     public void act() {
+        //for the numbers
+        showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
+        //for the images
+        showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
+        
+        
         spawnRelative();
         actNum++;
 
@@ -164,7 +164,6 @@ public class MainWorld extends World {
 
     //countdownBar.update(actNum);
 
-   
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;
