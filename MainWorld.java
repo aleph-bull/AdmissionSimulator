@@ -31,6 +31,8 @@ public class MainWorld extends World {
     private Desk deskTop;
     private Mirror mirrorTop;
     private Phone phoneTop;
+    private DisplayStudent displayTop;
+    private DisplayMood moodTop;
 
     private Student studentBot;
     private Bed bedBot;
@@ -39,6 +41,8 @@ public class MainWorld extends World {
     private Desk deskBot;
     private Mirror mirrorBot;
     private Phone phoneBot;
+    private DisplayStudent displayBot;
+    private DisplayMood moodBot;
 
     private int actNum;
 
@@ -58,6 +62,8 @@ public class MainWorld extends World {
         deskTop = new Desk();
         mirrorTop = new Mirror();
         phoneTop = new Phone();
+        displayTop = new DisplayStudent(studentTop);
+        moodTop = new DisplayMood(studentTop);
 
         studentBot = new Student(false);
         bedBot = new Bed();
@@ -66,6 +72,8 @@ public class MainWorld extends World {
         deskBot = new Desk();
         mirrorBot = new Mirror();
         phoneBot = new Phone();
+        displayBot = new DisplayStudent(studentBot);
+        moodBot = new DisplayMood(studentBot);
 
         addObject(studentTop, 400, 200);
         addObject(bedTop, 90 + studentTop.getImage().getWidth() / 2, 220);
@@ -74,6 +82,9 @@ public class MainWorld extends World {
         addObject(mirrorTop, 600, 150);
         addObject(phoneTop, 300, 300);
         addObject(computerTop, 400, 120);
+        addObject(displayTop, 855, 145);
+        addObject(moodTop, 960, 150);
+    
 
         setPaintOrder(Computer.class, Desk.class, Student.class, Chair.class);
 
@@ -84,7 +95,14 @@ public class MainWorld extends World {
         addObject(mirrorBot, 600, 550);
         addObject(phoneBot, 300, 700);
         addObject(computerBot, 400, 520);
+<<<<<<< Updated upstream
 
+=======
+        addObject(displayBot, 855, 545);
+        addObject(moodBot, 960, 550);
+        
+        
+>>>>>>> Stashed changes
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png";
@@ -101,9 +119,17 @@ public class MainWorld extends World {
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
         
+<<<<<<< Updated upstream
         addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
         
         
+=======
+        countdownBar = new SuperStatBar(7200, 0, null, 600, 25, 0, Color.BLACK, Color.WHITE, false, Color.BLACK, 5);
+        addObject(countdownBar, 400, 401);
+        setPaintOrder(DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Computer.class, Shadow.class, Effect.class);
+
+
+>>>>>>> Stashed changes
         actNum = 0;
 
 
@@ -125,12 +151,23 @@ public class MainWorld extends World {
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             int random = Greenfoot.getRandomNumber(2);
+<<<<<<< Updated upstream
             if (random == 0)
                 spawnDisease();
             else
                 spawnDepression();
             }
     
+=======
+            //if (random == 0)
+                //spawnDisease();
+            //else
+                //spawnDepression();
+        }
+        
+        countdownBar.update(actNum);
+        
+>>>>>>> Stashed changes
     }
 
     public void spawnRelative() {

@@ -22,6 +22,8 @@ public class Student extends Animals
     private SuperStatBar bar2;
     //Productivity
     boolean productive;
+    
+    boolean sick;
 
     //Student health that appears when they are avoiding the letters
     int studentHealth;
@@ -56,9 +58,27 @@ public class Student extends Animals
         
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
+<<<<<<< Updated upstream
     }
 
     public int getGpa(){
+=======
+        
+        ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
+        if (effects.size() != 0){
+            if (effects.get(0) instanceof Sickness){
+                sick = true;
+                gpa -= 0.15;
+            } else if (effects.get(0) instanceof Depression){
+                happiness = 0;
+                gpa -= 0.05;
+                sick = false;
+            }
+        } else{ sick = false; }
+        gpa -= 0.05;
+    }
+    public double getGpa(){
+>>>>>>> Stashed changes
         return this.gpa;
     }
     public void setGpa(int updatedGpa){
@@ -96,7 +116,16 @@ public class Student extends Animals
             }
         }
     }
+<<<<<<< Updated upstream
 
+=======
+    
+    public boolean isSick() {
+        return sick;
+    }
+
+    //change frames
+>>>>>>> Stashed changes
     private void animate(){
         if (getActionState() == ActionState.NOTHING){
             if (countdown > 0){

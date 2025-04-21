@@ -180,6 +180,10 @@ public abstract class Animals extends SuperSmoothMover
         }
     }
     
+    public ActionState getCurrentAction() {
+        return currentAction;
+    }
+    
     public void updateDyDx () {
         dx = Math.cos(movementDirectionInRadians) * 100;
         dy = Math.sin(movementDirectionInRadians) * 100;
