@@ -1,9 +1,7 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 
-
 public class MainWorld extends World {
-
 
     public static final boolean SHOW_BARS = true;
     public final int GAME_LENGTH = 120; // the length of the game, in seconds.
@@ -39,25 +37,25 @@ public class MainWorld extends World {
 
     private boolean sickness;
 
-    
     private SuperWindow card;
     private Student s;
-    
+
     public static Counter counter = new Counter();
     SimpleTimer st = new SimpleTimer();
     Counter counter2 = new Counter();
-    
-    
-    
 
+    
     private SuperStatBar countdownBar;
-
-
+    private GreenfootSound music;
     public MainWorld() {
         super(1024, 800, 1);
 
         background = new GreenfootImage("background.png");
         setBackground(background);
+
+        music = new GreenfootSound("mainmusic.mp3");
+        music.setVolume(50);
+        music.playLoop();
 
         studentTop = new Student(true);
         bedTop = new Bed();
@@ -83,7 +81,6 @@ public class MainWorld extends World {
         addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
 
-        
 
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
@@ -92,12 +89,7 @@ public class MainWorld extends World {
         addObject(mirrorBot, 600, 550);
         addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
-        setPaintOrder(Computer.class, Desk.class, Chair.class);
-        setPaintOrder(Computer.class, Chair.class);
-        setPaintOrder(Desk.class, Chair.class);
-        setPaintOrder(Computer.class, Desk.class);
-        
-        
+
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png";
@@ -108,10 +100,8 @@ public class MainWorld extends World {
         addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
-        
 
-        setPaintOrder(SimpleTimer.class, Counter.class, SuperStatBar.class, SuperWindow.class,Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
-
+        setPaintOrder(SimpleTimer.class, Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Computer.class, Desk.class, Chair.class, Effect.class);
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
 
@@ -119,47 +109,33 @@ public class MainWorld extends World {
         addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 350);
         addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 675);
         addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
-        
 
         //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        
         
         actNum = 0;
 
         countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
         addObject(countdownBar, 400, 401);
-        setPaintOrder(Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
-
-
 
         actNum = 0;
         sickness = false;
 
         prepare();
-        
-        
+
         card = new SuperWindow (250, 370, 24,2, "Student 1", studentTop, new boolean[]{true, false, true, true, false}, Color.BLACK, Color.WHITE);
-        
         addObject (card, 900, 200);
-        
         //Timer
         counter.setValue(0);
         counter2.setValue(GAME_LENGTH);
         st.mark();
-        
+
         //Adding the timer: Showing the timer (how much time left till they submtit their application)
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
 
-        
 
         
-        
-    }
-
-    public void addedToWorld() {
-
     }
 
     public void act() {
@@ -169,30 +145,31 @@ public class MainWorld extends World {
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             spawnEffect();
-            }
-            
-            
+        }
+
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
-        
+
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
             Greenfoot.setWorld(new BattleWorld());
         }
     }
-    
+
+    //???
     public void started(){
         // counter2.setValue(120);
-
-        }
-        
-        //countdownBar.update(actNum);
-        
-
+        music.playLoop();
+    }
     
+    public void stopped(){
+        music.stop();
+    }
+
+    //countdownBar.update(actNum);
+
     
    
-
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;

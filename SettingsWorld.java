@@ -19,6 +19,8 @@ public abstract class SettingsWorld extends World
     protected Button back;
     protected SettingsImages maximumValueReachedGraphic;
     protected SettingsImages minimumValueReachedGraphic;
+    
+    protected static GreenfootSound music = new GreenfootSound("settingsmusic.mp3");
 
     protected abstract void backWorld();
 
@@ -34,6 +36,16 @@ public abstract class SettingsWorld extends World
 
         minimumValueReachedGraphic = new SettingsImages();
         minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
+        
+        music.playLoop();
+    }
+    
+    public void started(){
+        music.playLoop();
+    }
+    
+    public void stopped(){
+        music.stop();
     }
 
     protected class StatChooseImage
