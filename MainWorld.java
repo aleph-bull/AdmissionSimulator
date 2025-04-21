@@ -24,6 +24,8 @@ public class MainWorld extends World {
     private Desk deskTop;
     private Mirror mirrorTop;
     private Phone phoneTop;
+    private DisplayStudent displayTop;
+    private DisplayMood moodTop;
 
     private Student studentBot;
     private Bed bedBot;
@@ -32,6 +34,8 @@ public class MainWorld extends World {
     private Desk deskBot;
     private Mirror mirrorBot;
     private Phone phoneBot;
+    private DisplayStudent displayBot;
+    private DisplayMood moodBot;
 
     private int actNum;
 
@@ -64,6 +68,8 @@ public class MainWorld extends World {
         deskTop = new Desk();
         mirrorTop = new Mirror();
         phoneTop = new Phone();
+        displayTop = new DisplayStudent(studentTop);
+        moodTop = new DisplayMood(studentTop);
 
         studentBot = new Student(false);
         bedBot = new Bed();
@@ -72,6 +78,8 @@ public class MainWorld extends World {
         deskBot = new Desk();
         mirrorBot = new Mirror();
         phoneBot = new Phone();
+        displayBot = new DisplayStudent(studentBot);
+        moodBot = new DisplayMood(studentBot);
 
         addObject(studentTop, 400, 200);
         addObject(bedTop, 90 + studentTop.getImage().getWidth() / 2, 220);
@@ -80,6 +88,9 @@ public class MainWorld extends World {
         addObject(mirrorTop, 600, 150);
         addObject(phoneTop, 600, 300);
         addObject(computerTop, 400, 120);
+        addObject(displayTop, 855, 145);
+        addObject(moodTop, 960, 150);
+    
 
 
         addObject(studentBot, 400, 600);
@@ -90,6 +101,8 @@ public class MainWorld extends World {
         addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
 
+        addObject(displayBot, 855, 545);
+        addObject(moodBot, 960, 550);
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
         cat = "Cat.png";
@@ -100,8 +113,7 @@ public class MainWorld extends World {
         addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
-
-        setPaintOrder(SimpleTimer.class, Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Computer.class, Desk.class, Chair.class, Effect.class);
+      
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
 
@@ -116,6 +128,9 @@ public class MainWorld extends World {
 
         countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
         addObject(countdownBar, 400, 401);
+
+        setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
 
         actNum = 0;
         sickness = false;
@@ -142,11 +157,15 @@ public class MainWorld extends World {
         spawnRelative();
         actNum++;
 
+        
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
+            int random = Greenfoot.getRandomNumber(2);
             spawnEffect();
         }
-
+        
+        countdownBar.update(actNum);
+        
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
@@ -165,10 +184,6 @@ public class MainWorld extends World {
     public void stopped(){
         music.stop();
     }
-
-    //countdownBar.update(actNum);
-
-    
    
     public void spawnRelative() {
         if (relativeCountdown > 0) {
