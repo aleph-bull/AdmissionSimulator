@@ -97,8 +97,11 @@ public class MainWorld extends World {
         addObject(computerBot, 400, 520);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         addObject(displayBot, 855, 545);
@@ -156,6 +159,7 @@ public class MainWorld extends World {
             int random = Greenfoot.getRandomNumber(2);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             if (random == 0)
                 spawnDisease();
             else
@@ -163,6 +167,8 @@ public class MainWorld extends World {
             }
     
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
             //if (random == 0)
