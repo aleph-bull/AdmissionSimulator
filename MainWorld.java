@@ -117,8 +117,6 @@ public class MainWorld extends World {
         relativeMinCountdown = 500;
         
 
-        setPaintOrder(SimpleTimer.class, Counter.class, SuperStatBar.class, SuperWindow.class,Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
-
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
 
@@ -130,17 +128,12 @@ public class MainWorld extends World {
 
         //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
         
-        
-        countdownBar = new SuperStatBar(7200, 0, null, 600, 25, 0, Color.BLACK, Color.WHITE, false, Color.BLACK, 5);
-        addObject(countdownBar, 400, 401);
-        setPaintOrder(DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Computer.class, Shadow.class, Effect.class);
-
 
         actNum = 0;
 
         countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
         addObject(countdownBar, 400, 401);
-        setPaintOrder(Counter.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+        setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
 
 
@@ -178,22 +171,25 @@ public class MainWorld extends World {
         spawnRelative();
         actNum++;
 
+        
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             int random = Greenfoot.getRandomNumber(2);
-
+            spawnEffect();
+            /*
             if (random == 0)
                 spawnDisease();
             else
                 spawnDepression();
-            }
-    
+            */
+        }
+        
         
         countdownBar.update(actNum);
         
 
-            spawnEffect();
-            }
+        
+            
             
             
         // counter2.setValue(120 - st.millisElapsed()/1000);
@@ -208,9 +204,9 @@ public class MainWorld extends World {
     public void started(){
         // counter2.setValue(120);
 
-        }
         
         //countdownBar.update(actNum);
+    }
         
 
     
