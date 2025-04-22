@@ -11,14 +11,14 @@ public class Textbox extends Actor
     private int margin = 40; 
     private int maxWidth = 290; 
     private int letterCount = 0; // count of letters typed, used for animation
-    private Image speaker;
+    private Actor speaker;
     private Color opaqueWhite = new Color(255, 255, 255, 200);
     private boolean isSpacePause = false;
     
     private GreenfootSound dialogueSounds[];
     private int curIndex;
 
-    public Textbox(String dialog, Image speaker) {
+    public Textbox(String dialog, Actor speaker) {
         this.speaker = speaker;
         this.dialog = dialog;
         GreenfootImage image = new GreenfootImage(800, 150);
