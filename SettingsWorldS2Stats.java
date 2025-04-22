@@ -86,6 +86,7 @@ public class SettingsWorldS2Stats extends SettingsWorld
     {
         return gpa.getNumber(); 
     }
+    
     public static int getProductivityNumber()
     {
         return productivity.getNumber(); 
