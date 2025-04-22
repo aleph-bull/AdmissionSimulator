@@ -9,13 +9,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * - adding computer/phone graphics
  * 
  * ============CREDITS============
- * - Button sfx: https://youtu.be/PA2PsADo11E?feature=shared
+ * - Button sfx: https://www.youtube.com/watch?v=BZvS2Bno8R4
  * - Cloud image: https://www.freepik.com/premium-vector/pixel-art-cartoon-crying-rainy-cloud-character_214146407.htm
  * - Germ image: https://www.freepik.com/premium-vector/bacteria-virus-pixel-art-set-germ-microbe-collection-infectious-pathogen-8-bit-sprite_33822375.htm
  * - Rain sfx: Light rain loop, https://mixkit.co/free-sound-effects/rain/
  * - SettingWorld music: Run Amok by Kevin MacLeod, https://www.chosic.com/download-audio/39324/
  * - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
  * - StartingWorld music: Colorful Flowers by Tokyo Music Walker, https://www.chosic.com/download-audio/45508/
+ * - IntroductionWorld bg: https://ibispaint.com/art/707595372/
+ * - IntroductionWorld music: https://www.chosic.com/download-audio/27131/ 
+ * - MainWorld music: https://www.chosic.com/download-audio/29282/
  * 
  * @author Angela Wang
  * @version 04.09.25
@@ -24,7 +27,7 @@ public class StartingWorld extends World
 {
     private GifImage background;
     private GreenfootSound music;
-    private TextBox title;
+    private SuperTextBox title, startText;
     private Button button;
     private Cursor cursor;
 
@@ -42,15 +45,15 @@ public class StartingWorld extends World
         setBackground(background.getCurrentImage());
 
         music = new GreenfootSound("startmusic.mp3");
-        music.setVolume(50);
+        music.setVolume(70);
 
         //title + start
         //OBVIOUSLY VERY SCUFFED but this was mostly to test TextBox
-        title = new TextBox("College Admissions Simulator", Color.BLACK);
+        title = new SuperTextBox("College Admissions Simulator", new Color(0, 0, 0, 0), Color.BLACK, new Font(40), true, 800, 0, new Color(0, 0, 0, 0));
         addObject(title, getWidth() / 2, 400);
 
-        TextBox startText = new TextBox("Press [e] to start", Color.BLACK);
-        addObject(startText, 660, 750);
+        startText = new SuperTextBox("Press [e] to start", new Color(0, 0, 0, 0), Color.BLACK, new Font(30), true, 500, 0, new Color(0, 0, 0, 0));
+        addObject(startText, getWidth() / 2, 600);
     }
     
     public void started(){

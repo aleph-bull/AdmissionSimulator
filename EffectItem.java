@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Write a description of class EffectItem here.
  * 
  * @author Angela Wang 
- * @version (a version number or a date)
+ * @version April 2025
  */
 public class EffectItem extends SuperSmoothMover
 {
