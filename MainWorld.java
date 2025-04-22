@@ -185,10 +185,30 @@ public class MainWorld extends World {
             relativeCountdown--;
         } else {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
-            relative = new Relative("amongus", isTop);
+            String fileName;
+            int random = Greenfoot.getRandomNumber(3);
+            //relative = new Relative("amongus", isTop);
             if (isTop) {
+                /*if (random == 0){
+                    fileName = SettingsWorldS1Stats.getRelative1Image();
+                } else if (random == 1){
+                    fileName = SettingsWorldS1Stats.getRelative2Image();
+                } else {
+                    fileName = SettingsWorldS1Stats.getRelative3Image();
+                }*/
+                //relative = new Relative(fileName, isTop);
+                relative = new Relative("minicapy", isTop);
                 addObject(relative, 50, 200);
             } else {
+                /*if (random == 0){
+                    fileName = SettingsWorldS2Stats.getRelative1Image();
+                } else if (random == 1){
+                    fileName = SettingsWorldS2Stats.getRelative2Image();
+                } else {
+                    fileName = SettingsWorldS2Stats.getRelative3Image();
+                }*/
+                //relative = new Relative(fileName, isTop);
+                relative = new Relative("minicapy", isTop);
                 addObject(relative, 50, 600);
             }
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200);

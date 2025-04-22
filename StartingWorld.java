@@ -20,6 +20,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * - IntroductionWorld music: https://www.chosic.com/download-audio/27131/ 
  * - MainWorld music: https://www.chosic.com/download-audio/29282/
  * 
+ * 
+ * =====KNOWN BUGS====
+ * - Slight slight chance that Animal may hit a wall and oscillate briefly 
+ * - Settings do not save when going back a setting world? or maybe it's just visuals
+ * - 
+ * 
  * @author Angela Wang
  * @version 04.09.25
  */
@@ -47,8 +53,7 @@ public class StartingWorld extends World
         music = new GreenfootSound("startmusic.mp3");
         music.setVolume(70);
 
-        //title + start
-        //OBVIOUSLY VERY SCUFFED but this was mostly to test TextBox
+        //title + start texts
         title = new SuperTextBox("College Admissions Simulator", new Color(0, 0, 0, 0), Color.BLACK, new Font(40), true, 800, 0, new Color(0, 0, 0, 0));
         addObject(title, getWidth() / 2, 400);
 
