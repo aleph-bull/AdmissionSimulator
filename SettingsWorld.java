@@ -19,6 +19,9 @@ public abstract class SettingsWorld extends World
     protected Button back;
     protected SettingsImages maximumValueReachedGraphic;
     protected SettingsImages minimumValueReachedGraphic;
+    protected GreenfootImage image;
+
+    protected static GreenfootSound music = new GreenfootSound("settingsmusic.mp3");
 
     protected abstract void backWorld();
 
@@ -34,6 +37,16 @@ public abstract class SettingsWorld extends World
 
         minimumValueReachedGraphic = new SettingsImages();
         minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
+
+        music.playLoop();
+    }
+
+    public void started(){
+        music.playLoop();
+    }
+
+    public void stopped(){
+        music.stop();
     }
 
     protected class StatChooseImage
@@ -42,12 +55,12 @@ public abstract class SettingsWorld extends World
         private Button right;
         private int number; 
         private SettingsImages object; 
+        private String choosenImage; 
 
         public StatChooseImage(int objectLocationX, int leftLocationX, int rightLocationX, int locationY, int number)
         {
             this.number = number; 
             object = new SettingsImages(); 
-            object.setImageFile("Cat.png"); 
             addObject(object, objectLocationX, locationY); 
             left = new Button(cursor, true); 
             right = new Button(cursor, false);
@@ -77,21 +90,56 @@ public abstract class SettingsWorld extends World
             {
                 number--; 
             }
-            if(number%4==0)
+            if(number%3==0)
             {
                 object.setImageFile(image1); 
+                choosenImage = image1;
             }
-            else if (number%4==1 || number%4==-1)
+            else if (number%3==1 || number%3==-1)
             {
                 object.setImageFile(image2); 
+                choosenImage = image2;
             }
-            else if (number%4 == 2 || number%4==-2)
+            else if (number%3 == 2 || number%3==-2)
             {
                 object.setImageFile(image3); 
+                choosenImage = image3;
             }
         }
 
-        protected void choose(String image1, String image2, String image3, String image4)
+        protected void choose(String image1, String image2, String image3, String image4, boolean isUniversity)
+        {
+            if (Greenfoot.mouseClicked(right))
+            {
+                number++;    
+            }
+            else if (Greenfoot.mouseClicked(left))
+            {
+                number--; 
+            }
+            if(number%4==0)
+            {
+                object.setImageFile(image1, true);
+                choosenImage = image1;
+            }
+            else if (number%4==1 || number%4==-1)
+            {
+                object.setImageFile(image2, true); 
+                choosenImage = image2;
+            }
+            else if (number%4 == 2 || number%4==-2)
+            {
+                object.setImageFile(image3, true); 
+                choosenImage = image3;
+            }
+            else if(number%4 == 3 || number%4==-3)
+            {
+                object.setImageFile(image4, true); 
+                choosenImage = image4;
+            }
+        }
+
+        protected void choose(String image1, String image2, String image3, String image4, String image5, String image6)
         {
             if (Greenfoot.mouseClicked(right))
             {
@@ -104,20 +152,38 @@ public abstract class SettingsWorld extends World
             if(number%4==0)
             {
                 object.setImageFile(image1); 
+                choosenImage = image1;
             }
-            else if (number%4==1 || number%4==-1)
+            else if (number%6==1 || number%6==-1)
             {
                 object.setImageFile(image2); 
+                choosenImage = image2;
             }
-            else if (number%4 == 2 || number%4==-2)
+            else if (number%6 == 2 || number%6==-2)
             {
                 object.setImageFile(image3); 
+                choosenImage = image3;
             }
-            else if (number%4 == 3 || number%4==-3)
+            else if (number%6 == 3 || number%6==-3)
             {
                 object.setImageFile(image4); 
+                choosenImage = image4; 
             }
+            else if (number%6 == 4 || number%6==-4)
+            {
+                object.setImageFile(image5); 
+                choosenImage = image5;
+            }
+            else if (number%6 == 5 || number%6==-5)
+            {
+                object.setImageFile(image6); 
+                choosenImage = image6;
+            }
+        }
 
+        protected String getChoosenImage()
+        {
+            return choosenImage; 
         }
     }
     protected class StatChooseNumber{
@@ -149,7 +215,7 @@ public abstract class SettingsWorld extends World
             {
                 if(number == 100)
                 {
-                    addObject(maximumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+                    showMaximumValue();
                 }
                 else
                 {
@@ -163,7 +229,7 @@ public abstract class SettingsWorld extends World
 
                 if(number ==0)
                 {
-                    addObject(minimumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+                    showMinimumValue(); 
                 }
                 else
                 {
@@ -171,6 +237,27 @@ public abstract class SettingsWorld extends World
                     object.numberDisplay(number); 
                 }
             }
+        }
+
+        public void showMaximumValue()
+        {
+            maximumValueReachedGraphic = new SettingsImages();
+            maximumValueReachedGraphic.maxMinDisplayText("Maximum Value Reached");
+            addObject(maximumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+
+        }
+
+        public void showMinimumValue()
+        {
+            minimumValueReachedGraphic = new SettingsImages();
+            minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
+            addObject(minimumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+
+        }
+
+        public int getNumber()
+        {
+            return number; 
         }
     }
 }

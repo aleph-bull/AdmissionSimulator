@@ -1,9 +1,6 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
-
 public class MainWorld extends World {
-
 
     public static final boolean SHOW_BARS = true;
     public final int GAME_LENGTH = 120; // the length of the game, in seconds.
@@ -43,25 +40,25 @@ public class MainWorld extends World {
 
     private boolean sickness;
 
-    
     private SuperWindow card;
     private Student s;
-    
+
     public static Counter counter = new Counter();
     SimpleTimer st = new SimpleTimer();
     Counter counter2 = new Counter();
-    
-    
-    
 
+    
     private SuperStatBar countdownBar;
-
-
+    private GreenfootSound music;
     public MainWorld() {
         super(1024, 800, 1);
 
         background = new GreenfootImage("background.png");
         setBackground(background);
+
+        music = new GreenfootSound("mainmusic.mp3");
+        music.setVolume(50);
+        music.playLoop();
 
         studentTop = new Student(true);
         bedTop = new Bed();
@@ -93,9 +90,6 @@ public class MainWorld extends World {
         addObject(displayTop, 855, 145);
         addObject(moodTop, 960, 150);
     
-
-        
-
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
         addObject(chairBot, 400, 620);
@@ -107,8 +101,7 @@ public class MainWorld extends World {
         addObject(moodBot, 960, 550);
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "Cat.png";
-        mom = "Mom.png";
+
         topExit = new CollisionBox(true);
         botExit = new CollisionBox(true);
         addObject(topExit, 750, 280);
@@ -124,10 +117,8 @@ public class MainWorld extends World {
         addObject(new StudentStatBar(50, studentTop, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 350);
         addObject(new StudentStatBar(50, studentBot, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 675);
         addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
-        
 
         //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        
 
         actNum = 0;
 
@@ -141,32 +132,21 @@ public class MainWorld extends World {
         sickness = false;
 
         prepare();
-        
-        
+
         card = new SuperWindow (250, 370, 24,2, "Student 1", studentTop, new boolean[]{true, false, true, true, false}, Color.BLACK, Color.WHITE);
-        
         addObject (card, 900, 200);
-        
         //Timer
         counter.setValue(0);
         counter2.setValue(GAME_LENGTH);
         st.mark();
-        
+
         //Adding the timer: Showing the timer (how much time left till they submtit their application)
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
 
-        
-
-        
-        
     }
-
-    public void addedToWorld() {
-
-    }
-
+    
     public void act() {
         spawnRelative();
         actNum++;
@@ -174,28 +154,12 @@ public class MainWorld extends World {
         
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
-            int random = Greenfoot.getRandomNumber(2);
             spawnEffect();
-            /*
-            if (random == 0)
-                spawnDisease();
-            else
-                spawnDepression();
-            */
         }
-        
-        
-        countdownBar.update(actNum);
-        
-
-        
-            
-            
-            
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
-        
+
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
 <<<<<<< Updated upstream
             Greenfoot.setWorld(new BattleWorld());
@@ -204,28 +168,49 @@ public class MainWorld extends World {
 >>>>>>> Stashed changes
         }
     }
-    
+    //???
     public void started(){
         // counter2.setValue(120);
-
-        
-        //countdownBar.update(actNum);
+        music.playLoop();
     }
-        
-
     
-    
+    public void stopped(){
+        music.stop();
+    }
    
-
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;
         } else {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
-            relative = new Relative(cat, isTop);
+            String fileName = "";
+            int random = Greenfoot.getRandomNumber(3);
+            
+            //if top student
             if (isTop) {
+                //set relative image based on what user selected in settings
+                if (random == 0){
+                    fileName = SettingsWorldS1Stats.getRelative1Image();
+                } else if (random == 1){
+                    fileName = SettingsWorldS1Stats.getRelative2Image();
+                } else {
+                    fileName = SettingsWorldS1Stats.getRelative3Image();
+                }
+                
+                relative = new Relative(fileName, isTop);
                 addObject(relative, 50, 200);
             } else {
+                //if bottom student
+                //set img based on user selection
+                if (random == 0){
+                    fileName = SettingsWorldS2Stats.getRelative1Image();
+                } else if (random == 1){
+                    fileName = SettingsWorldS2Stats.getRelative2Image();
+                } else {
+                    fileName = SettingsWorldS2Stats.getRelative3Image();
+                }
+                relative = new Relative(fileName, isTop);
+                System.out.println(fileName);
                 addObject(relative, 50, 600);
             }
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200);

@@ -16,18 +16,18 @@ public class Student extends Animals
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
-    
+
     /*
     //SuperStatBar:
     //GPA Bar:
     private SuperStatBar gpaBar; 
     //Happiness Bar:
     private SuperStatBar happyBar;
-    */
-    
+     */
+
     //Productivity
     boolean productive;
-    
+
     boolean sick;
 
     //Student health that appears when they are avoiding the letters
@@ -36,7 +36,7 @@ public class Student extends Animals
     public GreenfootImage image; 
 
     private GreenfootImage[] walkAnimations = new GreenfootImage[6];
-    private GreenfootImage[] phoneAnimations = new GreenfootImage[9];
+    private GreenfootImage phoneImg;
     private int countdown, walkFrame, phoneFrame;
 
     private ActionState curActionState, prevActionState;
@@ -52,12 +52,8 @@ public class Student extends Animals
         //image.scale(42, 60);
         //setImage(image);
 
-
         happiness = 100;
-        
-      
 
-        prepareAnimations();
         countdown = 8;
         phoneFrame = 0;
         walkFrame = 0;
@@ -66,13 +62,14 @@ public class Student extends Animals
         puttingPhoneAway = false;
 
     }
-    
-   
+
+    public void addedToWorld(World w){
+        prepareAnimations();
+    }
 
     public void act()
     {
         super.act();
-        checkActionState();
         animate();
 
         if (gpa >= 100){gpa = 100;}
@@ -80,7 +77,6 @@ public class Student extends Animals
 
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
-    
 
         
         ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
@@ -133,87 +129,60 @@ public class Student extends Animals
     //add animation frames
     private void prepareAnimations(){
         //walk animations
-        String fileName = "bob_run";
-        for (int j = 0; j < walkAnimations.length; j++){
-            walkAnimations[j] = new GreenfootImage(fileName + (j + 1) + ".png");
-            walkAnimations[j].scale(35, 55);
+
+        //get chosen file name based on what user picked in SettingsWorldGeneral
+        String fileName;
+        if (getY() < 400){
+            fileName = SettingsWorldGeneral.getStudent1Image();
+        } else {
+            fileName = SettingsWorldGeneral.getStudent2Image();
         }
 
-        //phone animations
-        fileName = "bob_phone";
-        for (int i = 0; i < phoneAnimations.length; i++){
-            phoneAnimations[i] = new GreenfootImage(fileName + i + ".png");
-            phoneAnimations[i].scale(35, 55);
+        if (fileName.contains("bob")){
+            fileName = "bob";
+        } else if (fileName.contains("Amelia")){
+            fileName = "Amelia";
+        } else {
+            fileName = "Alex";
         }
+
+        //fill array with correct walk animations
+        for (int j = 0; j < walkAnimations.length; j++){
+            walkAnimations[j] = new GreenfootImage(fileName + "_run" + (j + 1) + ".png");
+            walkAnimations[j].scale(40, 55);
+        }
+        
+        phoneImg = new GreenfootImage(fileName + "_phone4.png");
+        phoneImg.scale(40, 55);
+        
         setImage(walkAnimations[0]);
     }
 
-    
     public boolean isSick() {
         return sick;
     }
 
-
-    //change frames
-    //updates curActionState and prevActionState to know if change has occurred
-    private void checkActionState(){
-        curActionState = getActionState();
-        if (prevActionState == ActionState.NOTHING && curActionState == ActionState.BRAINROTTING){
-            takingPhone = true;
-            phoneFrame = 0;
-        } else if (prevActionState == ActionState.BRAINROTTING && curActionState == ActionState.NOTHING){
-            puttingPhoneAway = true;
-        } 
-    }
-
-
     private void animate(){
-        //if Student is doing nothing but walking around, walk animation
-        //if (curActionState == ActionState.NOTHING){
-
-        if (curActionState == ActionState.BRAINROTTING){
-            if (getY() > 400){
-                System.out.println("ActionState: " + curActionState);
-                System.out.println("Phone frame: " + phoneFrame);
-                System.out.println("Taking phone: " + takingPhone + " Putting Away : " + puttingPhoneAway);
-
-            }
-        }
+        //change frames every 8 acts
         if (countdown > 0){
             countdown--;
         } else {
-            if (takingPhone){
-                setImage(phoneAnimations[phoneFrame]);
-                phoneFrame++;
-                System.out.println(phoneFrame);
-
-                if (phoneFrame > 8){
-                    takingPhone = false;
-                    phoneFrame = 8;
-                }
-            } else if (puttingPhoneAway){
-                setImage(phoneAnimations[phoneFrame]);
-                phoneFrame--;
-
-                if (phoneFrame < 0 ){
-                    System.out.println("Reached");
-                    puttingPhoneAway = false;
-                    phoneFrame = 0;
-                }
-            } else if (curActionState == ActionState.NOTHING){
+            //if at phone, phone image
+            if (getActionState() == ActionState.BRAINROTTING){
+                setImage(phoneImg);
+            } else if (getActionState() == ActionState.NOTHING){
+                //if doing nothing but walking, walk animation
                 setImage(walkAnimations[walkFrame]);
                 walkFrame++;
-
-                if (walkFrame > 5) walkFrame = 0;
+                if (walkFrame > 5) walkFrame = 0; //reset
             } else {
+                //if working/bedrotting, still image
                 walkFrame = 0;
-                setImage(walkAnimations[0]);
+                setImage(walkAnimations[walkFrame]);
             }
-
+            
             countdown = 8;
         }
-
-        prevActionState = curActionState;
     }
 
     public double getHappiness(){
@@ -221,7 +190,7 @@ public class Student extends Animals
     }
 
     //The methods below are for students to dodge the letters during the battle phase of the simulation
-    
+
     public void avoidLetters() {
         int detectionHeight = 100; // how high to scan above
         int detectionWidth = 30;   // how wide to scan on both sides
@@ -249,8 +218,7 @@ public class Student extends Animals
             }
         }
     }
-    
-    
+
     public boolean canMove(int dx) {
         int newX = getX() + dx;
         return newX >= 0 && newX < getWorld().getWidth();

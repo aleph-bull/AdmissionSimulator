@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class SettingsImages here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stephanie Xia
+ * @version 04.17.2025
  */
 public class SettingsImages extends Actor
 {
@@ -36,6 +36,13 @@ public class SettingsImages extends Actor
     }
 
     public void setImageFile(String imageFile)
+    {
+        image = new GreenfootImage(imageFile); 
+        image.scale(50, 60); 
+        setImage(image); 
+    }
+
+    public void setImageFile(String imageFile, boolean isUniversity)
     {
         image = new GreenfootImage(imageFile); 
         setImage(image); 
