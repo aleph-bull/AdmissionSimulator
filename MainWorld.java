@@ -58,7 +58,7 @@ public class MainWorld extends World {
 
         music = new GreenfootSound("mainmusic.mp3");
         music.setVolume(50);
-        music.playLoop();
+        
 
         studentTop = new Student(true);
         bedTop = new Bed();
@@ -148,6 +148,7 @@ public class MainWorld extends World {
     }
     
     public void act() {
+        music.playLoop();
         //for the numbers
         //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
         //for the images
