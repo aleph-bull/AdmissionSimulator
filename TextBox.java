@@ -4,8 +4,7 @@ public class Textbox extends Actor
 {
     private GreenfootImage image;
     private Font font = new Font(40);
-    
-    private String dialog;
+       private String dialog;
     private int textIndex = 0;
     private int frameCount = 0;
     private int speed = 3; 
