@@ -19,6 +19,8 @@ public class Relative extends Animals
         frames = 0;
         curIndex = 0;
         countdown = 8;
+        
+        fileName = "";
         if (file.contains("minicapy")){
             fileName = "minicapy";
             frames = 5;
@@ -29,6 +31,8 @@ public class Relative extends Animals
         } else if (file.contains("amongus")){
             fileName = "amongus";
             frames = 3;
+        } else {
+            fileName = "Cat.png";
         }
         
         if (frames > 0) prepareAnimations(); else setImage(fileName);
