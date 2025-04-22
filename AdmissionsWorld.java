@@ -1,7 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+
  * The final screen that decides admission status, handles the entire animated cutscene
+
  * 
  * @Zachary Zhao
  */
@@ -41,6 +43,7 @@ public class AdmissionsWorld extends World
      * Constructor for objects of class EndingWorld.
      * @Zachary Zhao
      */
+
     public AdmissionsWorld() { //World with no parameters for debugging
         this(new Student(true), new Student(false));
     }
@@ -50,6 +53,7 @@ public class AdmissionsWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
         
+
         this.gpaTop = studentTop.getGpa();
         this.gpaBot = studentBot.getGpa();
         
@@ -64,10 +68,12 @@ public class AdmissionsWorld extends World
         heading = new Font("Times New Roman", false, true, 45); 
         numbers = new Font("Times New Roman", true, false, 100);
         normalText = new Font("Times New Roman", false, false, 40);
+
         
         titleText = new BasicText("Admission Lottery™", title, Color.BLACK);
         studentHeading = new BasicText("Top Student", heading, Color.BLACK);
         randomNumberDisplay = new BasicText("", numbers, Color.BLACK);
+
         instructions = new BasicText("If the random number is below " + (int)gpaTop + ", you're admitted!", normalText, Color.BLACK);
         
         // Random number roll
@@ -76,7 +82,7 @@ public class AdmissionsWorld extends World
         // Max gpa is 100 fyi
         studentTopAdmitted = randomNumberRollTop <= gpaTop; //random number 0-100
         studentBotAdmitted = randomNumberRollBot <= gpaBot;
-        
+
         playingStudentTopSequence = true;
         
         addObject(titleText, 585, 130);
@@ -142,6 +148,7 @@ public class AdmissionsWorld extends World
     
     public void simulateRolling() {
         if(isPlaying) {
+
             if(actsSinceStartingRoller % changingNumberCooldown == 0) {
                 randomNumber = Greenfoot.getRandomNumber(101);
                 String numberString = Integer.toString(randomNumber);
@@ -162,7 +169,9 @@ public class AdmissionsWorld extends World
                         } else {
                             randomNumberDisplay.updateText(topRollString, Color.RED);
                         }
+
                         firstSequenceFinished = true;
+
                     }else{
                         String botRollString = Integer.toString(randomNumberRollBot);
                         if(studentBotAdmitted) {
@@ -170,11 +179,13 @@ public class AdmissionsWorld extends World
                         } else {
                             randomNumberDisplay.updateText(botRollString, Color.RED);
                         }
+
                         secondSequenceFinished = true;
                     }
                     
                     actsSinceStartingRoller = 0;
                     changingNumberCooldown = 2;
+
                 }
             }
             actsSinceStartingRoller++;
