@@ -2,6 +2,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Textbox extends Actor
 {
+    private GreenfootImage image;
+    private Font font = new Font(40);
+    
+    public TextBox(String text, Color color){
+        image = new GreenfootImage(800, 500);
+        image.setColor(color);
+        image.setFont(font);
+        image.drawString(text, 100, 100);
     private String dialog;
     private int textIndex = 0;
     private int frameCount = 0;
