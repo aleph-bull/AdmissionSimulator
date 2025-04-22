@@ -37,7 +37,7 @@ public class SettingsWorldGeneral extends SettingsWorld
     {
         student1.choose("bob_run1.png", "Amelia_run1.png", "Alex_run1.png"); 
         student2.choose("bob_run1.png", "Amelia_run1.png", "Alex_run1.png"); 
-        university.choose("universityofcatmeme.png", "universityofbigmac.png", "universityofducksong.png", "universityoflebron.png"); 
+        university.choose("universityofcatmeme.png", "universityofbigmac.png", "universityofducksong.png", "universityoflebron.png", true); 
         backWorld();
         nextWorld();
     }
