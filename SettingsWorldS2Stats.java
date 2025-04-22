@@ -57,11 +57,10 @@ public class SettingsWorldS2Stats extends SettingsWorld
 
         relative1.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
         relative2.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
-        relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
+        relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
     }
-
-    public void backWorld()
-    {
+    
+    public void backWorld(){
         if (Greenfoot.mouseClicked(back))
         {
             Greenfoot.setWorld(new SettingsWorldS1Stats()); 
