@@ -55,9 +55,9 @@ public class SettingsWorldS2Stats extends SettingsWorld
         productivity.choose(); 
         happiness.choose(); 
 
-        relative1.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png"); 
-        relative2.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png");
-        relative3.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png");
+        relative1.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
+        relative2.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
+        relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
     }
 
     public void backWorld()
@@ -86,6 +86,7 @@ public class SettingsWorldS2Stats extends SettingsWorld
     {
         return gpa.getNumber(); 
     }
+    
     public static int getProductivityNumber()
     {
         return productivity.getNumber(); 
