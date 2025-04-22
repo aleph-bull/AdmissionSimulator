@@ -93,9 +93,7 @@ public class IntroductionWorld extends World
 
         //if (text.isFinished()){
             
-        if (actNum % duration == 0){
-            System.out.println(curIndex);
-            
+        if (actNum % duration == 0){            
             curIndex++;
             if (curIndex == dialogue.length){
                 music.stop();
