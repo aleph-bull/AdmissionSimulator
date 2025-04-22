@@ -19,7 +19,8 @@ public abstract class SettingsWorld extends World
     protected Button back;
     protected SettingsImages maximumValueReachedGraphic;
     protected SettingsImages minimumValueReachedGraphic;
-    
+    protected GreenfootImage image;
+
     protected static GreenfootSound music = new GreenfootSound("settingsmusic.mp3");
 
     protected abstract void backWorld();
@@ -36,14 +37,14 @@ public abstract class SettingsWorld extends World
 
         minimumValueReachedGraphic = new SettingsImages();
         minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
-        
+
         music.playLoop();
     }
-    
+
     public void started(){
         music.playLoop();
     }
-    
+
     public void stopped(){
         music.stop();
     }
@@ -60,7 +61,6 @@ public abstract class SettingsWorld extends World
         {
             this.number = number; 
             object = new SettingsImages(); 
-            object.setImageFile("Cat.png"); 
             addObject(object, objectLocationX, locationY); 
             left = new Button(cursor, true); 
             right = new Button(cursor, false);
@@ -107,7 +107,7 @@ public abstract class SettingsWorld extends World
             }
         }
 
-        protected void choose(String image1, String image2, String image3, String image4)
+        protected void choose(String image1, String image2, String image3, String image4, boolean isUniversity)
         {
             if (Greenfoot.mouseClicked(right))
             {
@@ -119,22 +119,22 @@ public abstract class SettingsWorld extends World
             }
             if(number%4==0)
             {
-                object.setImageFile(image1);
+                object.setImageFile(image1, true);
                 choosenImage = image1;
             }
             else if (number%4==1 || number%4==-1)
             {
-                object.setImageFile(image2); 
+                object.setImageFile(image2, true); 
                 choosenImage = image2;
             }
             else if (number%4 == 2 || number%4==-2)
             {
-                object.setImageFile(image3); 
+                object.setImageFile(image3, true); 
                 choosenImage = image3;
             }
             else if(number%4 == 3 || number%4==-3)
             {
-                object.setImageFile(image4); 
+                object.setImageFile(image4, true); 
                 choosenImage = image4;
             }
         }
@@ -179,7 +179,6 @@ public abstract class SettingsWorld extends World
                 object.setImageFile(image6); 
                 choosenImage = image6;
             }
-
         }
 
         protected String getChoosenImage()
@@ -216,7 +215,7 @@ public abstract class SettingsWorld extends World
             {
                 if(number == 100)
                 {
-                    addObject(maximumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+                    showMaximumValue();
                 }
                 else
                 {
@@ -230,7 +229,7 @@ public abstract class SettingsWorld extends World
 
                 if(number ==0)
                 {
-                    addObject(minimumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+                    showMinimumValue(); 
                 }
                 else
                 {
@@ -238,6 +237,22 @@ public abstract class SettingsWorld extends World
                     object.numberDisplay(number); 
                 }
             }
+        }
+
+        public void showMaximumValue()
+        {
+            maximumValueReachedGraphic = new SettingsImages();
+            maximumValueReachedGraphic.maxMinDisplayText("Maximum Value Reached");
+            addObject(maximumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+
+        }
+
+        public void showMinimumValue()
+        {
+            minimumValueReachedGraphic = new SettingsImages();
+            minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
+            addObject(minimumValueReachedGraphic, graphicLocationX, graphicLocationY); 
+
         }
 
         public int getNumber()

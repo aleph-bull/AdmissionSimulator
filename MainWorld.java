@@ -97,8 +97,6 @@ public class MainWorld extends World {
         addObject(mirrorBot, 600, 550);
         addObject(phoneBot, 600, 700);
         addObject(computerBot, 400, 520);
-
-
         addObject(displayBot, 855, 545);
         addObject(moodBot, 960, 550);
         relativeCountdown = 10;
@@ -110,7 +108,8 @@ public class MainWorld extends World {
         addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
-      
+        
+
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
 
@@ -125,8 +124,9 @@ public class MainWorld extends World {
 
         countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
         addObject(countdownBar, 400, 401);
-
         setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
+
+
 
         actNum = 0;
         sickness = false;
@@ -148,26 +148,14 @@ public class MainWorld extends World {
     }
     
     public void act() {
-        //for the numbers
-        showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
-        //for the images
-        showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
-        
-        
         spawnRelative();
         actNum++;
 
         
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
-            int random = Greenfoot.getRandomNumber(2);
             spawnEffect();
         }
-
-        // counter2.setValue(120 - st.millisElapsed()/1000);
-        if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
-        countdownBar.update(actNum);
-                
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
@@ -191,10 +179,34 @@ public class MainWorld extends World {
             relativeCountdown--;
         } else {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
-            relative = new Relative("amongus", isTop);
+            String fileName = "";
+            int random = Greenfoot.getRandomNumber(3);
+            
+            //if top student
             if (isTop) {
+                //set relative image based on what user selected in settings
+                if (random == 0){
+                    fileName = SettingsWorldS1Stats.getRelative1Image();
+                } else if (random == 1){
+                    fileName = SettingsWorldS1Stats.getRelative2Image();
+                } else {
+                    fileName = SettingsWorldS1Stats.getRelative3Image();
+                }
+                
+                relative = new Relative(fileName, isTop);
                 addObject(relative, 50, 200);
             } else {
+                //if bottom student
+                //set img based on user selection
+                if (random == 0){
+                    fileName = SettingsWorldS2Stats.getRelative1Image();
+                } else if (random == 1){
+                    fileName = SettingsWorldS2Stats.getRelative2Image();
+                } else {
+                    fileName = SettingsWorldS2Stats.getRelative3Image();
+                }
+                relative = new Relative(fileName, isTop);
+                System.out.println(fileName);
                 addObject(relative, 50, 600);
             }
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200);

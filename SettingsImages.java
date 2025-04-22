@@ -38,6 +38,13 @@ public class SettingsImages extends Actor
     public void setImageFile(String imageFile)
     {
         image = new GreenfootImage(imageFile); 
+        image.scale(50, 60); 
+        setImage(image); 
+    }
+
+    public void setImageFile(String imageFile, boolean isUniversity)
+    {
+        image = new GreenfootImage(imageFile); 
         setImage(image); 
     }
 

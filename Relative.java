@@ -5,69 +5,70 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Relative extends Animals
 {
     private boolean takeSpot;
-    //private GreenfootImage image; 
-    private String image; 
-    private GreenfootImage[] amongusAnimations = new GreenfootImage[3];
-    private GreenfootImage[] capybaraAnimations = new GreenfootImage[5];
-    private int capybaraFrame, amongusFrame;
+    private GreenfootImage[] walkAnimations;
+    private String fileName;
+    private int frames;
+    private int curIndex;
+    private int direction;
+    private int countdown;
 
-    private ActionState curActionState, prevActionState;
+    public Relative(String file, boolean isTop)
+    {
+        super(isTop); 
+                
+        frames = 0;
+        curIndex = 0;
+        countdown = 8;
+        
+        fileName = "";
+        if (file.contains("minicapy")){
+            fileName = "minicapy";
+            frames = 5;
+        } else if (file.contains("sister")){
+            fileName = "sister.png";
+        } else if (file.contains("brother")){
+            fileName = "brother.png";
+        } else if (file.contains("amongus")){
+            fileName = "amongus";
+            frames = 3;
+        } else {
+            fileName = "Cat.png";
+        }
+        
+        if (frames > 0) prepareAnimations(); else setImage(fileName);
+    }
 
+    private void prepareAnimations(){
+        walkAnimations = new GreenfootImage[frames];
+        
+        for (int i = 0; i < frames; i++){
+            walkAnimations[i] = new GreenfootImage(fileName + "_run" + (i + 1) + ".png");
+            walkAnimations[i].scale(50, 50);
+        }
+        
+        setImage(walkAnimations[0]);
+        curIndex++;
+    }
+    
     public void act()
     {
         super.act();
-        determineRelative(); 
-        animate(); 
-    }
-
-    public Relative(){
-        super();
-    }
-
-    public Relative(String image, boolean isTop)
-    {
-        super(isTop); 
-        this.image = image; 
-        //setImage(image); 
-        capybaraFrame = 0;
-        amongusFrame =0; 
-    }
-
-    public void determineRelative()
-    {
-        //anmong us walk animations
-        if(image == "amongus")
-        {
-            String fileName = "amongus";
-            for (int j = 0; j < amongusAnimations.length; j++){
-                amongusAnimations[j] = new GreenfootImage(fileName + (j + 1) + ".png");
-                amongusAnimations[j].scale(35, 55);
-                setImage(amongusAnimations[j]);
-            }
-            setImage(amongusAnimations[0]);
-
+        
+        if (frames > 0){
+            animate();
         }
-
     }
 
-    public void animate()
+    private void animate()
     {
-        if (curActionState == ActionState.NOTHING){
-            setImage(capybaraAnimations[capybaraFrame]);
-            capybaraFrame++;
-
-            if (capybaraFrame > 3) capybaraFrame = 0;
+        if (countdown > 0){
+            countdown--;
         } else {
-            capybaraFrame = 0;
-            setImage(capybaraAnimations[0]);
-        }
-    }
-
-    public void takeSpot()
-    {
-        if (takeSpot == true)
-        {
-            //turn towards other object else go back
+            setImage(walkAnimations[curIndex]);
+            curIndex++;
+            if (curIndex == frames) curIndex = 0;
+            
+            countdown = 8;
         }
     }
 }
