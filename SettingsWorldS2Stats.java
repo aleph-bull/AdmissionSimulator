@@ -72,6 +72,7 @@ public class SettingsWorldS2Stats extends SettingsWorld
     {
         if (Greenfoot.mouseClicked(next))
         {
+            music.stop();
             Greenfoot.setWorld(new MainWorld()); 
         }
     }
