@@ -197,7 +197,11 @@ public class MainWorld extends World {
         countdownBar.update(actNum);
         
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
+<<<<<<< Updated upstream
             Greenfoot.setWorld(new BattleWorld());
+=======
+            Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
+>>>>>>> Stashed changes
         }
     }
     
