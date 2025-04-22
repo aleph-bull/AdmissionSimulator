@@ -58,6 +58,8 @@ public class SettingsWorldS1Stats extends SettingsWorld
         relative1.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png"); 
         relative2.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png");
         relative3.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png"); 
+
+        showText(relative1.getChoosenImage(), 100, 200); 
     }
 
     public void backWorld()
