@@ -44,8 +44,8 @@ public class MainWorld extends World {
     private Student s;
     
     public static Counter counter = new Counter();
-    SimpleTimer st = new SimpleTimer();
-    Counter counter2 = new Counter();
+    private SimpleTimer st = new SimpleTimer();
+    private Counter counter2 = new Counter();
     
     
     
@@ -168,29 +168,30 @@ public class MainWorld extends World {
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             int random = Greenfoot.getRandomNumber(2);
-            if (random == 0)
-                spawnDisease();
-            else
-                spawnDepression();
-
+            if (random == 0){
+                spawnEffect();
+            }
+            else{
+                spawnEffect();
             }
             
             
-        counter2.setValue(120 - st.millisElapsed()/1000);
-        //Switch to BattleWorld
-        if(counter2.getValue() == 0){
-            Greenfoot.setWorld(new BattleWorld());
+            counter2.setValue(120 - st.millisElapsed()/1000);
+            //Switch to BattleWorld
+            if(counter2.getValue() == 0){
+                Greenfoot.setWorld(new BattleWorld());
+            }
         }
     }
-    
+
+    //Starting the timer
     public void started(){
         counter2.setValue(120);
-
-        }
-        
         countdownBar.update(actNum);
+    }
+    
+    public void stopped(){
         
-
     }
     
    
