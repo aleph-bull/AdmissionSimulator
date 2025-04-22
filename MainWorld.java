@@ -163,7 +163,11 @@ public class MainWorld extends World {
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             Greenfoot.setWorld(new BattleWorld());
+=======
+            Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
+>>>>>>> Stashed changes
 =======
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
 >>>>>>> Stashed changes
