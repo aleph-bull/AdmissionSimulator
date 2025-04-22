@@ -173,7 +173,7 @@ public class MainWorld extends World {
         countdownBar.update(actNum);
 
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
-            Greenfoot.setWorld(new BattleWorld());
+            Greenfoot.setWorld(new AdmissionsWorld(studentTop.getGpa(), studentBot.getGpa()));
         }
     }
     //???

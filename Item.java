@@ -42,7 +42,9 @@ public class Item extends Actor
     public void setUser(Animals a){
         isBeingUsed = true;
         user = a;
-        usageBar = new SuperStatBar (useActCountDuration, beingUsedActCount, a, 70, 10, -a.getImage().getHeight(),  new Color(50,84,168), Color.BLACK, false, new Color(30,38,59), 3);
+        if(a.getImage() != null)
+            usageBar = new SuperStatBar (useActCountDuration, beingUsedActCount, a, 70, 10, -a.getImage().getHeight(),  new Color(50,84,168), Color.BLACK, false, new Color(30,38,59), 3);
+        
         getWorld().addObject(usageBar, a.getX(), a.getY());
     }
     

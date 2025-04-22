@@ -104,7 +104,7 @@ public class Student extends Animals
     }
 
     public void rest(){
-        happiness ++;
+        happiness += 0.6;
     }
 
     public void work(){
