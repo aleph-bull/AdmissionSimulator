@@ -41,6 +41,7 @@ public class Counter extends Actor
     public Counter()
     {
         this(new String());
+        background = new GreenfootImage(20,20); // Workaround to avoid stretched greenfoot (haha)
     }
 
     /**

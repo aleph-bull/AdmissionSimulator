@@ -13,10 +13,10 @@ public class SettingsWorldS2Stats extends SettingsWorld
      * Constructor for objects of class SettingsWorldS2Stats.
      * 
      */
-    private SettingsWorldS2Stats.StatChooseNumber happiness, productivity, gpa; 
-    private int happinessNumber, productivityNumber, gpaNumber;
+    private static SettingsWorldS2Stats.StatChooseNumber happiness, productivity, gpa; 
+    private static int happinessNumber, productivityNumber, gpaNumber;
 
-    private SettingsWorldS2Stats.StatChooseImage relative1, relative2, relative3; 
+    private static SettingsWorldS2Stats.StatChooseImage relative1, relative2, relative3; 
     private int relative1Number, relative2Number, relative3Number; 
     public SettingsWorldS2Stats()
     {
@@ -54,9 +54,10 @@ public class SettingsWorldS2Stats extends SettingsWorld
         gpa.choose();
         productivity.choose(); 
         happiness.choose(); 
-        relative1.choose("Cat.png", "Alex_run1.png", "Alex_run2.png", "Alex_run3.png"); 
-        relative2.choose("Cat.png", "Cat.png", "Cat.png", "Cat.png");
-        relative3.choose("Cat.png", "Cat.png", "Cat.png", "Cat.png"); 
+
+        relative1.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png"); 
+        relative2.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png");
+        relative3.choose("Cat.png", "Mom.png", "amongus1.png", "mini capy (1).png", "brother.png", "sister.png");
     }
 
     public void backWorld()
@@ -71,8 +72,38 @@ public class SettingsWorldS2Stats extends SettingsWorld
     {
         if (Greenfoot.mouseClicked(next))
         {
+            music.stop();
             Greenfoot.setWorld(new MainWorld()); 
         }
+    }
+
+    public static int getHappinessNumber()
+    {
+        return happiness.getNumber(); 
+    }
+
+    public static int getGPANumber()
+    {
+        return gpa.getNumber(); 
+    }
+    public static int getProductivityNumber()
+    {
+        return productivity.getNumber(); 
+    }
+
+    public static String getRelative1Image()
+    {
+        return relative1.getChoosenImage();
+    }
+
+    public static String getRelative2Image()
+    {
+        return relative2.getChoosenImage();
+    }
+
+    public static String getRelative3Image()
+    {
+        return relative3.getChoosenImage();
     }
 
 }
