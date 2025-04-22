@@ -148,12 +148,6 @@ public class MainWorld extends World {
     }
     
     public void act() {
-        //for the numbers
-        //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
-        //for the images
-        //showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
-        
-        
         spawnRelative();
         actNum++;
 
@@ -185,30 +179,34 @@ public class MainWorld extends World {
             relativeCountdown--;
         } else {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
-            String fileName;
+            String fileName = "";
             int random = Greenfoot.getRandomNumber(3);
-            //relative = new Relative("amongus", isTop);
+            
+            //if top student
             if (isTop) {
-                /*if (random == 0){
+                //set relative image based on what user selected in settings
+                if (random == 0){
                     fileName = SettingsWorldS1Stats.getRelative1Image();
                 } else if (random == 1){
                     fileName = SettingsWorldS1Stats.getRelative2Image();
                 } else {
                     fileName = SettingsWorldS1Stats.getRelative3Image();
-                }*/
-                //relative = new Relative(fileName, isTop);
-                relative = new Relative("minicapy", isTop);
+                }
+                
+                relative = new Relative(fileName, isTop);
                 addObject(relative, 50, 200);
             } else {
-                /*if (random == 0){
+                //if bottom student
+                //set img based on user selection
+                if (random == 0){
                     fileName = SettingsWorldS2Stats.getRelative1Image();
                 } else if (random == 1){
                     fileName = SettingsWorldS2Stats.getRelative2Image();
                 } else {
                     fileName = SettingsWorldS2Stats.getRelative3Image();
-                }*/
-                //relative = new Relative(fileName, isTop);
-                relative = new Relative("minicapy", isTop);
+                }
+                relative = new Relative(fileName, isTop);
+                System.out.println(fileName);
                 addObject(relative, 50, 600);
             }
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200);
