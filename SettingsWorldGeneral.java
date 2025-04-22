@@ -25,6 +25,7 @@ public class SettingsWorldGeneral extends SettingsWorld
         addObject(next, 945, 670);
         back = new Button (cursor, true); 
         //addObject(back, 100, 670); 
+
         student1Number = 0;
         student1 = new SettingsWorld.StatChooseImage(250, 100, 400, 290, student1Number); 
         student2Number = 0;
