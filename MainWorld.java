@@ -164,7 +164,11 @@ public class MainWorld extends World {
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             Greenfoot.setWorld(new BattleWorld());
+=======
+            Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
+>>>>>>> Stashed changes
 =======
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
 >>>>>>> Stashed changes
