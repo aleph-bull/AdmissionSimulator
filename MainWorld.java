@@ -1,6 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 public class MainWorld extends World {
 
     public static final boolean SHOW_BARS = true;
@@ -91,8 +90,6 @@ public class MainWorld extends World {
         addObject(displayTop, 855, 145);
         addObject(moodTop, 960, 150);
     
-
-
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
         addObject(chairBot, 400, 620);
@@ -104,8 +101,7 @@ public class MainWorld extends World {
         addObject(moodBot, 960, 550);
         relativeCountdown = 10;
         relativeMinCountdown = 500;         
-        cat = "Cat.png";
-        mom = "Mom.png";
+
         topExit = new CollisionBox(true);
         botExit = new CollisionBox(true);
         addObject(topExit, 750, 280);
@@ -123,7 +119,7 @@ public class MainWorld extends World {
         addObject(new StudentStatBar(50, studentBot, 200, 30, Color.BLUE, Color.WHITE, Color.BLACK, 10, true, false), 898, 750);
 
         //addObject(new StudentStatBar(100, 50, studentTop, 200, 30, Color.GREEN, Color.WHITE, Color.BLACK, 10, true, true), 898, 100);
-        
+
         actNum = 0;
 
         countdownBar = new SuperStatBar(GAME_LENGTH*60, 0, null, 600, 25, 0, new Color(227, 145, 224), Color.WHITE, false, Color.BLACK, 3);
@@ -149,18 +145,21 @@ public class MainWorld extends World {
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
 
-
-        
     }
-
+    
     public void act() {
+        //for the numbers
+        showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
+        //for the images
+        showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
+        
+        
         spawnRelative();
         actNum++;
 
         
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
-            int random = Greenfoot.getRandomNumber(2);
             spawnEffect();
         }
         // counter2.setValue(120 - st.millisElapsed()/1000);
@@ -171,7 +170,6 @@ public class MainWorld extends World {
             Greenfoot.setWorld(new BattleWorld());
         }
     }
-
     //???
     public void started(){
         // counter2.setValue(120);
@@ -187,7 +185,7 @@ public class MainWorld extends World {
             relativeCountdown--;
         } else {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
-            relative = new Relative(cat, isTop);
+            relative = new Relative("amongus", isTop);
             if (isTop) {
                 addObject(relative, 50, 200);
             } else {

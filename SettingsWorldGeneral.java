@@ -13,7 +13,7 @@ public class SettingsWorldGeneral extends SettingsWorld
      * Constructor for objects of class SettingWorldGeneral.
      * 
      */
-    private SettingsWorld.StatChooseImage student1, student2, university;
+    private static SettingsWorld.StatChooseImage student1, student2, university;
     private int student1Number, student2Number, universityNumber; 
 
     public SettingsWorldGeneral()
@@ -21,11 +21,8 @@ public class SettingsWorldGeneral extends SettingsWorld
         background = new GreenfootImage("SettingsPg1.png"); 
         setBackground(background); 
 
-
         next = new Button (cursor, false);
         addObject(next, 945, 670);
-        back = new Button (cursor, true); 
-        //addObject(back, 100, 670); 
 
         student1Number = 0;
         student1 = new SettingsWorld.StatChooseImage(250, 100, 400, 290, student1Number); 
@@ -35,6 +32,7 @@ public class SettingsWorldGeneral extends SettingsWorld
         university = new SettingsWorld.StatChooseImage(725, 500, 942, 550, 410, universityNumber); 
 
     }
+
     public void act()
     {
         student1.choose("bob_run1.png", "Amelia_run1.png", "Alex_run1.png"); 
@@ -46,10 +44,6 @@ public class SettingsWorldGeneral extends SettingsWorld
 
     public void backWorld()
     {
-        if (Greenfoot.mouseClicked(back))
-        {
-            Greenfoot.setWorld(new IntroductionWorld()); 
-        }
     }
 
     public void nextWorld()
@@ -59,4 +53,20 @@ public class SettingsWorldGeneral extends SettingsWorld
             Greenfoot.setWorld(new SettingsWorldS1Stats()); 
         }
     }
+
+    public static String getUniversityImage()
+    {
+        return university.getChoosenImage(); 
+    }
+
+    public static String getStudent1Image()
+    {
+        return student1.getChoosenImage(); 
+    }
+
+    public static String getStudent2Image()
+    {
+        return student2.getChoosenImage(); 
+    }
+
 }

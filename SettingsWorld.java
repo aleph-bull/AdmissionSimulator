@@ -54,6 +54,7 @@ public abstract class SettingsWorld extends World
         private Button right;
         private int number; 
         private SettingsImages object; 
+        private String choosenImage; 
 
         public StatChooseImage(int objectLocationX, int leftLocationX, int rightLocationX, int locationY, int number)
         {
@@ -89,17 +90,20 @@ public abstract class SettingsWorld extends World
             {
                 number--; 
             }
-            if(number%4==0)
+            if(number%3==0)
             {
                 object.setImageFile(image1); 
+                choosenImage = image1;
             }
-            else if (number%4==1 || number%4==-1)
+            else if (number%3==1 || number%3==-1)
             {
                 object.setImageFile(image2); 
+                choosenImage = image2;
             }
-            else if (number%4 == 2 || number%4==-2)
+            else if (number%3 == 2 || number%3==-2)
             {
                 object.setImageFile(image3); 
+                choosenImage = image3;
             }
         }
 
@@ -115,21 +119,72 @@ public abstract class SettingsWorld extends World
             }
             if(number%4==0)
             {
-                object.setImageFile(image1); 
+                object.setImageFile(image1);
+                choosenImage = image1;
             }
             else if (number%4==1 || number%4==-1)
             {
                 object.setImageFile(image2); 
+                choosenImage = image2;
             }
             else if (number%4 == 2 || number%4==-2)
             {
                 object.setImageFile(image3); 
+                choosenImage = image3;
             }
-            else if (number%4 == 3 || number%4==-3)
+            else if(number%4 == 3 || number%4==-3)
             {
                 object.setImageFile(image4); 
+                choosenImage = image4;
+            }
+        }
+
+        protected void choose(String image1, String image2, String image3, String image4, String image5, String image6)
+        {
+            if (Greenfoot.mouseClicked(right))
+            {
+                number++;    
+            }
+            else if (Greenfoot.mouseClicked(left))
+            {
+                number--; 
+            }
+            if(number%4==0)
+            {
+                object.setImageFile(image1); 
+                choosenImage = image1;
+            }
+            else if (number%6==1 || number%6==-1)
+            {
+                object.setImageFile(image2); 
+                choosenImage = image2;
+            }
+            else if (number%6 == 2 || number%6==-2)
+            {
+                object.setImageFile(image3); 
+                choosenImage = image3;
+            }
+            else if (number%6 == 3 || number%6==-3)
+            {
+                object.setImageFile(image4); 
+                choosenImage = image4; 
+            }
+            else if (number%6 == 4 || number%6==-4)
+            {
+                object.setImageFile(image5); 
+                choosenImage = image5;
+            }
+            else if (number%6 == 5 || number%6==-5)
+            {
+                object.setImageFile(image6); 
+                choosenImage = image6;
             }
 
+        }
+
+        protected String getChoosenImage()
+        {
+            return choosenImage; 
         }
     }
     protected class StatChooseNumber{
@@ -183,6 +238,11 @@ public abstract class SettingsWorld extends World
                     object.numberDisplay(number); 
                 }
             }
+        }
+
+        public int getNumber()
+        {
+            return number; 
         }
     }
 }

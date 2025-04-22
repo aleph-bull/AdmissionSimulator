@@ -16,15 +16,15 @@ public class Student extends Animals
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
-    
+
     /*
     //SuperStatBar:
     //GPA Bar:
     private SuperStatBar gpaBar; 
     //Happiness Bar:
     private SuperStatBar happyBar;
-    */
-    
+     */
+
     //Productivity
     boolean productive;
     
@@ -52,10 +52,7 @@ public class Student extends Animals
         //image.scale(42, 60);
         //setImage(image);
 
-
         happiness = 100;
-        
-      
 
         prepareAnimations();
         countdown = 8;
@@ -66,8 +63,6 @@ public class Student extends Animals
         puttingPhoneAway = false;
 
     }
-    
-   
 
     public void act()
     {
@@ -221,7 +216,7 @@ public class Student extends Animals
     }
 
     //The methods below are for students to dodge the letters during the battle phase of the simulation
-    
+
     public void avoidLetters() {
         int detectionHeight = 100; // how high to scan above
         int detectionWidth = 30;   // how wide to scan on both sides
@@ -249,8 +244,7 @@ public class Student extends Animals
             }
         }
     }
-    
-    
+
     public boolean canMove(int dx) {
         int newX = getX() + dx;
         return newX >= 0 && newX < getWorld().getWidth();
