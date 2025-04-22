@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class SettingsImages here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stephanie Xia
+ * @version 04.17.2025
  */
 public class SettingsImages extends Actor
 {
