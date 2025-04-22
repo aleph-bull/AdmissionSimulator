@@ -149,9 +149,9 @@ public class MainWorld extends World {
     
     public void act() {
         //for the numbers
-        showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
+        //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
         //for the images
-        showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
+        //showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
         
         
         spawnRelative();
