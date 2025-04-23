@@ -21,10 +21,12 @@ public class EndingWorld extends World
 
     private CharacterImage student1, student2;
 
-    public EndingWorld()
+    public EndingWorld(boolean student1Admitted, boolean student2Admitted)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1024, 800, 1); 
+        super(1024, 800, 1);
+        student1Win = student1Admitted;
+        student2Win = student2Admitted;
         background = new GreenfootImage("EndingWorld.png");
         setBackground(background); 
 
@@ -36,7 +38,7 @@ public class EndingWorld extends World
         student2 = new CharacterImage(false); 
         addObject(student2, 620, 590); 
         
-        if(student1Win == true)
+        if(student1Win == student1Admitted)
         {
             acceptedImage = new DecisionImage(true); 
             addObject(acceptedImage, 526, 288); 
@@ -47,7 +49,7 @@ public class EndingWorld extends World
             addObject(rejectedImage, 526, 286); 
         }
 
-        if(student2Win == true)
+        if(student2Win == student2Admitted)
         {
             acceptedImage = new DecisionImage(true); 
             addObject(acceptedImage, 532, 557);

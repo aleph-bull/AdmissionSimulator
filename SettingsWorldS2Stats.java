@@ -17,7 +17,7 @@ public class SettingsWorldS2Stats extends SettingsWorld
     private static int happinessNumber, productivityNumber, gpaNumber;
 
     private static SettingsWorldS2Stats.StatChooseImage relative1, relative2, relative3; 
-    private int relative1Number, relative2Number, relative3Number; 
+    private static int relative1Number, relative2Number, relative3Number; 
     public SettingsWorldS2Stats()
     {
         next = new Button (cursor, false);
@@ -54,12 +54,14 @@ public class SettingsWorldS2Stats extends SettingsWorld
         gpa.choose();
         productivity.choose(); 
         happiness.choose(); 
+        showText(String.valueOf(data.getStudent1Number()), 300, 200); 
+        showText(String.valueOf(data.getS1Relative2Number()), 400, 200); 
 
         relative1.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
         relative2.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
         relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
     }
-    
+
     public void backWorld(){
         if (Greenfoot.mouseClicked(back))
         {
@@ -85,7 +87,7 @@ public class SettingsWorldS2Stats extends SettingsWorld
     {
         return gpa.getNumber(); 
     }
-    
+
     public static int getProductivityNumber()
     {
         return productivity.getNumber(); 
@@ -106,4 +108,18 @@ public class SettingsWorldS2Stats extends SettingsWorld
         return relative3.getChoosenImage();
     }
 
+    public static void setRelative1Number()
+    {
+        data.setS2Relative1Number(relative1Number); 
+    }
+
+    public static void setRelative2Number()
+    {
+        data.setS2Relative2Number(relative2Number); 
+    }
+
+    public static void setRelative3Number()
+    {
+        data.setS2Relative3Number(relative3Number); 
+    }
 }

@@ -21,15 +21,17 @@ public abstract class SettingsWorld extends World
     protected SettingsImages minimumValueReachedGraphic;
     protected GreenfootImage image;
 
+    protected static SimData data;
+
     protected static GreenfootSound music = new GreenfootSound("settingsmusic.mp3");
 
     protected abstract void backWorld();
-
     protected abstract void nextWorld();
 
     public SettingsWorld()
     {    
         super(1024, 800, 1); 
+        data = new SimData ();
         cursor = new Cursor();
         addObject(cursor, 0, 0);
         maximumValueReachedGraphic = new SettingsImages();
@@ -179,6 +181,11 @@ public abstract class SettingsWorld extends World
                 object.setImageFile(image6); 
                 choosenImage = image6;
             }
+        }
+
+        protected int getNumber()
+        {
+            return number; 
         }
 
         protected String getChoosenImage()
