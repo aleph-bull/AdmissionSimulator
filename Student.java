@@ -146,8 +146,11 @@ public class Student extends Animals
             fileName = "bob";
         } else if (fileName.contains("Amelia")){
             fileName = "Amelia";
-        } else {
+        } else if (fileName.contains("Alex")){
             fileName = "Alex";
+        }
+        else{
+            fileName = "Adam"; 
         }
 
         //fill array with correct walk animations

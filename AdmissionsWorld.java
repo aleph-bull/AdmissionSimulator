@@ -138,7 +138,7 @@ public class AdmissionsWorld extends World
         }
         
         if(actCount == actCountWhenBeganTalking + 500 && !playingStudentTopSequence) {
-            //change to ending world
+            Greenfoot.setWorld(new EndingWorld(studentTopAdmitted, studentBotAdmitted)); 
         }
         
         actCount++;

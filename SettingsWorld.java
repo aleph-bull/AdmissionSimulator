@@ -21,15 +21,17 @@ public abstract class SettingsWorld extends World
     protected SettingsImages minimumValueReachedGraphic;
     protected GreenfootImage image;
 
+    protected static SimData data;
+
     protected static GreenfootSound music = new GreenfootSound("settingsmusic.mp3");
 
     protected abstract void backWorld();
-
     protected abstract void nextWorld();
 
     public SettingsWorld()
     {    
         super(1024, 800, 1); 
+        data = new SimData ();
         cursor = new Cursor();
         addObject(cursor, 0, 0);
         maximumValueReachedGraphic = new SettingsImages();
@@ -119,22 +121,22 @@ public abstract class SettingsWorld extends World
             }
             if(number%4==0)
             {
-                object.setImageFile(image1, true);
+                object.setImageFile(image1, isUniversity);
                 choosenImage = image1;
             }
             else if (number%4==1 || number%4==-1)
             {
-                object.setImageFile(image2, true); 
+                object.setImageFile(image2, isUniversity); 
                 choosenImage = image2;
             }
             else if (number%4 == 2 || number%4==-2)
             {
-                object.setImageFile(image3, true); 
+                object.setImageFile(image3, isUniversity); 
                 choosenImage = image3;
             }
             else if(number%4 == 3 || number%4==-3)
             {
-                object.setImageFile(image4, true); 
+                object.setImageFile(image4, isUniversity); 
                 choosenImage = image4;
             }
         }
@@ -179,6 +181,11 @@ public abstract class SettingsWorld extends World
                 object.setImageFile(image6); 
                 choosenImage = image6;
             }
+        }
+
+        protected int getNumber()
+        {
+            return number; 
         }
 
         protected String getChoosenImage()

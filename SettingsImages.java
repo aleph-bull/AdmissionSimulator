@@ -45,7 +45,12 @@ public class SettingsImages extends Actor
     public void setImageFile(String imageFile, boolean isUniversity)
     {
         image = new GreenfootImage(imageFile); 
+        if(isUniversity == false)
+        {
+            image.scale(50, 65); 
+        }
         setImage(image); 
+
     }
 
     public void numberDisplay(int gpa)

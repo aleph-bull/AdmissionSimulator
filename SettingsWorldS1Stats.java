@@ -14,10 +14,11 @@ public class SettingsWorldS1Stats extends SettingsWorld
      * 
      */
     private static SettingsWorldS1Stats.StatChooseNumber happiness, productivity, gpa; 
-    private int happinessNumber, productivityNumber, gpaNumber;
+    private static int happinessNumber, productivityNumber, gpaNumber;
 
     private static SettingsWorldS1Stats.StatChooseImage relative1, relative2, relative3; 
-    private int relative1Number, relative2Number, relative3Number; 
+    private static int relative1Number, relative2Number, relative3Number; 
+    private GreenfootImage background;
 
     public SettingsWorldS1Stats()
     {
@@ -38,7 +39,7 @@ public class SettingsWorldS1Stats extends SettingsWorld
         gpaNumber = 80;
         gpa = new SettingsWorldS1Stats.StatChooseNumber(280, 100, 450, 250, 280, 280, productivityNumber);
 
-        relative1Number = 0 ; 
+        relative1Number = data.getS1Relative1Number(); 
         relative1 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 250, relative1Number); 
 
         relative2Number = 0;
@@ -46,6 +47,8 @@ public class SettingsWorldS1Stats extends SettingsWorld
 
         relative3Number = 0;
         relative3 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 540, relative2Number); 
+        background = new GreenfootImage("SettingsPg2.png"); 
+        setBackground(background); 
     }
 
     public void act()
@@ -58,6 +61,7 @@ public class SettingsWorldS1Stats extends SettingsWorld
         relative1.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
         relative2.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
         relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
+        showText(String.valueOf(data.getStudent1Number()), 100, 300); 
 
         showText(relative1.getChoosenImage(), 100, 200); 
     }
@@ -77,7 +81,7 @@ public class SettingsWorldS1Stats extends SettingsWorld
             Greenfoot.setWorld(new SettingsWorldS2Stats()); 
         }
     }
-    
+
     public static int getHappinessNumber()
     {
         return happiness.getNumber(); 
@@ -87,6 +91,7 @@ public class SettingsWorldS1Stats extends SettingsWorld
     {
         return gpa.getNumber(); 
     }
+
     public static int getProductivityNumber()
     {
         return productivity.getNumber(); 
@@ -107,4 +112,33 @@ public class SettingsWorldS1Stats extends SettingsWorld
         return relative3.getChoosenImage();
     }
 
+    public static void setProductivityNumber()
+    {
+        data.setProductivityNumber(productivityNumber);
+    }
+
+    public static void setHappinessNumber()
+    {
+        data.setHappinessNumber(happinessNumber); 
+    }
+
+    public static void setGpaNumber()
+    {
+        data.setGpaNumber(gpaNumber);
+    }
+
+    public static void setRelative1Number()
+    {
+        data.setS1Relative1Number(relative1Number); 
+    }
+
+    public static void setRelative2Number()
+    {
+        data.setS1Relative2Number(relative2Number); 
+    }
+
+    public static void setRelative3Number()
+    {
+        data.setS1Relative3Number(relative3Number); 
+    }
 }
