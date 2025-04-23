@@ -119,22 +119,22 @@ public abstract class SettingsWorld extends World
             }
             if(number%4==0)
             {
-                object.setImageFile(image1, true);
+                object.setImageFile(image1, isUniversity);
                 choosenImage = image1;
             }
             else if (number%4==1 || number%4==-1)
             {
-                object.setImageFile(image2, true); 
+                object.setImageFile(image2, isUniversity); 
                 choosenImage = image2;
             }
             else if (number%4 == 2 || number%4==-2)
             {
-                object.setImageFile(image3, true); 
+                object.setImageFile(image3, isUniversity); 
                 choosenImage = image3;
             }
             else if(number%4 == 3 || number%4==-3)
             {
-                object.setImageFile(image4, true); 
+                object.setImageFile(image4, isUniversity); 
                 choosenImage = image4;
             }
         }

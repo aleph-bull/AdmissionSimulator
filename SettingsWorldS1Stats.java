@@ -18,6 +18,7 @@ public class SettingsWorldS1Stats extends SettingsWorld
 
     private static SettingsWorldS1Stats.StatChooseImage relative1, relative2, relative3; 
     private int relative1Number, relative2Number, relative3Number; 
+    private GreenfootImage background;
 
     public SettingsWorldS1Stats()
     {
@@ -46,6 +47,8 @@ public class SettingsWorldS1Stats extends SettingsWorld
 
         relative3Number = 0;
         relative3 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 540, relative2Number); 
+        background = new GreenfootImage("SettingsPg2.png"); 
+        setBackground(background); 
     }
 
     public void act()
