@@ -15,6 +15,11 @@ public class Image extends SuperSmoothMover
         image.scale(width, height);
         setImage(image);
     }
+    
+    public Image(String fileName) {
+        image = new GreenfootImage(fileName);
+        setImage(image);
+    }
 
     public void act(){
     }
