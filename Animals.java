@@ -47,8 +47,7 @@ public abstract class Animals extends SuperSmoothMover
     
     public void act()
     {   
-        if(!inBattle){
-            if(currentAction == ActionState.NOTHING) {
+        if(currentAction == ActionState.NOTHING) {
             moveToward(speed, getPreciseX() + dx, getPreciseY() - dy);
             if(actCount % changeDirectionCooldown == 0) {
                 setRandomCooldown ();
@@ -59,18 +58,16 @@ public abstract class Animals extends SuperSmoothMover
             } else {
                 hitEdge(BottomRoomTopLeft, BottomRoomBottomRight);
             }
-            } else {
-                 if (itemInUse != null){
-                    if (itemInUse.getUser() == null) {
-                        setLocation(itemInUse.getX(), itemInUse.getY());
-                        itemInUse.setUser(this);
-                    }
+        } else {
+             if (itemInUse != null){
+                if (itemInUse.getUser() == null) {
+                    setLocation(itemInUse.getX(), itemInUse.getY());
+                    itemInUse.setUser(this);
                 }
             }
-            checkHitObject();
-            actCount++;
         }
-        
+        checkHitObject();
+        actCount++;
     }
     
     public boolean hitEdge(int rangeX, int rangeY, int xOffset, int yOffset) {
