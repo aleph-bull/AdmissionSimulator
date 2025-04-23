@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class Animals here.
+ * Class of all animals, students, relatives alike. Random movement and ability to use 
+ * objects.
  * 
  * @author Daniel Wang, Zachary Zhao
  * @version 1.1.1

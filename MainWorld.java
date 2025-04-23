@@ -25,7 +25,7 @@ public class MainWorld extends World {
     private Phone phoneTop;
     private DisplayStudent displayTop;
     private DisplayMood moodTop;
-
+    
     private Student studentBot;
     private Bed bedBot;
     private Chair chairBot;
