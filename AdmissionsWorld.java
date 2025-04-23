@@ -125,7 +125,7 @@ public class AdmissionsWorld extends World
         
         // dialog for the second roll, different dialog for variation
         if(secondSequenceFinished && !playingStudentTopSequence && !alreadyTalked) {
-            if(studentTopAdmitted) {
+            if(studentBotAdmitted) {
                 speech = new Textbox("HORAAY! I did it! Perhaps I can even have financial security in the future!", characterBot);
             } else {
                 speech = new Textbox("Dang! This junk is all luck anyway. Boo!", characterBot);
