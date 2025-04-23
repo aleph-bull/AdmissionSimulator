@@ -27,6 +27,7 @@ public class Student extends Animals
 
     //Productivity
     boolean productive;
+    int productivity; // a different stat that affects how long computer can be used, set in settings world
 
     boolean sick;
 
@@ -46,6 +47,7 @@ public class Student extends Animals
         super(isTop);
         gpa = 50;
         productive = true; 
+        productivity = 50;
 
         //bar = new SuperStatBar(100, gpa, this, 10, 20, 2, Color.GREEN, Color.RED);
         //image = new GreenfootImage("Bob_run21.png");
@@ -77,7 +79,8 @@ public class Student extends Animals
 
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
-
+        
+        productive = happiness >= 50;
         
         ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
         if (effects.size() != 0){
@@ -189,6 +192,11 @@ public class Student extends Animals
         return happiness;
     }
 
+    
+    public int getProductivity() {
+        return productivity;
+    }
+    
     //The methods below are for students to dodge the letters during the battle phase of the simulation
 
     public void avoidLetters() {
