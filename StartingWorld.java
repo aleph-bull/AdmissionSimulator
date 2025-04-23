@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * - time indicator
  * - phone placement
  * - adding computer/phone graphics
+ * - prevent double effects
  * 
  * ============CREDITS============
  * - Button sfx: https://www.youtube.com/watch?v=BZvS2Bno8R4
