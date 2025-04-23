@@ -37,6 +37,7 @@ public class AdmissionsWorld extends World
     private boolean isPlaying;
     private DisplayStudent characterTop;
     private DisplayStudent characterBot;
+    private Image university;
     private Textbox speech;
     
     /**
@@ -59,6 +60,8 @@ public class AdmissionsWorld extends World
         
         actCountWhenBeganTalking = 999999999; // a really big number as to not affect when the cutscene changes to reveal what happens to the other chracters
         
+        university = new Image(SettingsWorldGeneral.getUniversityImage());
+        
         characterTop = new DisplayStudent(studentTop);
         characterBot = new DisplayStudent(studentBot);
         
@@ -71,7 +74,7 @@ public class AdmissionsWorld extends World
 
         
         titleText = new BasicText("Admission Lottery™", title, Color.BLACK);
-        studentHeading = new BasicText("Top Student", heading, Color.BLACK);
+        studentHeading = new BasicText("Student 1", heading, Color.BLACK);
         randomNumberDisplay = new BasicText("", numbers, Color.BLACK);
 
         instructions = new BasicText("If the random number is below " + (int)gpaTop + ", you're admitted!", normalText, Color.BLACK);
@@ -90,6 +93,7 @@ public class AdmissionsWorld extends World
         addObject(randomNumberDisplay, 540, 440);
         addObject(instructions, 660, 765);
         addObject(characterTop, 260, 445);
+        addObject(university, 830, 445);
     }
     
     public void act() {
@@ -114,7 +118,7 @@ public class AdmissionsWorld extends World
             removeObject(speech);
             addObject(characterBot, characterTop.getX(), characterTop.getY());
             removeObject(characterTop);
-            studentHeading.updateText("Bottom Student");
+            studentHeading.updateText("Student 2");
             randomNumberDisplay.updateText("");
             instructions.updateText("If the random number is below " + (int)gpaBot + ", you're admitted!");
             alreadyTalked = false; 
