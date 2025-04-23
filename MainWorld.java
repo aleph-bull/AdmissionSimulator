@@ -58,7 +58,7 @@ public class MainWorld extends World {
 
         music = new GreenfootSound("mainmusic.mp3");
         music.setVolume(50);
-        music.playLoop();
+        
 
         studentTop = new Student(true);
         bedTop = new Bed();
@@ -148,6 +148,13 @@ public class MainWorld extends World {
     }
     
     public void act() {
+        music.playLoop();
+        //for the numbers
+        //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
+        //for the images
+        //showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
+        
+        
         spawnRelative();
         actNum++;
 
@@ -161,7 +168,8 @@ public class MainWorld extends World {
         countdownBar.update(actNum);
 
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
-            Greenfoot.setWorld(new BattleWorld());
+
+            Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
         }
     }
     //???

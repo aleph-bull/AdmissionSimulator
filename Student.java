@@ -84,7 +84,7 @@ public class Student extends Animals
             if (effects.get(0) instanceof Sickness){
                 sick = true;
                 gpa -= 0.15;
-                happiness -= 0.15;
+                happiness -= 0.35;
             } else if (effects.get(0) instanceof Depression){
                 happiness = 0;
                 gpa -= 0.05;
@@ -105,7 +105,7 @@ public class Student extends Animals
     }
 
     public void rest(){
-        happiness ++;
+        happiness += 0.6;
     }
 
     public void work(){

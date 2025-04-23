@@ -2,7 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Textbox extends Actor
 {
-    private String dialog;
+    private GreenfootImage image;
+    private Font font = new Font(40);
+       private String dialog;
     private int textIndex = 0;
     private int frameCount = 0;
     private int speed = 3; 
@@ -11,14 +13,21 @@ public class Textbox extends Actor
     private int margin = 40; 
     private int maxWidth = 290; 
     private int letterCount = 0; // count of letters typed, used for animation
-    private Image speaker;
+    private Actor speaker;
     private Color opaqueWhite = new Color(255, 255, 255, 200);
     private boolean isSpacePause = false;
     
     private GreenfootSound dialogueSounds[];
     private int curIndex;
+    
+    public Textbox(String text, Color color){
+        image = new GreenfootImage(800, 500);
+        image.setColor(color);
+        image.setFont(font);
+        image.drawString(text, 100, 100);
+    }
 
-    public Textbox(String dialog, Image speaker) {
+    public Textbox(String dialog, Actor speaker) {
         this.speaker = speaker;
         this.dialog = dialog;
         GreenfootImage image = new GreenfootImage(800, 150);
