@@ -45,9 +45,9 @@ public class AdmissionsWorld extends World
      * @Zachary Zhao
      */
 
-    public AdmissionsWorld() { //World with no parameters for debugging
-        this(new Student(true), new Student(false));
-    }
+    //public AdmissionsWorld() { //World with no parameters for debugging
+    //    this(new Student(true), new Student(false));
+    //}
     
     public AdmissionsWorld(Student studentTop, Student studentBot)
     {    
@@ -156,7 +156,7 @@ public class AdmissionsWorld extends World
             if(actsSinceStartingRoller % changingNumberCooldown == 0) {
                 randomNumber = Greenfoot.getRandomNumber(101);
                 String numberString = Integer.toString(randomNumber);
-                if(randomNumber <= gpaTop) {
+                if((randomNumber <= gpaTop && !firstSequenceFinished) || (randomNumber <= gpaBot && firstSequenceFinished)) {
                     randomNumberDisplay.updateText(numberString, Color.GREEN);
                 } else {
                     randomNumberDisplay.updateText(numberString, Color.BLACK);
