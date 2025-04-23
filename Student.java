@@ -13,6 +13,7 @@ public class Student extends Animals
      */
     private double gpa;
     private double happiness;
+    private double productivity;
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
@@ -191,45 +192,8 @@ public class Student extends Animals
     public double getHappiness(){
         return happiness;
     }
-
     
     public int getProductivity() {
         return productivity;
     }
-    
-    //The methods below are for students to dodge the letters during the battle phase of the simulation
-
-    public void avoidLetters() {
-        int detectionHeight = 100; // how high to scan above
-        int detectionWidth = 30;   // how wide to scan on both sides
-        int moveSpeed = 4;
-
-        boolean dangerDetected = false;
-
-        for (int dx = -detectionWidth; dx <= detectionWidth; dx += 7) {
-            for (int dy = -detectionHeight; dy < 0; dy += 5) {
-                Actor letter = getOneObjectAtOffset(dx, dy, Letter.class);
-                if (letter != null) {
-                    dangerDetected = true;
-                    break;
-                }
-            }
-            if (dangerDetected) break;
-        }
-
-        if (dangerDetected) {
-            // Try to move away from the falling letter
-            if (canMove(moveSpeed)) {
-                setLocation(getX() + moveSpeed, getY());
-            } else if (canMove(-moveSpeed)) {
-                setLocation(getX() - moveSpeed, getY());
-            }
-        }
-    }
-
-    public boolean canMove(int dx) {
-        int newX = getX() + dx;
-        return newX >= 0 && newX < getWorld().getWidth();
-    }
-
 }

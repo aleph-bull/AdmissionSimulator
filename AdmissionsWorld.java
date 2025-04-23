@@ -45,9 +45,9 @@ public class AdmissionsWorld extends World
      * @Zachary Zhao
      */
 
-    public AdmissionsWorld() { //World with no parameters for debugging
-        this(new Student(true), new Student(false));
-    }
+    //public AdmissionsWorld() { //World with no parameters for debugging
+    //    this(new Student(true), new Student(false));
+    //}
     
     public AdmissionsWorld(Student studentTop, Student studentBot)
     {    
