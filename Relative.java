@@ -3,6 +3,15 @@ import java.util.ArrayList;
 
 //identify if the computer, phone, bed is taken, if not take it
 
+/**
+ * Relatives try to hinder/encourage Student progress by taking over their 
+ * bed/computer/phone. May??? collide with wall and briefly oscillate before escaping
+ * 
+ * @author Angela Wang
+ * @version April 2025
+ * 
+ */
+
 public class Relative extends Animals
 {
     private GreenfootImage[] walkAnimations;
@@ -11,6 +20,12 @@ public class Relative extends Animals
     private int curIndex;
     private int countdown;
 
+    /**
+     * Relative constructor - specify file Image (selected in MainWorld based on user selections 
+     * in setting worlds) and room
+     * @param file      Image file
+     * @param isTop     True if student is in top room, false if otherwise
+     */
     public Relative(String file, boolean isTop)
     {
         super(isTop); 
@@ -19,6 +34,8 @@ public class Relative extends Animals
         curIndex = 0;
         countdown = 8;
 
+        //since things with animation have _run1, _run2 etc check if file contains
+        //some base name
         fileName = "";
         if (file.contains("minicapy")){
             fileName = "minicapy";
@@ -34,6 +51,7 @@ public class Relative extends Animals
             fileName = "Cat.png";
         }
 
+        //prep animations if there are multiple other frames, otherwise set the image
         if (frames > 0) {
             prepareAnimations();
         } else {
@@ -45,6 +63,7 @@ public class Relative extends Animals
         }
     }
 
+    //fill in animation frames
     private void prepareAnimations(){
         walkAnimations = new GreenfootImage[frames];
 
@@ -57,6 +76,10 @@ public class Relative extends Animals
         curIndex++;
     }
 
+    /**
+     * Act - wander room, change frames 
+     * @return void
+     */
     public void act()
     {
         super.act();
@@ -66,6 +89,7 @@ public class Relative extends Animals
         }
     }
 
+    //change frame when countdown is finished
     private void animate()
     {
         if (countdown > 0){

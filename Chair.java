@@ -1,14 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Chair here.
+ * Chair occupation determines if a Student/Relative is using the Computer.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren, Angela Wang 
+ * @version April 2025
  */
 public class Chair extends FunctionalItem
 {
     private GreenfootImage image;
+    /**
+     * Chair constructor
+     */
     public Chair () {
         super();
         image = new GreenfootImage("chair.png");
@@ -17,6 +20,10 @@ public class Chair extends FunctionalItem
 
     }
 
+    /**
+     * Act - if someone is using the computer, play typing sounds. If it is a student,
+     * increase gpa/decrease happiness?
+     */
     public void act()
     {
         super.act();
@@ -35,6 +42,10 @@ public class Chair extends FunctionalItem
     }
 
     @Override
+    /**
+     * @param a
+     * @return void
+     */
     public void setUser(Animals a) {
         isBeingUsed = true;
         user = a;

@@ -1,15 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bed here.
+ * Bed is where Student, Relatives can sleep. Student will gain happiness :D
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren, Angela Wang (sfx)
+ * @version April 2025
  */
 public class Bed extends FunctionalItem
 {
     private GreenfootImage image;
 
+    /**
+     * Bed constructor
+     */
     public Bed(){
         super();
         image = new GreenfootImage("bed.png");
@@ -18,6 +21,10 @@ public class Bed extends FunctionalItem
         sound.setVolume(40);
     }
 
+    /**
+     * Act - if someone is on the bed, play sleeping sound. If it is a student, they 
+     * gain happiness.
+     */
     public void act()
     {
         if (user != null){
@@ -36,6 +43,10 @@ public class Bed extends FunctionalItem
     }
 
     @Override
+    /**
+     * Relative kicks Student out
+     * @return void
+     */
     public void stopUsing() {
         // push off the user and send them toward a random direction away from the bed
         user.setLocation(getX() + 80, getY());

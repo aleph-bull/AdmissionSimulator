@@ -2,16 +2,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Write a description of class Computer here.
+ * Student can farm gpa and Relatives can take over Computers
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren, Angela Wang 
+ * @version April 2025
  */
 public class Computer extends Item
 {
     private GreenfootImage image;
     private GreenfootImage onImage;
     
+    /**
+     * Computer constructor
+     */
     public Computer () {
         super();
         image = new GreenfootImage("pc.png");
@@ -19,6 +22,10 @@ public class Computer extends Item
         setImage(image);
     }
     
+    /**
+     * Act - checks for users that are working on computer and sets computer image to on 
+     * if yes
+     */
     public void act()
     {
         super.act();
