@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bed here.
+ * A bed. Used when a player comes in contact with a bed, increases happiness on student class
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Zachary Zhao, Ethan Ren
  */
 public class Bed extends FunctionalItem
 {

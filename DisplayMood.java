@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Displays a mood on the character depending on action and stats
+ * Displays a mood on the character depending on action and student stats. Appears in Main World
  * 
  * @Zachary Zhao
  */

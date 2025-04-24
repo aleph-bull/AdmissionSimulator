@@ -367,6 +367,6 @@ public abstract class SuperSmoothMover extends Actor
     }
     
     /**
-     * Code borrowed from Zachary's Vehicle Simulation start
+     * Code borrowed from Zachary's Vehicle Simulation end
      */
 }

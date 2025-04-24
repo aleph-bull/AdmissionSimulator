@@ -3,6 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
 
  * The final screen that decides admission status, handles the entire animated cutscene
+ * as well as the decision itself. Features a randomizer that visually swaps between numbers
+ * and has dialogue for the students.
 
  * 
  * @Zachary Zhao
