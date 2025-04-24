@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The card that displays the image of the current image of student on the card
+ * The card that displays the image of the current image of student on the card.
+ * Updates with the student's animations.
  * 
  * @Zachary Zhao
  */

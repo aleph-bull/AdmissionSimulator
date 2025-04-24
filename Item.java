@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Item here.
+ * Parent class, handles Item usage. Unique stats to each funcitonalitem.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Zachary Zhao, Ethen Ren
  */
 public class Item extends Actor
 {

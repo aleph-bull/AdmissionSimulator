@@ -1,9 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Basic text creator, no box, no typewriter. 
+ * Basic text creator, no box, no typewriter. Useful for custom fonts and when background
+ * is not needed.
  * 
- * @ Zachary
+ * @ Zachary Zhao
  */
 public class BasicText extends Actor
 {
