@@ -15,7 +15,7 @@ public class Bed extends FunctionalItem
         image = new GreenfootImage("bed.png");
         setImage(image);
         sound = new GreenfootSound("snore.mp3");
-        sound.setVolume(60);
+        sound.setVolume(40);
     }
 
     public void act()
