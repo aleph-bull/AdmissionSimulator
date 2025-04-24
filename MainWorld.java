@@ -26,7 +26,7 @@ public class MainWorld extends World {
     private Phone phoneTop;
     private DisplayStudent displayTop;
     private DisplayMood moodTop;
-    
+
     private Student studentBot;
     private Bed bedBot;
     private Chair chairBot;
@@ -137,7 +137,14 @@ public class MainWorld extends World {
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
+        
+        studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
+        studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
+        studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
 
+        studentBot.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
+        studentBot.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
+        studentBot.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
     }
 
     public void act() {

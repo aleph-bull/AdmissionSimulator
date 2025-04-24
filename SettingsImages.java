@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SettingsImages extends Actor
 {
+    //a wild class with useful methods for all images in the settings world
     private GreenfootImage image; 
+    //transparent color
     private static final Color transparent = new Color(0,0,0,0);
     private GreenfootImage text; 
 
@@ -25,6 +27,7 @@ public class SettingsImages extends Actor
 
     public void act()
     {   
+        //remove the graphic after 2 seconds
         if(maxmiumMinimumReachedGraphicCountdown > 0)
         {
             maxmiumMinimumReachedGraphicCountdown--; 
@@ -35,6 +38,7 @@ public class SettingsImages extends Actor
         }
     }
 
+    //scaling for the relative images
     public void setImageFile(String imageFile)
     {
         image = new GreenfootImage(imageFile); 
@@ -42,6 +46,7 @@ public class SettingsImages extends Actor
         setImage(image); 
     }
 
+    //scaling for the university images
     public void setImageFile(String imageFile, boolean isUniversity)
     {
         image = new GreenfootImage(imageFile); 

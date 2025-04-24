@@ -1,18 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EndingWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stephanie Xia
+ * @version 4.23.2025
  */
 public class EndingWorld extends World
 {
-
-    /**
-     * Constructor for objects of class EndingWorld.
-     * 
-     */
     private GreenfootImage background;
     private GreenfootImage rejectionImage;
     private boolean student1Win, student2Win; 
@@ -23,33 +16,34 @@ public class EndingWorld extends World
 
     public EndingWorld(boolean student1Admitted, boolean student2Admitted)
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1);
+        //parameters passed in from admission world for whether or not the students were admitted
         student1Win = student1Admitted;
         student2Win = student2Admitted;
+        //set background image
         background = new GreenfootImage("EndingWorld.png");
-        setBackground(background); 
+        setBackground(background);
 
-        student1Win = true; 
-        student2Win = false; 
-
+        //creating the two student images
         student1 = new CharacterImage(true); 
         addObject(student1, 620, 320); 
         student2 = new CharacterImage(false); 
         addObject(student2, 620, 590); 
         
-        if(student1Win == student1Admitted)
+        //if the boolean that they get admitted is true, accepted image is displayed
+        if(student1Win == true)
         {
             acceptedImage = new DecisionImage(true); 
             addObject(acceptedImage, 526, 288); 
         }
+        //if they are rejected, rejected image is displayed
         else
         {
             rejectedImage = new DecisionImage(false);
             addObject(rejectedImage, 526, 286); 
         }
 
-        if(student2Win == student2Admitted)
+        if(student2Win == true)
         {
             acceptedImage = new DecisionImage(true); 
             addObject(acceptedImage, 532, 557);
@@ -59,9 +53,5 @@ public class EndingWorld extends World
             rejectedImage = new DecisionImage(false);
             addObject(rejectedImage, 532, 557);
         }
-    }
-
-    public void act()
-    {
     }
 }
