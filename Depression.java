@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Depression here.
+ * Depression is a translucent screen that creates Cloud and Shadow objects for visual 
+ * effect. It also plays a rain sound?
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Angela Wang
+ * @version April 2025
  */
 public class Depression extends Effect
 {
@@ -13,6 +14,11 @@ public class Depression extends Effect
     private Shadow shadow;
     private GreenfootSound sound;
     
+    /**
+     * Depression constructor - specify room, which Student it is effecting 
+     * @param room      1 = top, 2 = bottom
+     * @param student   Pass in Student for Cloud + Shadow to follow
+     */
     public Depression(int room, Student student){
         super(room, new Color(20, 10, 100, 70));
         this.student = student;
@@ -23,12 +29,17 @@ public class Depression extends Effect
         duration = 60 * 6;
     }
     
+    /**
+     * Add Cloud and Shadow + start rain sfx when added to world
+     * @param w     World Depression is added to
+     * @return void
+     */
     public void addedToWorld(World w){
         cloud = new Cloud(student);
         shadow = new Shadow(student);
         getWorld().addObject(cloud, 0, 0);
         getWorld().addObject(shadow, 0, 0);
-        //sound.play();
+        sound.play();
     }
 
     /**
@@ -41,6 +52,27 @@ public class Depression extends Effect
         if (fadingOut){
             cloud.fade(10);
             shadow.fade(10);
+            
+            //once screen is pretty much faded, stop sound
+            if (image.getTransparency() < 20){
+                sound.stop();
+            }
         }
+    }
+    
+    /**
+     * Called in World to pause sound when execution is paused
+     * @return void
+     */
+    public void pauseSound(){
+        sound.pause();
+    }
+    
+    /**
+     * Called in World to continue playing sound when execution is started again
+     * @return void
+     */
+    public void startSound(){
+        sound.play();
     }
 }

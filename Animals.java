@@ -124,6 +124,12 @@ public abstract class Animals extends SuperSmoothMover
         } else if(movementDirection < 0) {
             movementDirection += 360;
         }
+        
+        if (movementDirection <= 95 && movementDirection >= 85){
+            int random = Greenfoot.getRandomNumber(2);
+            if (random == 0) movementDirection = 95; else movementDirection = 85;
+        }
+        
         movementDirectionInRadians = (double)movementDirection * (Math.PI/180);
         updateDyDx (); // updates the actual direction values to match
     }
@@ -188,6 +194,10 @@ public abstract class Animals extends SuperSmoothMover
         }
     }
     
+    /**
+     * Get current action state
+     * @return ActionState currentAction
+     */
     public ActionState getCurrentAction() {
         return currentAction;
     }
@@ -211,13 +221,5 @@ public abstract class Animals extends SuperSmoothMover
      */
     public double getDy(){
         return dy;
-    }
-
-    /**
-     * Get current ActionState 
-     * @return ActionState currentAction
-     */
-    public ActionState getActionState(){
-        return currentAction;
     }
 }

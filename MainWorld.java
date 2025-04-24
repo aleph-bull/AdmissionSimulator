@@ -1,8 +1,16 @@
-import greenfoot.*;  
+import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+
+/**
+ * MainWorld is where the GPA farming simulation takes place.
+ * @author Zachary Zhao, Daniel Wang, Ethan Ren, Stephanie Xia, Angela Wang
+ * @version 04-23-2025
+ */
+
 public class MainWorld extends World {
 
     public static final boolean SHOW_BARS = true;
-    public final int GAME_LENGTH = 120; // the length of the game, in seconds.
+    public final int GAME_LENGTH = 90; // the length of the game, in seconds.
     private GreenfootImage background;
 
     private int relativeCountdown;
@@ -10,7 +18,6 @@ public class MainWorld extends World {
     private Relative r;
 
     private Relative relative;
-    private String cat;
     private String mom;
     private GreenfootImage image;
     private CollisionBox topExit;
@@ -37,8 +44,6 @@ public class MainWorld extends World {
 
     private int actNum;
 
-    private boolean sickness;
-
     private SuperWindow card;
     private Student s;
 
@@ -48,6 +53,10 @@ public class MainWorld extends World {
 
     private SuperStatBar countdownBar;
     private GreenfootSound music;
+    
+    /**
+     * Constructor for MainWorld, called by IntroductionWorld 
+     */
     public MainWorld() {
         super(1024, 800, 1);
 
@@ -122,8 +131,7 @@ public class MainWorld extends World {
         addObject(countdownBar, 400, 401);
         setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
-        actNum = 0;
-        sickness = false;
+        //actNum = 0;
 
         prepare();
 
@@ -138,7 +146,7 @@ public class MainWorld extends World {
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
-        
+
         studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
@@ -150,37 +158,78 @@ public class MainWorld extends World {
 
     public void act() {
         music.playLoop();
-        //for the numbers
-        //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
-        //for the images
-        //showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
 
         spawnRelative();
         actNum++;
 
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
-            spawnEffect();
+            ArrayList<Effect> effects = (ArrayList<Effect>) getObjects(Effect.class);
+            if (effects.size() == 2){
+                //if already 2 effects --> maximum, don't spawn anything
+            } else if (effects.size() == 1){
+                if (effects.get(0).getY() < 400){
+                    spawnEffect(2, Effect.ROOM_2_Y, studentBot);
+                } else if (effects.get(0).getY() > 400){
+                    spawnEffect(1, Effect.ROOM_1_Y, studentTop);
+                } 
+            } else {
+                int random = Greenfoot.getRandomNumber(2);
+                if (random == 0){
+                    spawnEffect(1, Effect.ROOM_1_Y, studentTop);
+                } else {
+                    spawnEffect(2, Effect.ROOM_2_Y, studentBot);
+                }
+            }
         }
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
 
-        if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
-
+        if(counter2.getValue() == 0){ // If the timer is over, switch to AdmissionsWorld
+            //stop all sfx
+            ArrayList<FunctionalItem> functionalItems = (ArrayList<FunctionalItem>) getObjects(FunctionalItem.class);
+            for (FunctionalItem f: functionalItems){
+                f.stopSound();
+            }
+            music.stop();
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
         }
     }
-    //???
+
+    /**
+     * Execution started --> play music (item sfx are not played bc assumption is that they are 
+     * short enough to need to be played again)
+     * @return void
+     */
     public void started(){
         // counter2.setValue(120);
         music.playLoop();
+        ArrayList<Depression> depression = (ArrayList<Depression>) getObjects(Depression.class);
+        if (depression.size() > 0){
+            depression.get(0).startSound();
+        }
     }
 
     public void stopped(){
-        music.stop();
+        //stop all sound effects + music
+        ArrayList<FunctionalItem> functionalItems = (ArrayList<FunctionalItem>) getObjects(FunctionalItem.class);
+        for (FunctionalItem f: functionalItems){
+            f.stopSound();
+        }
+
+        ArrayList<Depression> depression = (ArrayList<Depression>) getObjects(Depression.class);
+        if (depression.size() > 0){
+            depression.get(0).pauseSound();
+        }
+        
+        music.pause();
     }
 
+    /**
+     * Spawn a relative in either room, with any of the 3 associated selected images.
+     * @return void
+     */
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;
@@ -220,31 +269,16 @@ public class MainWorld extends World {
         }
     }
 
-    /**
-     * Spawn either Sickness or Depression in random room
-     */
-
-    private void spawnEffect(){
-        //get random room number + assign y coordinate of effect accordingly
-        int y;
-        int room = Greenfoot.getRandomNumber(2);
-        if (room == 1)
-            y = Effect.ROOM_1_Y;
-        else
-            y = Effect.ROOM_2_Y;
-
+    //Spawn either Sickness or Depression in random room
+    private void spawnEffect(int roomNum, int y, Student student){
         int random = Greenfoot.getRandomNumber(2);
-        if (random == 1){
-            addObject(new Sickness(room), Effect.ROOM_X, y);
+        if (random == 0){
+            //half chance of adding sickness
+            addObject(new Sickness(roomNum), Effect.ROOM_X, y);
         } else {
-            if (room == 1){
-                addObject(new Depression(room, studentTop), Effect.ROOM_X, y);
-            } else {
-                addObject(new Depression(room, studentBot), Effect.ROOM_X, y);
-            }
+            //half chance of adding depression
+            addObject(new Depression(roomNum, student), Effect.ROOM_X, y);
         }
-        addObject(new Sickness(room), Effect.ROOM_X, y);
-        sickness = true;
     }
 
     /**

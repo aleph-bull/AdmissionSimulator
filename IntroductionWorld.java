@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Angela Wang
  * @version 04-15-25
  */
+
 public class IntroductionWorld extends World
 {
     private GreenfootImage image;
@@ -16,6 +17,7 @@ public class IntroductionWorld extends World
     private Image speaker1, speaker2, bg;
     private GreenfootSound music;
     private Textbox[] texts;
+    private BasicText skipButton;
 
     //private Textbox text;
 
@@ -41,9 +43,10 @@ public class IntroductionWorld extends World
             "Wow, look at the date!",
             "September! The year is nearly over already.",
             "Uni-application time! Are you ready?",
-            "Not really... my grades are everywhere.",
-            "Same here. So many distractions...",
-            "We can do this! Lock in."
+            "No... my GPA fluctuates wildly.",
+            "Same. So many distractions from studying...",
+            "We can do this! Lock in.",
+            "Right. May the best student be accepted!"
         };
 
         speaker1 = new Image("Amelia_run1.png", 90, 120);
@@ -66,56 +69,64 @@ public class IntroductionWorld extends World
             }
         }
 
-        addObject(texts[curIndex], 512, 700);
+        addObject(texts[curIndex], 512, 685);
 
         //addObject(text, 512, 703);
         addObject(speaker1, speaker1X, 560);
         addObject(speaker2, speaker2X, 560);
 
-        duration = 200;
+        duration = 225;
 
         //text = new Textbox(dialogue[curIndex], speaker1);
         //addObject(text, 500, 700);
-    }
 
+        skipButton = new BasicText(">>>SKIP", new Font(35), Color.WHITE);
+        addObject(skipButton, 950, 771);
+    }
+    
+    //continue music when started greenfoot
     public void started(){
         music.playLoop();
     }
-
+    
+    //pause music when greenfoot is paused
     public void stopped(){
         music.pause();
     }
 
     public void act(){
         //every duration interval, update TextBox with new line
-        //if (actNum % duration == 0){
-        //if curIndex exceeds highest index, go to SettingsWorldGeneral
 
-        //if (text.isFinished()){
-            
         if (actNum % duration == 0){            
             curIndex++;
+            //if curIndex exceeds highest index, go to SettingsWorldGeneral
+
             if (curIndex == dialogue.length){
                 music.stop();
                 Greenfoot.setWorld(new SettingsWorldGeneral());
-    
+
                 //don't know why but setting the world wasn't immediately going to SettingsWorldGeneral + was causing errors
                 return;
             }
-    
+
             //new TextBox for next line in dialogue array
             //SuperTextBox text = new SuperTextBox(dialogue[curIndex], Color.BLACK, Color.WHITE, new Font(20), true, 1024, 3, Color.YELLOW);
             //addObject(text, 512, 717);
-            
+
             removeObject(texts[curIndex - 1]);
-                
-            addObject(texts[curIndex], 512, 700);
-            
+
+            addObject(texts[curIndex], 512, 685);
+
             //prevent speaker from moving too far if text animation ends at a different y than start
             speaker1.setLocation(speaker1X, 560);
             speaker2.setLocation(speaker2X, 560);
         }
-        
+
         actNum++;
+        
+        if (Greenfoot.mouseClicked(skipButton)){
+            music.stop();
+            Greenfoot.setWorld(new SettingsWorldGeneral());
+        }
     }
 }
