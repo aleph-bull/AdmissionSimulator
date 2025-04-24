@@ -126,6 +126,12 @@ public abstract class Animals extends SuperSmoothMover
         } else if(movementDirection < 0) {
             movementDirection += 360;
         }
+        
+        if (movementDirection <= 95 && movementDirection >= 85){
+            int random = Greenfoot.getRandomNumber(2);
+            if (random == 0) movementDirection = 95; else movementDirection = 85;
+        }
+        
         movementDirectionInRadians = (double)movementDirection * (Math.PI/180);
         updateDyDx (); // updates the actual direction values to match
     }

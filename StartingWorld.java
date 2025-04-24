@@ -2,12 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * THINGS TO CHANGE
- * - computer paint order
  * - bar blocking cloud
- * - time indicator
  * - phone placement
  * - adding computer/phone graphics
- * - prevent double effects
  * 
  * ============CREDITS============
  * - Button sfx: https://www.youtube.com/watch?v=BZvS2Bno8R4
@@ -20,6 +17,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * - IntroductionWorld bg: https://ibispaint.com/art/707595372/
  * - IntroductionWorld music: https://www.chosic.com/download-audio/27131/ 
  * - MainWorld music: https://www.chosic.com/download-audio/29282/
+ * - Honk mimimimi: https://www.youtube.com/watch?v=dNr7nXvntO8 
+ * - Typing: https://mixkit.co/free-sound-effects/discover/typing/
  * 
  * 
  * =====KNOWN BUGS====

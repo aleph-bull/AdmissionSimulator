@@ -1,15 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 //identify if the computer, phone, bed is taken, if not take it
 
 public class Relative extends Animals
 {
-    private boolean takeSpot;
     private GreenfootImage[] walkAnimations;
     private String fileName;
     private int frames;
     private int curIndex;
-    private int direction;
     private int countdown;
 
     public Relative(String file, boolean isTop)

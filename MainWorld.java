@@ -1,4 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
 
 public class MainWorld extends World {
 
@@ -38,8 +39,6 @@ public class MainWorld extends World {
 
     private int actNum;
 
-    private boolean sickness;
-
     private SuperWindow card;
     private Student s;
 
@@ -47,7 +46,6 @@ public class MainWorld extends World {
     SimpleTimer st = new SimpleTimer();
     Counter counter2 = new Counter();
 
-    
     private SuperStatBar countdownBar;
     private GreenfootSound music;
     public MainWorld() {
@@ -58,7 +56,6 @@ public class MainWorld extends World {
 
         music = new GreenfootSound("mainmusic.mp3");
         music.setVolume(50);
-        
 
         studentTop = new Student(true);
         bedTop = new Bed();
@@ -89,7 +86,7 @@ public class MainWorld extends World {
         addObject(computerTop, 400, 120);
         addObject(displayTop, 855, 145);
         addObject(moodTop, 960, 150);
-    
+
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
         addObject(chairBot, 400, 620);
@@ -108,7 +105,6 @@ public class MainWorld extends World {
         addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
-        
 
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
@@ -126,10 +122,7 @@ public class MainWorld extends World {
         addObject(countdownBar, 400, 401);
         setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
-
-
         actNum = 0;
-        sickness = false;
 
         prepare();
 
@@ -146,29 +139,39 @@ public class MainWorld extends World {
         addObject(counter2, 950, 12);
 
     }
-    
+
     public void act() {
         music.playLoop();
-        //for the numbers
-        //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
-        //for the images
-        //showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
-        
-        
+
         spawnRelative();
         actNum++;
 
-        
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
-            spawnEffect();
+            ArrayList<Effect> effects = (ArrayList<Effect>) getObjects(Effect.class);
+            if (effects.size() == 2){
+                //if already 2 effects --> maximum, don't spawn anything
+            } else if (effects.size() == 1){
+                if (effects.get(0).getY() < 400){
+                    spawnEffect(2, Effect.ROOM_2_Y, studentBot);
+                } else if (effects.get(0).getY() > 400){
+                    spawnEffect(1, Effect.ROOM_1_Y, studentTop);
+                } 
+            } else {
+                int random = Greenfoot.getRandomNumber(2);
+                if (random == 0){
+                    spawnEffect(1, Effect.ROOM_1_Y, studentTop);
+                } else {
+                    spawnEffect(2, Effect.ROOM_2_Y, studentBot);
+                }
+            }
         }
         // counter2.setValue(120 - st.millisElapsed()/1000);
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
 
         if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
-
+            music.stop();
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
         }
     }
@@ -177,11 +180,17 @@ public class MainWorld extends World {
         // counter2.setValue(120);
         music.playLoop();
     }
-    
+
     public void stopped(){
-        music.stop();
+        ArrayList<Computer> computers = (ArrayList<Computer>) getObjects(Computer.class);
+        for (Computer c: computers){
+            c.stopSound();
+        }
+        
+        //do same for other items
+        music.pause();
     }
-   
+
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;
@@ -189,7 +198,7 @@ public class MainWorld extends World {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
             String fileName = "";
             int random = Greenfoot.getRandomNumber(3);
-            
+
             //if top student
             if (isTop) {
                 //set relative image based on what user selected in settings
@@ -200,7 +209,7 @@ public class MainWorld extends World {
                 } else {
                     fileName = SettingsWorldS1Stats.getRelative3Image();
                 }
-                
+
                 relative = new Relative(fileName, isTop);
                 addObject(relative, 50, 200);
             } else {
@@ -225,27 +234,15 @@ public class MainWorld extends World {
      * Spawn either Sickness or Depression in random room
      */
 
-    private void spawnEffect(){
-        //get random room number + assign y coordinate of effect accordingly
-        int y;
-        int room = Greenfoot.getRandomNumber(2);
-        if (room == 1)
-            y = Effect.ROOM_1_Y;
-        else
-            y = Effect.ROOM_2_Y;
-
+    private void spawnEffect(int roomNum, int y, Student student){
         int random = Greenfoot.getRandomNumber(2);
-        if (random == 1){
-            addObject(new Sickness(room), Effect.ROOM_X, y);
+        if (random == 0){
+            //half chance of adding sickness
+            addObject(new Sickness(roomNum), Effect.ROOM_X, y);
         } else {
-            if (room == 1){
-                addObject(new Depression(room, studentTop), Effect.ROOM_X, y);
-            } else {
-                addObject(new Depression(room, studentBot), Effect.ROOM_X, y);
-            }
+            //half chance of adding depression
+            addObject(new Depression(roomNum, student), Effect.ROOM_X, y);
         }
-        addObject(new Sickness(room), Effect.ROOM_X, y);
-        sickness = true;
     }
 
     /**

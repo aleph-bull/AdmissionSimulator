@@ -46,7 +46,7 @@ public abstract class SettingsWorld extends World
     }
 
     public void stopped(){
-        music.stop();
+        music.pause();
     }
 
     protected class StatChooseImage

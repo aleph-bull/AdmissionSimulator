@@ -33,9 +33,9 @@ public class Button extends Actor
         this.cursor = cursor;
         
         //array of click sounds --> can click quickly
-        clicks = new GreenfootSound[10];
-        for (int i = 0; i < 10; i++){
-            clicks[i] = new GreenfootSound("click.mp3");
+        clicks = new GreenfootSound[5];
+        for (int i = 0; i < 5; i++){
+            clicks[i] = new GreenfootSound("click.wav");
         }
         
         curIndex = 0;
