@@ -13,18 +13,27 @@ public class Chair extends FunctionalItem
         super();
         image = new GreenfootImage("chair.png");
         setImage(image);
+        sound = new GreenfootSound("typing.wav");
+
     }
+
     public void act()
     {
         super.act();
         Animals usr = this.getUser();
         if (usr != null){
+            if (!sound.isPlaying()){
+                sound.play();
+            } 
             if (usr instanceof Student){
                 ((Student)usr).work();
             }
+        } else {
+            //stop sound if no user
+            sound.stop();
         }
     }
-    
+
     @Override
     public void setUser(Animals a) {
         isBeingUsed = true;
@@ -35,7 +44,7 @@ public class Chair extends FunctionalItem
         }
         if(a.getImage() != null)
             usageBar = new SuperStatBar (useActCountDuration, beingUsedActCount, a, 70, 10, -a.getImage().getHeight(),  new Color(50,84,168), Color.BLACK, false, new Color(30,38,59), 3);
-        
+
         getWorld().addObject(usageBar, a.getX(), a.getY());
     }
 }

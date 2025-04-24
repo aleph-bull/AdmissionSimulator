@@ -40,9 +40,6 @@ public class Student extends Animals
     private GreenfootImage phoneImg;
     private int countdown, walkFrame, phoneFrame;
 
-    private ActionState curActionState, prevActionState;
-    private boolean takingPhone, puttingPhoneAway;
-
     public Student(boolean isTop){
         super(isTop);
         gpa = 50;
@@ -59,9 +56,6 @@ public class Student extends Animals
         countdown = 8;
         phoneFrame = 0;
         walkFrame = 0;
-
-        takingPhone = false;
-        puttingPhoneAway = false;
 
     }
 
@@ -174,9 +168,9 @@ public class Student extends Animals
             countdown--;
         } else {
             //if at phone, phone image
-            if (getActionState() == ActionState.BRAINROTTING){
+            if (getCurrentAction() == ActionState.BRAINROTTING){
                 setImage(phoneImg);
-            } else if (getActionState() == ActionState.NOTHING){
+            } else if (getCurrentAction() == ActionState.NOTHING){
                 //if doing nothing but walking, walk animation
                 setImage(walkAnimations[walkFrame]);
                 walkFrame++;

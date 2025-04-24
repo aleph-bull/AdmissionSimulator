@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class MainWorld extends World {
 
     public static final boolean SHOW_BARS = true;
-    public final int GAME_LENGTH = 120; // the length of the game, in seconds.
+    public final int GAME_LENGTH = 90; // the length of the game, in seconds.
     private GreenfootImage background;
 
     private int relativeCountdown;
@@ -12,7 +12,6 @@ public class MainWorld extends World {
     private Relative r;
 
     private Relative relative;
-    private String cat;
     private String mom;
     private GreenfootImage image;
     private CollisionBox topExit;
@@ -122,7 +121,7 @@ public class MainWorld extends World {
         addObject(countdownBar, 400, 401);
         setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
-        actNum = 0;
+        //actNum = 0;
 
         prepare();
 
@@ -137,7 +136,7 @@ public class MainWorld extends World {
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
-        
+
         studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
@@ -177,7 +176,12 @@ public class MainWorld extends World {
         if (actNum % 60 == 0) counter2.add(-1); // Decrement the counter by 1
         countdownBar.update(actNum);
 
-        if(counter2.getValue() == 0){ // If the timer is over, switch to BattleWorld
+        if(counter2.getValue() == 0){ // If the timer is over, switch to AdmissionsWorld
+            //stop all sfx
+            ArrayList<FunctionalItem> functionalItems = (ArrayList<FunctionalItem>) getObjects(FunctionalItem.class);
+            for (FunctionalItem f: functionalItems){
+                f.stopSound();
+            }
             music.stop();
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
         }
@@ -189,12 +193,11 @@ public class MainWorld extends World {
     }
 
     public void stopped(){
-        ArrayList<Computer> computers = (ArrayList<Computer>) getObjects(Computer.class);
-        for (Computer c: computers){
-            c.stopSound();
+        ArrayList<FunctionalItem> functionalItems = (ArrayList<FunctionalItem>) getObjects(FunctionalItem.class);
+        for (FunctionalItem f: functionalItems){
+            f.stopSound();
         }
-        
-        //do same for other items
+
         music.pause();
     }
 

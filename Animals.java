@@ -194,6 +194,10 @@ public abstract class Animals extends SuperSmoothMover
         }
     }
     
+    /**
+     * Get current action state
+     * @return ActionState currentAction
+     */
     public ActionState getCurrentAction() {
         return currentAction;
     }
@@ -217,13 +221,5 @@ public abstract class Animals extends SuperSmoothMover
      */
     public double getDy(){
         return dy;
-    }
-
-    /**
-     * Get current ActionState 
-     * @return ActionState currentAction
-     */
-    public ActionState getActionState(){
-        return currentAction;
     }
 }
