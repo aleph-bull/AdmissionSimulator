@@ -24,6 +24,9 @@ public class DisplayMood extends Actor
         updateImage();
     }
     
+    /**
+     * Updates mood depending on gpa, happiness, and current action.
+     */
     public void updateMood() {
         //if sick, ignore all other moods
         if(student.isSick()) {

@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * Basic text creator, no box, no typewriter. Useful for custom fonts and when background
  * is not needed.
  * 
- * @ Zachary Zhao
+ * @author Zachary Zhao
  */
 public class BasicText extends Actor
 {
@@ -21,6 +21,9 @@ public class BasicText extends Actor
          updateText(text, color);
     }
     
+    /**
+     * Recreates the text image with color and string options.
+     */
     public void updateText(String text, Color color) {
          int imageWidth;
          int imageHeight;

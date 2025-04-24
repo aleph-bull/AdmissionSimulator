@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * and has dialogue for the students.
 
  * 
- * @Zachary Zhao
+ * @author Zachary Zhao
  */
 public class AdmissionsWorld extends World
 {
@@ -45,7 +45,7 @@ public class AdmissionsWorld extends World
     
     /**
      * Constructor for objects of class EndingWorld.
-     * @Zachary Zhao
+     * @author Zachary Zhao
      */
 
     //public AdmissionsWorld() { //World with no parameters for debugging
@@ -167,12 +167,20 @@ public class AdmissionsWorld extends World
         actCount++;
     }
     
+    /**
+     * Code that adds speech object and resets some stats
+     * @author Zachary Zhao
+     */
     public void beginSpeech() {
         addObject(speech, getWidth()/2, 610);
         alreadyTalked = true;
         actCountWhenBeganTalking = actCount;
     }
     
+    /**
+     * Quickly alternates the number for the rolling sequence
+     * @author Zachary Zhao
+     */
     public void simulateRolling() {
         if(isPlaying) {
             //play suspense music sfx

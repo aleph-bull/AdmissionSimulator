@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+
  * Chair occupation determines if a Student/Relative is using the Computer.
  * 
  * @author Ethan Ren, Angela Wang 
  * @version April 2025
+
  */
 public class Chair extends FunctionalItem
 {

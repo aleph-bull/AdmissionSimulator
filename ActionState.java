@@ -2,7 +2,7 @@
  * ActionState
  * An enumeration thingy
  * 
- * @Zachary Zhao
+ * @author Zachary Zhao
  */
 
 public enum ActionState {
