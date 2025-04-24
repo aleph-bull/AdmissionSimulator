@@ -1,23 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class acceptanceImage here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+/** 
+ * @Stephanie Xia
+ * @ 4.23.2025
  */
 public class DecisionImage extends Actor
 {
-    /**
-     * Act - do whatever the acceptanceImage wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private GreenfootImage decisionImage; 
     private GreenfootImage decisionTextImage;
-    public void act()
-    {
-    }
 
+    //if the get accepted show acceptedImage; if they are rejected get rejectedImage
     public DecisionImage(boolean isAccepted)
     {
         if(isAccepted == true)

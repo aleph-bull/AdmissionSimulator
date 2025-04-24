@@ -3,31 +3,31 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class SettingsWorldS2Stats here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Stephanie Xia
+ * @version 4.23.2025
  */
 public class SettingsWorldS2Stats extends SettingsWorld
 {
-
-    /**
-     * Constructor for objects of class SettingsWorldS2Stats.
-     * 
-     */
     private static SettingsWorldS2Stats.StatChooseNumber happiness, productivity, gpa; 
     private static int happinessNumber, productivityNumber, gpaNumber;
 
     private static SettingsWorldS2Stats.StatChooseImage relative1, relative2, relative3; 
     private static int relative1Number, relative2Number, relative3Number; 
-    public SettingsWorldS2Stats()
+    
+    private SettingsWorldS1Stats world1;
+
+    public SettingsWorldS2Stats(SettingsWorldS1Stats world1)
     {
         next = new Button (cursor, false);
         addObject(next, 945, 670);
         back = new Button (cursor, true); 
         addObject(back, 100, 670); 
 
+        //setting background
         background = new GreenfootImage ("SettingsPg3.png"); 
         setBackground(background); 
-
+        
+        //same as S1World -- setting intial number
         happinessNumber = 80;
         happiness = new SettingsWorldS2Stats.StatChooseNumber(280, 100, 450, 540, 280, 580, happinessNumber); 
 
@@ -45,6 +45,8 @@ public class SettingsWorldS2Stats extends SettingsWorld
 
         relative3Number = 0;
         relative3 = new SettingsWorldS2Stats.StatChooseImage(775, 580, 950, 540, relative2Number); 
+        
+        this.world1 = world1;
     }
 
     public void act()
@@ -54,21 +56,21 @@ public class SettingsWorldS2Stats extends SettingsWorld
         gpa.choose();
         productivity.choose(); 
         happiness.choose(); 
-        showText(String.valueOf(data.getStudent1Number()), 300, 200); 
-        showText(String.valueOf(data.getS1Relative2Number()), 400, 200); 
-
+        
         relative1.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
         relative2.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png");
         relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
     }
 
+    //going back to the previous world
     public void backWorld(){
         if (Greenfoot.mouseClicked(back))
         {
-            Greenfoot.setWorld(new SettingsWorldS1Stats()); 
+            Greenfoot.setWorld(world1); 
         }
     }
 
+    //going to the main world
     public void nextWorld()
     {
         if (Greenfoot.mouseClicked(next))
@@ -83,7 +85,7 @@ public class SettingsWorldS2Stats extends SettingsWorld
         return happiness.getNumber(); 
     }
 
-    public static int getGPANumber()
+    public static int getGpaNumber()
     {
         return gpa.getNumber(); 
     }
@@ -106,20 +108,5 @@ public class SettingsWorldS2Stats extends SettingsWorld
     public static String getRelative3Image()
     {
         return relative3.getChoosenImage();
-    }
-
-    public static void setRelative1Number()
-    {
-        data.setS2Relative1Number(relative1Number); 
-    }
-
-    public static void setRelative2Number()
-    {
-        data.setS2Relative2Number(relative2Number); 
-    }
-
-    public static void setRelative3Number()
-    {
-        data.setS2Relative3Number(relative3Number); 
     }
 }
