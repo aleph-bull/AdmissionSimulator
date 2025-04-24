@@ -13,6 +13,7 @@ public class Student extends Animals
      */
     private double gpa;
     private double happiness;
+    private double productivity;
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
@@ -202,6 +203,20 @@ public class Student extends Animals
     public boolean canMove(int dx) {
         int newX = getX() + dx;
         return newX >= 0 && newX < getWorld().getWidth();
+    }
+    
+    public void setProductivityValue(double productivity)
+    {
+        this.productivity = productivity; 
+    }
+    
+    public void setHappinessValue(double happiness)
+    {
+        this.happiness = happiness; 
+    }
+    public void setGpaValue(double gpa)
+    {
+        this.gpa = gpa; 
     }
 
     public void setProductivityValue(int productivity)
