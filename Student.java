@@ -203,7 +203,7 @@ public class Student extends Animals
         return newX >= 0 && newX < getWorld().getWidth();
     }
     
-    public void setProductivityValue(int productivity)
+    public void setProductivityValue(double productivity)
     {
         this.productivity = productivity; 
     }
