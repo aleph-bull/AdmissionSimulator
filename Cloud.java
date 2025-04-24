@@ -17,7 +17,7 @@ public class Cloud extends EffectItem
         image.scale(70, 50);
         setImage(image);
         
-        yOffset = 70;
+        yOffset = 90;
         
         this.student = student;
         

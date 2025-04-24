@@ -40,7 +40,7 @@ public abstract class SettingsWorld extends World
     }
 
     public void stopped(){
-        music.stop();
+        music.pause();
     }
 
     //nested class (taught by Mr. Poon)

@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Effect here.
+ * Effect parents Depression and Sickness. Basically, it manages how long the Effect lasts, 
+ * what room the Effect is in, and manages the Effect screen images.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Angela Wang
+ * @version April 2025
  */
 public abstract class Effect extends Actor
 {   
@@ -22,8 +23,14 @@ public abstract class Effect extends Actor
 
     private int acts;
 
+    //fade management
     protected boolean fadingIn, fadingOut;
 
+    /**
+     * Effect constructor - specify which room effect is in, and the colour of the Effect screen
+     * @param room      1 = top room, 2 = bottom room
+     * @param colour    Colour of the screen
+     */
     public Effect(int room, Color colour){
         this.colour = colour;
         drawImage();
@@ -39,7 +46,7 @@ public abstract class Effect extends Actor
     }
 
     /**
-     * Act - do whatever the Effect wants to do. This method is called whenever
+     * Act - fade in, determine when to fade out, fade out. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

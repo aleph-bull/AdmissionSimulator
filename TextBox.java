@@ -9,7 +9,7 @@ public class Textbox extends Actor
     private int frameCount = 0;
     private int speed = 3; 
     private int spacePauseDuration = 2; 
-    private int lineHeight = 75;
+    private int lineHeight = 60;
     private int margin = 40; 
     private int maxWidth = 290; 
     private int letterCount = 0; // count of letters typed, used for animation
@@ -21,7 +21,7 @@ public class Textbox extends Actor
     private int curIndex;
     
     public Textbox(String text, Color color){
-        image = new GreenfootImage(800, 500);
+        image = new GreenfootImage(800, 400);
         image.setColor(color);
         image.setFont(font);
         image.drawString(text, 100, 100);
@@ -30,7 +30,7 @@ public class Textbox extends Actor
     public Textbox(String dialog, Actor speaker) {
         this.speaker = speaker;
         this.dialog = dialog;
-        GreenfootImage image = new GreenfootImage(800, 150);
+        GreenfootImage image = new GreenfootImage(800, 120);
         image.setColor(opaqueWhite);
         image.fill();
         image.setColor(Color.BLACK);

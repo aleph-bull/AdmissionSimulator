@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Germ here.
+ * Germ is a visual for Sickness effect with sinusoidal motion!? 
  * 
  * @author Angela Wang
  * @version 04.10.25
@@ -13,6 +13,13 @@ public class Germ extends EffectItem
     private double horiComp;
     private int delay, acts;
 
+    /**
+     * Germ constructor - specify the vertical shift and delay (because Germs are created
+     * by Sickness and stored in a 2D array, the delay will differ based on which column 
+     * the Germ is in.)
+     * @param vertShift     Amount germ bounces up and down
+     * @param delay         How many acts to delay Germ starting to move
+     */
     public Germ(int vertShift, int delay){
         //String fileName = "germ" + (Greenfoot.getRandomNumber(4) + 1) + ".png";
         //image = new GreenfootImage(fileName);

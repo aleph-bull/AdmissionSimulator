@@ -41,6 +41,7 @@ public class AdmissionsWorld extends World
     private DisplayStudent characterBot;
     private Image university;
     private Textbox speech;
+    private GreenfootSound music, acceptedSound, rejectedSound;
     
     /**
      * Constructor for objects of class EndingWorld.
@@ -56,6 +57,10 @@ public class AdmissionsWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 800, 1); 
         
+        //sound effects
+        music = new GreenfootSound("suspense.mp3");
+        acceptedSound = new GreenfootSound("accepted.wav");
+        rejectedSound = new GreenfootSound("rejected.wav");
 
         this.gpaTop = studentTop.getGpa();
         this.gpaBot = studentBot.getGpa();
@@ -98,6 +103,16 @@ public class AdmissionsWorld extends World
         addObject(university, 830, 445);
     }
     
+    public void started(){
+        if (isPlaying){
+            music.play();
+        }
+    }
+    
+    public void stopped(){
+        music.pause();
+    }
+    
     public void act() {
         if(actCount == 120) {
             isPlaying = true; // plays both sequences
@@ -107,10 +122,13 @@ public class AdmissionsWorld extends World
         
         // dialog for the first roll
         if(firstSequenceFinished && playingStudentTopSequence && !alreadyTalked) {
+            music.stop();
             if(studentTopAdmitted) {
                 speech = new Textbox("YESS!! I got in! My chances of homelessness marginally decreased!", characterTop);
+                acceptedSound.play();
             } else {
                 speech = new Textbox("WHAT!? But I worked so hard. . . Where did my life go wrong :(", characterTop);
+                rejectedSound.play();
             }
             beginSpeech();
         }
@@ -131,10 +149,13 @@ public class AdmissionsWorld extends World
         
         // dialog for the second roll, different dialog for variation
         if(secondSequenceFinished && !playingStudentTopSequence && !alreadyTalked) {
+            music.stop();
             if(studentBotAdmitted) {
                 speech = new Textbox("HORAAY! I did it! Perhaps I can even have financial security in the future!", characterBot);
+                acceptedSound.play();
             } else {
                 speech = new Textbox("Dang! This junk is all luck anyway. Boo!", characterBot);
+                rejectedSound.play();
             }
             beginSpeech();
         }
@@ -162,7 +183,10 @@ public class AdmissionsWorld extends World
      */
     public void simulateRolling() {
         if(isPlaying) {
-
+            //play suspense music sfx
+            if (!music.isPlaying()){
+                music.play();
+            }
             if(actsSinceStartingRoller % changingNumberCooldown == 0) {
                 randomNumber = Greenfoot.getRandomNumber(101);
                 String numberString = Integer.toString(randomNumber);
@@ -183,7 +207,7 @@ public class AdmissionsWorld extends World
                         } else {
                             randomNumberDisplay.updateText(topRollString, Color.RED);
                         }
-
+                        
                         firstSequenceFinished = true;
 
                     }else{
