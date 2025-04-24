@@ -1,15 +1,24 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /** 
- * @Stephanie Xia
- * @ 4.23.2025
+ * 
+ * EndingWorld rejection/acception images
+ * Also probably could have been Image but it's too late to change now </3
+ * 
+ * @author Stephanie Xia
+ * @version 4.23.2025
  */
 public class DecisionImage extends Actor
 {
     private GreenfootImage decisionImage; 
     private GreenfootImage decisionTextImage;
 
-    //if the get accepted show acceptedImage; if they are rejected get rejectedImage
+    /**
+     * DecisionImage constructor - if the get accepted show acceptedImage; 
+     * if they are rejected get rejectedImage
+     * 
+     * @param isAccepted    True if accepted into university
+     */
     public DecisionImage(boolean isAccepted)
     {
         if(isAccepted == true)

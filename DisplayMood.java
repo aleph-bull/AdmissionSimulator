@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Displays a mood on the character depending on action and stats
+ * Displays a mood on the character depending on action and student stats. Appears in Main World
  * 
- * @Zachary Zhao
+ * @author Zachary Zhao
  */
 public class DisplayMood extends Actor
 {
@@ -11,12 +11,16 @@ public class DisplayMood extends Actor
     ActionState currentAction;
     String mood; // possible moods: {"Neutral", "Happy", "Overjoyed", "Silly", "Stupid", "Sad", "Depressed", "Sick", "Tired", "Sleeping", "Focused"};
     
+    /**
+     * DisplayMood constructor - specify which student's mood is being displayed
+     * @param student
+     */
     public DisplayMood (Student student) {
         this.student = student;
         mood = "Neutral";
         updateImage();
     }
-    
+
     public void act()
     {
         updateCurrentAction();
@@ -24,6 +28,10 @@ public class DisplayMood extends Actor
         updateImage();
     }
     
+    /**
+     * Updates mood depending on gpa, happiness, and current action.
+     * @return void
+     */
     public void updateMood() {
         //if sick, ignore all other moods
         if(student.isSick()) {
@@ -73,10 +81,19 @@ public class DisplayMood extends Actor
         }
     }
     
+    /**
+     * Get Student's current ActionState
+     * @return void
+     */
     public void updateCurrentAction() {
         currentAction = student.getCurrentAction();
     }
     
+    /**
+     * Adjust mood image based on current mood
+     * @return void
+     * 
+     */
     public void updateImage() {
         if(mood != null) {
             setImage("face" + mood + ".png");

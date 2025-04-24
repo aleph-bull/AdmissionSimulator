@@ -3,16 +3,21 @@ import java.util.*;
 import java.util.ArrayList;
 
 /**
- * A box that detects for collision
+ * A box that detects for collision. Used when relatives enter/exit the world.
  * 
  * @author Zachary Zhao
- * @version (a version number or a date)
  */
 public class CollisionBox extends Item
 {
     GreenfootImage image;
     ArrayList<Animals> touchingAnimals;
     
+    /**
+     * Detailed CollisionBox constructor - customizable size
+     * @param sizeX
+     * @param sizeY
+     * @param transparent   True if invisible 
+     */
     public CollisionBox (int sizeX, int sizeY, boolean transparent) {
         image = new GreenfootImage(sizeX, sizeY); 
         image.setColor(Color.RED);
@@ -22,6 +27,10 @@ public class CollisionBox extends Item
         setImage(image);
     }
     
+    /**
+     * Simple CollisionBox constructor
+     * @param transparent True if invisible
+     */
     public CollisionBox(boolean transparent) {
         this (35, 100, transparent);
     }
@@ -31,10 +40,18 @@ public class CollisionBox extends Item
         getAndRemoveTouchingAnimals();
     }
     
+    /**
+     * Return intersecting animals
+     * @return List<Animals>    Intersecting objects of Animal.class
+     */
     public List<Animals> getTouchingAnimals() {
         return getIntersectingObjects(Animals.class);
     }
     
+    /**
+     * Retrieve and remove intersecting animals
+     * @return void
+     */
     public void getAndRemoveTouchingAnimals() {
         touchingAnimals = (ArrayList<Animals>)getTouchingAnimals();
         for(Animals a : touchingAnimals) {

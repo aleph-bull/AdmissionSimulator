@@ -1,10 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class functionalItem here.
+ * FunctionalItem apparently groups the Items that actually do something? Items all have 
+ * unique sound
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren, Angela Wang
+ * @version April 2025
  */
 public class FunctionalItem extends Item
-{}
+{
+    protected GreenfootSound sound;
+    
+    /**
+     * Called by the world when execution is stopped to stop all sfx
+     */
+    public void stopSound(){
+        sound.stop();
+    }
+}

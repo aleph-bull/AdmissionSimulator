@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Item here.
+ * Parent class, handles Item usage. Unique stats to each funcitonalitem.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Zachary Zhao, Ethen Ren
  */
 public class Item extends Actor
 {
@@ -16,6 +15,9 @@ public class Item extends Actor
     protected int useActCountDuration;
     protected SuperStatBar usageBar;
     
+    /**
+     * Item constructor
+     */
     public Item(){
         beingUsedActCount = 0;
         isBeingUsed = false;
@@ -35,10 +37,19 @@ public class Item extends Actor
         }
     }
     
+    /**
+     * Returns a user of Item
+     * @return Animals  Item user
+     */
     public Animals getUser(){
         return this.user;
     }
     
+    /**
+     * Sets an animal as a user and creates a stat bar
+     * @param a     Animal to be set as User
+     * @return void
+     */
     public void setUser(Animals a){
         isBeingUsed = true;
         user = a;
@@ -48,6 +59,10 @@ public class Item extends Actor
         getWorld().addObject(usageBar, a.getX(), a.getY());
     }
     
+    /**
+     * Kicks off the animal that is using the bar
+     * @return void
+     */
     public void stopUsing(){
         isBeingUsed = false;
         user.setAction(ActionState.NOTHING);
@@ -56,6 +71,10 @@ public class Item extends Actor
         user = null;
     }
     
+    /**
+     * Returns a boolean value to prevent simultaneous usage
+     * @return boolean      True if Item is being used
+     */
     public boolean isOccupied(){
         return this.isBeingUsed;
     }

@@ -1,14 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Desk here.
+ * Honestly Desk is pretty much for decoration and could have been an Image
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren
+ * @version April 2025
  */
 public class Desk extends Item
 {
     private GreenfootImage image;
+    /**
+     * Desk constructor
+     */
     public Desk () {
         super();
         image = new GreenfootImage("desk.png");

@@ -31,6 +31,9 @@ public abstract class Animals extends SuperSmoothMover
     //boolean needed for battle
     protected boolean inBattle = false;
     
+    /**
+     * Animals constructor 
+     */
     public Animals(){
         setImage(image);
         maxSpeed = 5;
@@ -38,6 +41,10 @@ public abstract class Animals extends SuperSmoothMover
         inBattle = true;
     }
     
+    /**
+     * Main Animals constructor - specify what room Animal is in
+     * @param isTop     True if in top room
+     */
     public Animals (boolean isTop) {
         maxSpeed = 5;
         speed = maxSpeed;
@@ -71,6 +78,13 @@ public abstract class Animals extends SuperSmoothMover
         actCount++;
     }
     
+    /**
+     * Checks if the character has hit an edge between a set of coordinates
+     * @param rangeX
+     * @param rangeY
+     * @param xOffset
+     * @param yOffset
+     */
     public boolean hitEdge(int rangeX, int rangeY, int xOffset, int yOffset) {
         // rangeX and rangeY is the area of the space considered to be the edge
         boolean bounced = false;
@@ -98,6 +112,12 @@ public abstract class Animals extends SuperSmoothMover
         return bounced;
     }
     
+    /**
+     * Version of hit edge that takes 2D coordinates for easier use.
+     * @param topLeft       
+     * @param bottomRight
+     * @return boolean
+     */
     //a version of hit edge that takes in 2D coordinates (x, y) instead of that range stuff
     public boolean hitEdge(int[] topLeft, int[] bottomRight) {
         if(topLeft.length != 2 || bottomRight.length != 2) {
@@ -111,12 +131,21 @@ public abstract class Animals extends SuperSmoothMover
         
     }
     
-    // changes direction completely randomly
+    /**
+     * Changes direction to a random location within a range.
+     * @param range
+     * @return void
+     */
     public void setRandomDirection (int range) {
         int randomDirection = movementDirection + Greenfoot.getRandomNumber(range+1) - (range/2);
         setDirection(randomDirection);
     }
     
+    /**
+     * Sets to a specific direction
+     * @param direction      
+     * @return void
+     */
     public void setDirection(int direction) {
         movementDirection = direction;
         if(movementDirection >= 360) {
@@ -124,22 +153,45 @@ public abstract class Animals extends SuperSmoothMover
         } else if(movementDirection < 0) {
             movementDirection += 360;
         }
+        
+        if (movementDirection <= 95 && movementDirection >= 85){
+            int random = Greenfoot.getRandomNumber(2);
+            if (random == 0) movementDirection = 95; else movementDirection = 85;
+        }
+        
         movementDirectionInRadians = (double)movementDirection * (Math.PI/180);
         updateDyDx (); // updates the actual direction values to match
     }
     
+    /**
+     * Generate random cooldown
+     * @return void
+     */
     public void setRandomCooldown () {
         changeDirectionCooldown = Greenfoot.getRandomNumber(1001) + 500; // random number from 500-1000
     }
     
+    /**
+     * Set ActionState
+     * @param action        new ActionState
+     * @return void
+     */
     public void setAction(ActionState action) {
         currentAction = action;
     }
     
+    /**
+     * Freezes Animal 
+     * @return void
+     */
     public void stopMoving() {
         speed = 0;
     }
     
+    /**
+     * Moves Animal again (speed = max)
+     * @return void
+     */
     public void resumeMoving() {
         speed = maxSpeed;
     }
@@ -188,10 +240,18 @@ public abstract class Animals extends SuperSmoothMover
         }
     }
     
+    /**
+     * Get current action state
+     * @return ActionState currentAction
+     */
     public ActionState getCurrentAction() {
         return currentAction;
     }
     
+    /**
+     * Update dx dy?
+     * @return void
+     */
     public void updateDyDx () {
         dx = Math.cos(movementDirectionInRadians) * 100;
         dy = Math.sin(movementDirectionInRadians) * 100;
@@ -211,13 +271,5 @@ public abstract class Animals extends SuperSmoothMover
      */
     public double getDy(){
         return dy;
-    }
-
-    /**
-     * Get current ActionState 
-     * @return ActionState currentAction
-     */
-    public ActionState getActionState(){
-        return currentAction;
     }
 }

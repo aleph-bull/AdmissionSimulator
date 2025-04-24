@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+ * Rain is just another visual for Depression, spawned by Cloud
  * 
  * @author Angela Wang
  * @version 04.10.25
@@ -16,16 +17,26 @@ public class Rain extends EffectItem
     public static final int R1_BORDER_Y = 390;
     private int edge;
     
+    /**
+     * Rain constructor draws rain image
+     */
     public Rain(){
         height = 20;
         width = PIXEL_WIDTH;
-                
+        
+        //i don't think this is ever actually used, was originally planning to have
+        //diagonal rain
         enableStaticRotation();
         turn(90);
         
         drawImage();
     }
     
+    /**
+     * Determine edge of room rain spawns in
+     * @param w     World rain is added to
+     * @return void
+     */
     public void addedToWorld(World w){
         if (getY() < R1_BORDER_Y){
             //if starting above room 1 border, rain is in room 1
@@ -37,7 +48,7 @@ public class Rain extends EffectItem
     }
     
     /**
-     * Act - do whatever the Rain wants to do. This method is called whenever
+     * Act - move rain down the screen. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

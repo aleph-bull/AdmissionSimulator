@@ -11,9 +11,16 @@ public class EndingWorld extends World
     private boolean student1Win, student2Win; 
     private DecisionImage acceptedImage;
     private DecisionImage rejectedImage; 
+    
+    private GreenfootSound music;
 
     private CharacterImage student1, student2;
 
+    /**
+     * Ending world - specify admission status of students
+     * @param student1Admitted  True if accepted
+     * @param student2Admitted  True if accepted
+     */
     public EndingWorld(boolean student1Admitted, boolean student2Admitted)
     {    
         super(1024, 800, 1);
@@ -53,5 +60,31 @@ public class EndingWorld extends World
             rejectedImage = new DecisionImage(false);
             addObject(rejectedImage, 532, 557);
         }
+        
+        //set music based on acceptaince/rejections --> only play sad music if both
+        //are rejected
+        if (student1Win == false && student2Win == false){
+            music = new GreenfootSound("sadending.mp3");
+        } else {
+            music = new GreenfootSound("yayending.mp3");
+        }
+        
+        music.play();
+    }
+    
+    /**
+     * Continue music when started
+     * @return void
+     */
+    public void started(){
+        music.play();
+    }
+    
+    /**
+     * Pause music when execution stopped
+     * @return void
+     */
+    public void stopped(){
+        music.pause();
     }
 }
