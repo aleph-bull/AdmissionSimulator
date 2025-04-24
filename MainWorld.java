@@ -137,8 +137,10 @@ public class MainWorld extends World {
         //Adding the timer: Showing the timer (how much time left till they submtit their application)
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
-        addObject(counter2, 950, 12);
-        
+        addObject(counter2, 950, 12);        
+        studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
+        studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
+        studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
         studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
