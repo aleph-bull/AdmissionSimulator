@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Bed is where Student, Relatives can sleep. Student will gain happiness :D
+ * A bed. Used when a player comes in contact with a bed, increases happiness on student class
  * 
- * @author Ethan Ren, Angela Wang (sfx)
- * @version April 2025
+ * @author Zachary Zhao, Ethan Ren, Angela Wang
  */
 public class Bed extends FunctionalItem
 {

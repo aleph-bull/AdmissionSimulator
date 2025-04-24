@@ -1,3 +1,10 @@
+/**
+ * ActionState
+ * An enumeration thingy
+ * 
+ * @Zachary Zhao
+ */
+
 public enum ActionState {
     SLEEPING, WORKING, PLAYING, BRAINROTTING, NOTHING;
 }
