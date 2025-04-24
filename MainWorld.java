@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 /**
  * MainWorld is where the GPA farming simulation takes place.
- * @author Zachary Zhao, Ethan Ren, Stephanie Xia, Angela Wang
+ * @author Zachary Zhao, Daniel Wang, Ethan Ren, Stephanie Xia, Angela Wang
  * @version 04-23-2025
  */
 
