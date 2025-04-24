@@ -1,16 +1,29 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class StudentStatBar here.
+ * Stat Bar for Student's GPA and Happiness, updates to reflect values
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren
+ * @version April 2025
  */
 public class StudentStatBar extends SuperStatBar
 {
     boolean top;
     Student owner;
     boolean isGpa;
+    /**
+     * Constructor 
+     * @param currVal
+     * @param theOwner      Student bar belongs to
+     * @param width
+     * @param height
+     * @param filledColor
+     * @param missingColor
+     * @param borderColor
+     * @param borderThickness
+     * @param isTop         True if Student bar belongs to is in top room
+     * @param isGPA         Determines if bar is for GPA or happiness
+     */
     public StudentStatBar(int currVal, Student theOwner, int width, int height, Color filledColor, Color missingColor, Color borderColor, int borderThickness, boolean isTop, boolean isGPA){
         super(10000, currVal*100, null, width, height, 0, filledColor, missingColor, false, borderColor, borderThickness);
         top = isTop;

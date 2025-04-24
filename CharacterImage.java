@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CharacterImage here.
+ * CharacterImage sets Images for ending worlds?
+ * To be honest this could have just been Image
  * 
- * @ author Stephanie Xia
- * @ version 4.22.2025
+ * @author Stephanie Xia
+ * @version 4.22.2025
  */
 public class CharacterImage extends Actor
 {
@@ -18,6 +19,10 @@ public class CharacterImage extends Actor
 
     }
 
+    /**
+     * CharacterImage constructor - specify which student image should be of
+     * @param isStudent1 
+     */
     public CharacterImage(boolean isStudent1)
     {
 

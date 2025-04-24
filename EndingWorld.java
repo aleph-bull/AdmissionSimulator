@@ -16,6 +16,11 @@ public class EndingWorld extends World
 
     private CharacterImage student1, student2;
 
+    /**
+     * Ending world - specify admission status of students
+     * @param student1Admitted  True if accepted
+     * @param student2Admitted  True if accepted
+     */
     public EndingWorld(boolean student1Admitted, boolean student2Admitted)
     {    
         super(1024, 800, 1);
@@ -64,13 +69,21 @@ public class EndingWorld extends World
             music = new GreenfootSound("yayending.mp3");
         }
         
-        music.playLoop();
+        music.play();
     }
     
+    /**
+     * Continue music when started
+     * @return void
+     */
     public void started(){
-        music.playLoop();
+        music.play();
     }
     
+    /**
+     * Pause music when execution stopped
+     * @return void
+     */
     public void stopped(){
         music.pause();
     }

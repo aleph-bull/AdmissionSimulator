@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * The card that displays the image of the current image of student on the card.
  * Updates with the student's animations.
  * 
- * @Zachary Zhao
+ * @author Zachary Zhao
  */
 public class DisplayStudent extends Actor
 {
@@ -12,6 +12,7 @@ public class DisplayStudent extends Actor
     GreenfootImage image;
     /**
      * A constructor for the class.
+     * @param student   Student whose image is being updated
      */
     public DisplayStudent(Student student) {
         this.student = student;
@@ -23,7 +24,9 @@ public class DisplayStudent extends Actor
     }
     
     /**
-     * Updates the image to match the one that is playing on the actual student. Scales it larger each time to improve visibility
+     * Updates the image to match the one that is playing on the actual student. 
+     * Scales it larger each time to improve visibility
+     * @return void
      */
     public void updateImage() {
         if(student.getImage() != null) {
