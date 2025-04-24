@@ -1,16 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 /**
- * Write a description of class Student here.
+ * Student posseses GPA, happiness, and productivity, the last 2 impacting GPA? It 
+ * wanders around the room and can be sleeping (bed), working (on computer), brainrotting 
+ * (on phone). 
  * 
- * @author 
+ * @author Daniel Wang, Zachary Zhao, Angela Wang
+ * @version April 2025
  */
 public class Student extends Animals
 {
-    /**
-     * Act - do whatever the Student wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     private double gpa;
     private double happiness;
     private int nextItem;
@@ -40,6 +39,10 @@ public class Student extends Animals
     private GreenfootImage phoneImg;
     private int countdown, walkFrame, phoneFrame;
 
+    /**
+     * Student constructor - specify if Student is in top or bottom room
+     * @param isTop     if true, student is in top room, otherwise in bottom room
+     */
     public Student(boolean isTop){
         super(isTop);
         gpa = 50;
@@ -59,10 +62,19 @@ public class Student extends Animals
 
     }
 
+    /**
+     * When added to world, add animation frames to an array
+     * @return void
+     */
     public void addedToWorld(World w){
         prepareAnimations();
     }
 
+    /**
+     * Act - wander around room/use items, alter gpa/happiness/productivity, and potentially 
+     * suffer disease or depression
+     * @return void
+     */
     public void act()
     {
         super.act();
@@ -91,20 +103,37 @@ public class Student extends Animals
         gpa -= 0.05;
     }
 
+    /**
+     * Get Student GPA
+     * @return double   Student gpa
+     */
     public double getGpa(){
         return this.gpa;
     }
 
+    /**
+     * Set GPA to int
+     * @param updatedGpa       integer new gpa
+     * @return void
+     */
     public void setGpa(int updatedGpa){
         this.gpa = updatedGpa;
         // Add your action code here.
         nextItem = Greenfoot.getRandomNumber(3);
     }
 
+    /**
+     * Increase happiness by 0.6
+     * @return void
+     */
     public void rest(){
         happiness += 0.6;
     }
 
+    /**
+     * Increase gpa (more if productive) and decrease happiness
+     * @return void
+     */
     public void work(){
         if (productive){
             gpa += 0.4;
@@ -114,11 +143,20 @@ public class Student extends Animals
         happiness -= 0.25;
     }
 
+    /**
+     * Decrease gpa and increase happiness
+     * @return void
+     */
     public void usePhone(){
         gpa -= 0.2;
         happiness += 1.5;
     }
 
+    /**
+     * Subtract amount from health
+     * @param amount    int health to be subtracted
+     * @return void
+     */
     public void reduceHealth(int amount){
         this.studentHealth-=amount;
     }
@@ -152,16 +190,22 @@ public class Student extends Animals
             walkAnimations[j].scale(40, 55);
         }
         
+        //stil phone image
         phoneImg = new GreenfootImage(fileName + "_phone4.png");
         phoneImg.scale(40, 55);
         
         setImage(walkAnimations[0]);
     }
 
+    /**
+     * Return health of student
+     * @return boolean  True if Student is currently under Sickness effect
+     */
     public boolean isSick() {
         return sick;
     }
 
+    //manage animations
     private void animate(){
         //change frames every 8 acts
         if (countdown > 0){
@@ -185,27 +229,57 @@ public class Student extends Animals
         }
     }
 
+    /**
+     * Return student happiness
+     * @return double   Happiness (happiest = 100)
+     */
     public double getHappiness(){
         return happiness;
     }
     
+    /**
+     * Return student productivity
+     * @return int Productivity level, impacting how long student is at computer
+     */
     public int getProductivity() {
         return productivity;
     }
+    
+    /**
+     * Return if student can move??
+     * @param dx
+     * @return boolean
+     */
     public boolean canMove(int dx) {
         int newX = getX() + dx;
         return newX >= 0 && newX < getWorld().getWidth();
     }
     
+    /**
+     * Set student productivity value to new int
+     * @param productivity
+     * @return void
+     */
     public void setProductivityValue(int productivity)
     {
         this.productivity = productivity; 
     }
     
+    /**
+     * Set happiness to new double
+     * @param happiness
+     * @return void
+     */
     public void setHappinessValue(double happiness)
     {
         this.happiness = happiness; 
     }
+    
+    /**
+     * Set gpa to new double
+     * @param gpa
+     * @return void
+     */
     public void setGpaValue(double gpa)
     {
         this.gpa = gpa; 

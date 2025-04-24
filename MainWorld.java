@@ -1,6 +1,12 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
+/**
+ * MainWorld is where the GPA farming simulation takes place.
+ * @author Zachary Zhao, Daniel Wang, Ethan Ren, Stephanie Xia, Angela Wang
+ * @version 04-23-2025
+ */
+
 public class MainWorld extends World {
 
     public static final boolean SHOW_BARS = true;
@@ -47,6 +53,10 @@ public class MainWorld extends World {
 
     private SuperStatBar countdownBar;
     private GreenfootSound music;
+    
+    /**
+     * Constructor for MainWorld, called by IntroductionWorld 
+     */
     public MainWorld() {
         super(1024, 800, 1);
 
@@ -186,21 +196,40 @@ public class MainWorld extends World {
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
         }
     }
-    //???
+
+    /**
+     * Execution started --> play music (item sfx are not played bc assumption is that they are 
+     * short enough to need to be played again)
+     * @return void
+     */
     public void started(){
         // counter2.setValue(120);
         music.playLoop();
+        ArrayList<Depression> depression = (ArrayList<Depression>) getObjects(Depression.class);
+        if (depression.size() > 0){
+            depression.get(0).startSound();
+        }
     }
 
     public void stopped(){
+        //stop all sound effects + music
         ArrayList<FunctionalItem> functionalItems = (ArrayList<FunctionalItem>) getObjects(FunctionalItem.class);
         for (FunctionalItem f: functionalItems){
             f.stopSound();
         }
 
+        ArrayList<Depression> depression = (ArrayList<Depression>) getObjects(Depression.class);
+        if (depression.size() > 0){
+            depression.get(0).pauseSound();
+        }
+        
         music.pause();
     }
 
+    /**
+     * Spawn a relative in either room, with any of the 3 associated selected images.
+     * @return void
+     */
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;
@@ -240,10 +269,7 @@ public class MainWorld extends World {
         }
     }
 
-    /**
-     * Spawn either Sickness or Depression in random room
-     */
-
+    //Spawn either Sickness or Depression in random room
     private void spawnEffect(int roomNum, int y, Student student){
         int random = Greenfoot.getRandomNumber(2);
         if (random == 0){

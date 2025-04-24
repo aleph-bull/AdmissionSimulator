@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Angela Wang
  * @version 04-15-25
  */
+
 public class IntroductionWorld extends World
 {
     private GreenfootImage image;
@@ -82,11 +83,13 @@ public class IntroductionWorld extends World
         skipButton = new BasicText(">>>SKIP", new Font(35), Color.WHITE);
         addObject(skipButton, 950, 771);
     }
-
+    
+    //continue music when started greenfoot
     public void started(){
         music.playLoop();
     }
-
+    
+    //pause music when greenfoot is paused
     public void stopped(){
         music.pause();
     }

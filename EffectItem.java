@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EffectItem here.
+ * EffectItems are mostly cool visual stuff for Effects, managed by their Effect screen 
+ * (Depression/Sickness class).
  * 
  * @author Angela Wang 
  * @version April 2025
@@ -11,6 +12,9 @@ public class EffectItem extends SuperSmoothMover
     protected GreenfootImage image;
     private int newTransparency;
     
+    /**
+     * EffectItem constructor
+     */
     public EffectItem(){
     }
     
@@ -23,6 +27,11 @@ public class EffectItem extends SuperSmoothMover
         // Add your action code here.
     }
     
+    /**
+     * Fade by fadeAmt, should be called each act
+     * @param fadeAmt   Amount to fade per act
+     * @return void
+     */
     public void fade(int fadeAmt){
         newTransparency = image.getTransparency() - fadeAmt;
         if (newTransparency >= 0){

@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 
 /**
- * Tracks cursor movement, used in SettingsWorld to create visual effects with buttons.
+ * Tracks cursor movement, used in setting worlds to create visual effects with buttons.
  * 
  * @author Angela Wang
  * @version 04.09.25
@@ -13,6 +13,10 @@ public class Cursor extends Actor
     private GreenfootImage image;
     private boolean showCursor = false;
     
+    /**
+     * Cursor constructor - all this really does is create a cursor + set an image if you want
+     * to show the cursor
+     */
     public Cursor(){
         image = new GreenfootImage(50, 50);
         image.setColor(Color.GREEN);
@@ -22,8 +26,8 @@ public class Cursor extends Actor
     }
     
     /**
-     * Act - do whatever the Cursor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - get mouse information, accounting for if mouse goes out of world. This 
+     * method is called whenever the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
