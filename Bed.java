@@ -42,13 +42,9 @@ public class Bed extends FunctionalItem
         super.act();
     }
 
-    /**
-     * Sets location to specific area when kicking off animals
-     */
-
     @Override
     /**
-     * Relative kicks Student out
+     * Sets location to specific area when kicking off animals
      * @return void
      */
     public void stopUsing() {

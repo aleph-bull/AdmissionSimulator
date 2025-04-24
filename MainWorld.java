@@ -154,11 +154,15 @@ public class MainWorld extends World {
         studentBot.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentBot.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentBot.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
+        
+        music.playLoop();
     }
 
+    /**
+     * Act - spawn relatives + effects, update timer
+     * @return void
+     */
     public void act() {
-        music.playLoop();
-
         spawnRelative();
         actNum++;
 

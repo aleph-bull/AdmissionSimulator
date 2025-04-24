@@ -15,6 +15,9 @@ public class Item extends Actor
     protected int useActCountDuration;
     protected SuperStatBar usageBar;
     
+    /**
+     * Item constructor
+     */
     public Item(){
         beingUsedActCount = 0;
         isBeingUsed = false;
@@ -35,7 +38,8 @@ public class Item extends Actor
     }
     
     /**
-     * returns a user
+     * Returns a user of Item
+     * @return Animals  Item user
      */
     public Animals getUser(){
         return this.user;
@@ -43,6 +47,8 @@ public class Item extends Actor
     
     /**
      * Sets an animal as a user and creates a stat bar
+     * @param a     Animal to be set as User
+     * @return void
      */
     public void setUser(Animals a){
         isBeingUsed = true;
@@ -55,6 +61,7 @@ public class Item extends Actor
     
     /**
      * Kicks off the animal that is using the bar
+     * @return void
      */
     public void stopUsing(){
         isBeingUsed = false;
@@ -66,6 +73,7 @@ public class Item extends Actor
     
     /**
      * Returns a boolean value to prevent simultaneous usage
+     * @return boolean      True if Item is being used
      */
     public boolean isOccupied(){
         return this.isBeingUsed;

@@ -44,7 +44,9 @@ public class AdmissionsWorld extends World
     private GreenfootSound music, acceptedSound, rejectedSound;
     
     /**
-     * Constructor for objects of class EndingWorld.
+     * Constructor for objects of class AdmissionsWorld
+     * @param studentTop    Student from top room
+     * @param studentBot    Student from bottom room
      * @author Zachary Zhao
      */
 
@@ -103,16 +105,28 @@ public class AdmissionsWorld extends World
         addObject(university, 830, 445);
     }
     
+    /**
+     * Continue music if it was playing before execution pause
+     * @return void
+     */
     public void started(){
         if (isPlaying){
             music.play();
         }
     }
     
+    /**
+     * Pause music if execution stopped
+     * @return void
+     */
     public void stopped(){
         music.pause();
     }
     
+    /**
+     * Act
+     * @return void
+     */
     public void act() {
         if(actCount == 120) {
             isPlaying = true; // plays both sequences
@@ -161,6 +175,10 @@ public class AdmissionsWorld extends World
         }
         
         if(actCount == actCountWhenBeganTalking + 500 && !playingStudentTopSequence) {
+            music.stop();
+            acceptedSound.stop();
+            rejectedSound.stop();
+            //pausing all sfx just in case?
             Greenfoot.setWorld(new EndingWorld(studentTopAdmitted, studentBotAdmitted)); 
         }
         
@@ -169,7 +187,7 @@ public class AdmissionsWorld extends World
     
     /**
      * Code that adds speech object and resets some stats
-     * @author Zachary Zhao
+     * @return void
      */
     public void beginSpeech() {
         addObject(speech, getWidth()/2, 610);
@@ -179,7 +197,7 @@ public class AdmissionsWorld extends World
     
     /**
      * Quickly alternates the number for the rolling sequence
-     * @author Zachary Zhao
+     * @return void
      */
     public void simulateRolling() {
         if(isPlaying) {

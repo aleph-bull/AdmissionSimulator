@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SettingsImages here.
+ * Useful methods for all images in settings worlds
  * 
  * @author Stephanie Xia
  * @version 04.17.2025
@@ -17,8 +17,7 @@ public class SettingsImages extends Actor
     private int maxmiumMinimumReachedGraphicCountdown; 
 
     /**
-     * Act - do whatever the SettingsImages wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Constructor?
      */
     public SettingsImages ()
     {       
@@ -38,7 +37,11 @@ public class SettingsImages extends Actor
         }
     }
 
-    //scaling for the relative images
+    /**
+     * Scaling for the relative images
+     * @param imageFile     Relative file to be scaled
+     * @return void
+     */
     public void setImageFile(String imageFile)
     {
         image = new GreenfootImage(imageFile); 
@@ -46,7 +49,12 @@ public class SettingsImages extends Actor
         setImage(image); 
     }
 
-    //scaling for the university images
+    /**
+     * Scaling for the university images
+     * @param imageFile     University file to be scaled
+     * @param isUniversity  ?
+     * @return void
+     */
     public void setImageFile(String imageFile, boolean isUniversity)
     {
         image = new GreenfootImage(imageFile); 

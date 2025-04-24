@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Mirror here.
+ * Yet another still Image that could have been part of Image.class
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren
+ * @version April 2025
  */
 public class Mirror extends Item
 {

@@ -1,5 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+/**
+ * Typewriting textbox with possible speaker animation. Taken
+ * from Yo Quiero by Zachary Zhao
+ * @author Zachary Zhao
+ */
 public class Textbox extends Actor
 {
     private GreenfootImage image;
@@ -20,6 +25,11 @@ public class Textbox extends Actor
     private GreenfootSound dialogueSounds[];
     private int curIndex;
     
+    /**
+     * Textbox constructor without an animated speaker
+     * @param text  Text to display
+     * @param color Text color
+     */
     public Textbox(String text, Color color){
         image = new GreenfootImage(800, 400);
         image.setColor(color);
@@ -27,6 +37,11 @@ public class Textbox extends Actor
         image.drawString(text, 100, 100);
     }
 
+    /**
+     * Textbox constructor with speaker to animate
+     * @param dialog    Text to display
+     * @param speaker   Actor to animate
+     */
     public Textbox(String dialog, Actor speaker) {
         this.speaker = speaker;
         this.dialog = dialog;

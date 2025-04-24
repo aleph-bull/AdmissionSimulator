@@ -12,6 +12,12 @@ public class CollisionBox extends Item
     GreenfootImage image;
     ArrayList<Animals> touchingAnimals;
     
+    /**
+     * Detailed CollisionBox constructor - customizable size
+     * @param sizeX
+     * @param sizeY
+     * @param transparent   True if invisible 
+     */
     public CollisionBox (int sizeX, int sizeY, boolean transparent) {
         image = new GreenfootImage(sizeX, sizeY); 
         image.setColor(Color.RED);
@@ -21,6 +27,10 @@ public class CollisionBox extends Item
         setImage(image);
     }
     
+    /**
+     * Simple CollisionBox constructor
+     * @param transparent True if invisible
+     */
     public CollisionBox(boolean transparent) {
         this (35, 100, transparent);
     }
@@ -30,10 +40,18 @@ public class CollisionBox extends Item
         getAndRemoveTouchingAnimals();
     }
     
+    /**
+     * Return intersecting animals
+     * @return List<Animals>    Intersecting objects of Animal.class
+     */
     public List<Animals> getTouchingAnimals() {
         return getIntersectingObjects(Animals.class);
     }
     
+    /**
+     * Retrieve and remove intersecting animals
+     * @return void
+     */
     public void getAndRemoveTouchingAnimals() {
         touchingAnimals = (ArrayList<Animals>)getTouchingAnimals();
         for(Animals a : touchingAnimals) {

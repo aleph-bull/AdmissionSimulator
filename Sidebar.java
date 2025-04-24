@@ -1,13 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Sidebar here.
+ * More still Images... just the Sidebar graphic
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Zachary Zhao
+ * @version April 2025
  */
 public class Sidebar extends Actor
 {
+    /**
+     * Sidebar constructor
+     */
     public Sidebar() {
         setImage(new GreenfootImage("sidebar.png"));
     }

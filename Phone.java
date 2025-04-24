@@ -1,16 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Phone here.
+ * Phone causes Brainrotting, dropping Student Gpa but increasing their happiness. It 
+ * can also be used by Relatives.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Ethan Ren, Angela Wang
+ * @version April 2025
  */
 public class Phone extends FunctionalItem
 {
     private GreenfootImage image;
     private boolean soundPlayed = false;
     
+    /**
+     * Phone constructor
+     */
     public Phone () {
         super();
         image = new GreenfootImage("phone.png");

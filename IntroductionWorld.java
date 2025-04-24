@@ -46,7 +46,6 @@ public class IntroductionWorld extends World
             "No... my GPA fluctuates wildly.",
             "Same. So many distractions from studying...",
             "We can do this! Lock in.",
-            "Right. May the best student be accepted!"
         };
 
         speaker1 = new Image("Amelia_run1.png", 90, 120);
@@ -75,7 +74,7 @@ public class IntroductionWorld extends World
         addObject(speaker1, speaker1X, 560);
         addObject(speaker2, speaker2X, 560);
 
-        duration = 225;
+        duration = 200;
 
         //text = new Textbox(dialogue[curIndex], speaker1);
         //addObject(text, 500, 700);
