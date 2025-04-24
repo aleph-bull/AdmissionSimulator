@@ -79,9 +79,9 @@ public class Student extends Animals
 
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
-        
+
         productive = happiness >= 50;
-        
+
         ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
         if (effects.size() != 0){
             if (effects.get(0) instanceof Sickness){
@@ -157,10 +157,10 @@ public class Student extends Animals
             walkAnimations[j] = new GreenfootImage(fileName + "_run" + (j + 1) + ".png");
             walkAnimations[j].scale(40, 55);
         }
-        
+
         phoneImg = new GreenfootImage(fileName + "_phone4.png");
         phoneImg.scale(40, 55);
-        
+
         setImage(walkAnimations[0]);
     }
 
@@ -186,7 +186,7 @@ public class Student extends Animals
                 walkFrame = 0;
                 setImage(walkAnimations[walkFrame]);
             }
-            
+
             countdown = 8;
         }
     }
@@ -194,23 +194,26 @@ public class Student extends Animals
     public double getHappiness(){
         return happiness;
     }
-    
+
     public int getProductivity() {
         return productivity;
     }
+
     public boolean canMove(int dx) {
         int newX = getX() + dx;
         return newX >= 0 && newX < getWorld().getWidth();
     }
+
     public void setProductivityValue(int productivity)
     {
         this.productivity = productivity; 
     }
-    
+
     public void setHappinessValue(double happiness)
     {
         this.happiness = happiness; 
     }
+
     public void setGpaValue(double gpa)
     {
         this.gpa = gpa; 

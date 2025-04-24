@@ -147,6 +147,12 @@ public class MainWorld extends World {
         studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
+        addObject(counter2, 950, 12);
+
+        studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
+        studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
+        studentTop.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
+
         studentBot.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentBot.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentBot.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
