@@ -90,18 +90,18 @@ SOUND
 - Win sfx: https://www.youtube.com/watch?v=rr5CMS2GtCY
 
 IMAGES 
-- Among Us:
+- Among Us: 
 - Button image: 
 - Capybara: https://rainloaf.itch.io/capybara-sprite-sheet
 - Cat: I cannot for the life of me find where this came from. Will update when members provide link?
 - Cloud image: https://www.freepik.com/premium-vector/pixel-art-cartoon-crying-rainy-cloud-character_214146407.htm
 - Germ image: https://www.freepik.com/premium-vector/bacteria-virus-pixel-art-set-germ-microbe-collection-infectious-pathogen-8-bit-sprite_33822375.htm
 - IntroductionWorld bg: https://ibispaint.com/art/707595372/
-- MainWorld bg: 
+- MainWorld bg: https://limezu.itch.io/moderninteriors
 - Mom: ChatGPT'd
 - Mood: https://actuallykron.itch.io/free-emoji-pack?download
 - SettingsWorld bgs: Stephanie Xia
-- Sister:
+- Sister: ChatGPT'd
 - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
-- Students: I also!! cannot for the life of me find where these came from.
+- Students: https://limezu.itch.io/moderninteriors
 - University images: edited by Stephanie Xia + online images???
