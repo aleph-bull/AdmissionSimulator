@@ -64,6 +64,12 @@ ITEMS
     **Probably fixed but also potentially not - can't be 100% sure
 - *Note: decided not to have Phone appear above Relatives who were using it because it just looked bad -
     this is not a bug!
+- Don't know if this counts as a bug but if you set the simulation speed to insanely quick, some sfx 
+    might not be stopped?? HOWEVER in normal simulation speed everything should work
+- YOU HAVE TO BEGIN THE SIMULATION FROM STARTINGWORLD!! otherwise will get nullpointerexception because of
+    the way Setting world stuff sets images
+***Relative animations ignore direction but it's not really a bug and more that I actively did not try to code it 
+    (ran out of time)
 
 ==============CREDITS==============
 SOUND
