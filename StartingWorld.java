@@ -1,30 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * THINGS TO CHANGE
- * - bar blocking cloud
- * - phone placement
- * - adding computer/phone graphics
- * 
- * ============CREDITS============
- * - Button sfx: https://www.youtube.com/watch?v=BZvS2Bno8R4
- * - Cloud image: https://www.freepik.com/premium-vector/pixel-art-cartoon-crying-rainy-cloud-character_214146407.htm
- * - Germ image: https://www.freepik.com/premium-vector/bacteria-virus-pixel-art-set-germ-microbe-collection-infectious-pathogen-8-bit-sprite_33822375.htm
- * - Rain sfx: Light rain loop, https://mixkit.co/free-sound-effects/rain/
- * - SettingWorld music: Run Amok by Kevin MacLeod, https://www.chosic.com/download-audio/39324/
- * - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
- * - StartingWorld music: Colorful Flowers by Tokyo Music Walker, https://www.chosic.com/download-audio/45508/
- * - IntroductionWorld bg: https://ibispaint.com/art/707595372/
- * - IntroductionWorld music: https://www.chosic.com/download-audio/27131/ 
- * - MainWorld music: https://www.chosic.com/download-audio/29282/
- * - Honk mimimimi: https://www.youtube.com/watch?v=dNr7nXvntO8 
- * - Typing: https://mixkit.co/free-sound-effects/discover/typing/
- * 
- * 
- * =====KNOWN BUGS====
- * - Slight slight chance that Animal may hit a wall and oscillate briefly 
- * - Settings do not save when going back a setting world? or maybe it's just visuals
- * - 
+ * StartingWorld begins the simulation with bland welcome text and a cool gif!? 
  * 
  * @author Angela Wang
  * @version 04.09.25
@@ -61,14 +38,25 @@ public class StartingWorld extends World
         addObject(startText, getWidth() / 2, 600);
     }
     
+    /**
+     * Continue playing music when execution started
+     * @return void
+     */
     public void started(){
         music.playLoop();
     }
 
+    /**
+     * Pause music when execution stopped
+     */
     public void stopped(){
         music.pause();
     }
 
+    /**
+     * Animate gif 
+     * @return void
+     */
     public void act(){
         animate();
         if (Greenfoot.isKeyDown("e")){
@@ -77,7 +65,7 @@ public class StartingWorld extends World
         }
     }
     
-    public void animate(){
+    private void animate(){
         background.getCurrentImage().scale(1024, 800);
         setBackground(background.getCurrentImage());
     }
