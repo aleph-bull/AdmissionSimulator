@@ -31,6 +31,7 @@ public abstract class Animals extends SuperSmoothMover
     //boolean needed for battle
     protected boolean inBattle = false;
     
+
     public Animals(){
         setImage(image);
         maxSpeed = 5;
@@ -71,6 +72,9 @@ public abstract class Animals extends SuperSmoothMover
         actCount++;
     }
     
+    /**
+     * Checks if the character has hit an edge between a set of coordinates
+     */
     public boolean hitEdge(int rangeX, int rangeY, int xOffset, int yOffset) {
         // rangeX and rangeY is the area of the space considered to be the edge
         boolean bounced = false;
@@ -98,6 +102,9 @@ public abstract class Animals extends SuperSmoothMover
         return bounced;
     }
     
+    /**
+     * Takes 2D coordinates for easier use.
+     */
     //a version of hit edge that takes in 2D coordinates (x, y) instead of that range stuff
     public boolean hitEdge(int[] topLeft, int[] bottomRight) {
         if(topLeft.length != 2 || bottomRight.length != 2) {
@@ -112,11 +119,17 @@ public abstract class Animals extends SuperSmoothMover
     }
     
     // changes direction completely randomly
+    /**
+     * Changes direction to a random location within a range.
+     */
     public void setRandomDirection (int range) {
         int randomDirection = movementDirection + Greenfoot.getRandomNumber(range+1) - (range/2);
         setDirection(randomDirection);
     }
     
+    /**
+     * Sets to a specific direction
+     */
     public void setDirection(int direction) {
         movementDirection = direction;
         if(movementDirection >= 360) {

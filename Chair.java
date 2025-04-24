@@ -1,10 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Chair here.
+ * Where the student works and increases the GPA.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Zachary Zhao, Ethan Ren
  */
 public class Chair extends FunctionalItem
 {

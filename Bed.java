@@ -3,7 +3,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * A bed. Used when a player comes in contact with a bed, increases happiness on student class
  * 
- * @Zachary Zhao, Ethan Ren
+ * @author Zachary Zhao, Ethan Ren
  */
 public class Bed extends FunctionalItem
 {
@@ -25,7 +25,9 @@ public class Bed extends FunctionalItem
         super.act();
     }
     
-    
+    /**
+     * Sets location to specific area when kicking off animals
+     */
     @Override
     public void stopUsing() {
         // push off the user and send them toward a random direction away from the bed
