@@ -90,10 +90,10 @@ SOUND
 - Win sfx: https://www.youtube.com/watch?v=rr5CMS2GtCY
 
 IMAGES 
-- Among Us:
-- Button image: 
+- Among Us: https://among-us.fandom.com/wiki/Characters 
+- Button image: https://www.freepik.com/free-vector/ui-stone-texture-game-button-frame-cartoon-vector-set-medieval-interface-board-element-kit-mobile-app-menu-with-play-pause-plus-cross-arrow-check-isolated-item-template-collection_72090679.htm#fromView=keyword&page=1&position=26&uuid=f5aa3d61-b38d-4271-a60a-af784fb75f92&query=Game+Ui+Arrow 
 - Capybara: https://rainloaf.itch.io/capybara-sprite-sheet
-- Cat: I cannot for the life of me find where this came from. Will update when members provide link?
+- Cat: https://toffeecraft.itch.io/cat-pack 
 - Cloud image: https://www.freepik.com/premium-vector/pixel-art-cartoon-crying-rainy-cloud-character_214146407.htm
 - Germ image: https://www.freepik.com/premium-vector/bacteria-virus-pixel-art-set-germ-microbe-collection-infectious-pathogen-8-bit-sprite_33822375.htm
 - IntroductionWorld bg: https://ibispaint.com/art/707595372/
@@ -101,7 +101,7 @@ IMAGES
 - Mom: ChatGPT'd
 - Mood: https://actuallykron.itch.io/free-emoji-pack?download
 - SettingsWorld bgs: Stephanie Xia
-- Sister:
+- Sister: chatGPT
 - StartingWorld gif: https://www.artstation.com/artwork/182Z4L
-- Students: I also!! cannot for the life of me find where these came from.
+- Students: https://itch.io/game-assets/free/tag-sprites 
 - University images: edited by Stephanie Xia + online images???
