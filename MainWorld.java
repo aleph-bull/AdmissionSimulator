@@ -1,4 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+<<<<<<< Updated upstream
 import java.util.ArrayList;
 
 /**
@@ -6,6 +7,8 @@ import java.util.ArrayList;
  * @author Zachary Zhao, Daniel Wang, Ethan Ren, Stephanie Xia, Angela Wang
  * @version 04-23-2025
  */
+=======
+>>>>>>> Stashed changes
 
 public class MainWorld extends World {
 
@@ -51,6 +54,7 @@ public class MainWorld extends World {
     SimpleTimer st = new SimpleTimer();
     Counter counter2 = new Counter();
 
+    
     private SuperStatBar countdownBar;
     private GreenfootSound music;
     
@@ -65,6 +69,7 @@ public class MainWorld extends World {
 
         music = new GreenfootSound("mainmusic.mp3");
         music.setVolume(50);
+        
 
         studentTop = new Student(true);
         bedTop = new Bed();
@@ -95,7 +100,7 @@ public class MainWorld extends World {
         addObject(computerTop, 400, 120);
         addObject(displayTop, 855, 145);
         addObject(moodTop, 960, 150);
-
+    
         addObject(studentBot, 400, 600);
         addObject(bedBot, 90 + studentTop.getImage().getWidth() / 2, 620);
         addObject(chairBot, 400, 620);
@@ -114,6 +119,7 @@ public class MainWorld extends World {
         addObject(botExit, 750, 640);
 
         relativeMinCountdown = 500;
+        
 
         addObject(new Walls(), getWidth() / 2, getHeight() / 2);
         addObject(new Sidebar(), 898, 400);
@@ -131,7 +137,14 @@ public class MainWorld extends World {
         addObject(countdownBar, 400, 401);
         setPaintOrder(Counter.class, DisplayStudent.class, DisplayMood.class, SuperStatBar.class, Sidebar.class, Walls.class, Cloud.class, Student.class, Shadow.class, Effect.class);
 
+<<<<<<< Updated upstream
         //actNum = 0;
+=======
+
+
+        actNum = 0;
+        sickness = false;
+>>>>>>> Stashed changes
 
         prepare();
 
@@ -146,6 +159,7 @@ public class MainWorld extends World {
         // showText("Timer", 978, 42);
         counter2.setPrefix("Time Left: ");
         addObject(counter2, 950, 12);
+<<<<<<< Updated upstream
 
         studentTop.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentTop.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
@@ -163,9 +177,23 @@ public class MainWorld extends World {
      * @return void
      */
     public void act() {
+=======
+
+    }
+    
+    public void act() {
+        music.playLoop();
+        //for the numbers
+        //showText(String.valueOf(SettingsWorldS2Stats.getHappinessNumber()), 100, 200); 
+        //for the images
+        //showText(SettingsWorldS1Stats.getRelative1Image(), 200, 200); 
+        
+        
+>>>>>>> Stashed changes
         spawnRelative();
         actNum++;
 
+        
         // every 15, can change as needed
         if (actNum % (60 * 10) == 0) {
             ArrayList<Effect> effects = (ArrayList<Effect>) getObjects(Effect.class);
@@ -214,7 +242,7 @@ public class MainWorld extends World {
             depression.get(0).startSound();
         }
     }
-
+    
     public void stopped(){
         //stop all sound effects + music
         ArrayList<FunctionalItem> functionalItems = (ArrayList<FunctionalItem>) getObjects(FunctionalItem.class);
@@ -229,11 +257,15 @@ public class MainWorld extends World {
         
         music.pause();
     }
+<<<<<<< Updated upstream
 
     /**
      * Spawn a relative in either room, with any of the 3 associated selected images.
      * @return void
      */
+=======
+   
+>>>>>>> Stashed changes
     public void spawnRelative() {
         if (relativeCountdown > 0) {
             relativeCountdown--;
@@ -241,7 +273,7 @@ public class MainWorld extends World {
             boolean isTop = Greenfoot.getRandomNumber(2) == 0;
             String fileName = "";
             int random = Greenfoot.getRandomNumber(3);
-
+            
             //if top student
             if (isTop) {
                 //set relative image based on what user selected in settings
@@ -252,7 +284,7 @@ public class MainWorld extends World {
                 } else {
                     fileName = SettingsWorldS1Stats.getRelative3Image();
                 }
-
+                
                 relative = new Relative(fileName, isTop);
                 addObject(relative, 50, 200);
             } else {
@@ -266,7 +298,6 @@ public class MainWorld extends World {
                     fileName = SettingsWorldS2Stats.getRelative3Image();
                 }
                 relative = new Relative(fileName, isTop);
-                System.out.println(fileName);
                 addObject(relative, 50, 600);
             }
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200);
