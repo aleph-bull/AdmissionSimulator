@@ -5,7 +5,7 @@ import java.util.ArrayList;
  * wanders around the room and can be sleeping (bed), working (on computer), brainrotting 
  * (on phone). 
  * 
- * @author Daniel Wang, Zachary Zhao, Angela Wang
+ * @author Daniel Wang, Zachary Zhao, Ethan Ren, Angela Wang
  * @version April 2025
  */
 public class Student extends Animals

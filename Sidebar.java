@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * More still Images... just the Sidebar graphic
+ * Just the Sidebar graphic. Could've been an Image. Too late to change now.
  * 
- * @author Zachary Zhao
+ * @author Zachary Zhao, Ethan Ren
  * @version April 2025
  */
 public class Sidebar extends Actor

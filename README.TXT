@@ -64,7 +64,9 @@ ITEMS
     **Probably fixed but also potentially not - can't be 100% sure
 - *Note: decided not to have Phone appear above Relatives who were using it because it just looked bad -
     this is not a bug!
-- Some sound files may break??? Tried redownloading through audacity etc but once in a while still breaks 
+- Setting music may break??? Tried redownloading through audacity etc but once in a while still breaks 
+- Setting relative images has this weird order where if you start at cat --> right = mom, 
+	but start at cat --> left = also mom? 
 - YOU HAVE TO BEGIN THE SIMULATION FROM STARTINGWORLD!! otherwise will get nullpointerexception because of
     the way Setting world stuff sets images
 

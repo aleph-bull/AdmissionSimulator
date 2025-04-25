@@ -4,7 +4,7 @@ import java.util.*;
  * Class of all animals, students, relatives alike. Random movement and ability to use 
  * objects.
  * 
- * @author Daniel Wang, Zachary Zhao
+ * @author Daniel Wang, Zachary Zhao, Ethan Ren
  * @version 1.1.1
  */
 public abstract class Animals extends SuperSmoothMover
@@ -157,6 +157,9 @@ public abstract class Animals extends SuperSmoothMover
         if (movementDirection <= 95 && movementDirection >= 85){
             int random = Greenfoot.getRandomNumber(2);
             if (random == 0) movementDirection = 95; else movementDirection = 85;
+        } else if (movementDirection <= 280 && movementDirection >= 265){
+            int random = Greenfoot.getRandomNumber(2);
+            if (random == 0) movementDirection = 280; else movementDirection = 260;
         }
         
         movementDirectionInRadians = (double)movementDirection * (Math.PI/180);

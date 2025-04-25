@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SettingWorldGeneral here.
+ * First Setting screen - student images, university
  * 
  * @author Stephanie Xia
  * @version 4.23.2025
@@ -12,6 +12,9 @@ public class SettingsWorldGeneral extends SettingsWorld
     private static int student1Number, student2Number, universityNumber;     
     private SettingsWorldS1Stats world1;
 
+    /**
+     * SettingsWorldGeneral constructor 
+     */
     public SettingsWorldGeneral()
     {    
         //settings the background
@@ -41,10 +44,17 @@ public class SettingsWorldGeneral extends SettingsWorld
         nextWorld();    
     }
 
+    /**
+     * Not used??
+     */
     public void backWorld()
     {
     }
 
+    /**
+     * Go to the next Setting screen when next button is clicked
+     * @return void
+     */
     public void nextWorld()
     {
         //if the mouse clicks on the next button, it will take me to the next pages of the settings
@@ -59,16 +69,29 @@ public class SettingsWorldGeneral extends SettingsWorld
         }
     }
     //getter methods for getting the specific file name of the image the user selected
+    
+    /**
+     * Get chosen university image
+     * @return String   university img file name
+     */
     public static String getUniversityImage()
     {
         return university.getChoosenImage(); 
     }
 
+    /**
+     * Get chosen student1 image
+     * @return String   student1 img file name
+     */
     public static String getStudent1Image()
     {
         return student1.getChoosenImage(); 
     }
 
+    /**
+     * Get chosen student 2 image
+     * @return String   student2 img file name
+     */
     public static String getStudent2Image()
     {
         return student2.getChoosenImage(); 
