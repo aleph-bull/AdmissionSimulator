@@ -12,6 +12,7 @@ public class Student extends Animals
 {
     private double gpa;
     private double happiness;
+    private double productivity;
     private int nextItem;
     private int nextItemCD;
     private int nextItemMinCD = 1000;
@@ -85,9 +86,9 @@ public class Student extends Animals
 
         if (happiness >= 100){happiness = 100;}
         else if (happiness <= 0){happiness = 0;}
-        
+
         productive = happiness >= 50;
-        
+
         ArrayList<Effect> effects = (ArrayList<Effect>) getIntersectingObjects(Effect.class);
         if (effects.size() != 0){
             if (effects.get(0) instanceof Sickness){
@@ -189,11 +190,9 @@ public class Student extends Animals
             walkAnimations[j] = new GreenfootImage(fileName + "_run" + (j + 1) + ".png");
             walkAnimations[j].scale(40, 55);
         }
-        
-        //stil phone image
         phoneImg = new GreenfootImage(fileName + "_phone4.png");
         phoneImg.scale(40, 55);
-        
+
         setImage(walkAnimations[0]);
     }
 
@@ -224,7 +223,7 @@ public class Student extends Animals
                 walkFrame = 0;
                 setImage(walkAnimations[walkFrame]);
             }
-            
+
             countdown = 8;
         }
     }
@@ -280,6 +279,21 @@ public class Student extends Animals
      * @param gpa
      * @return void
      */
+    public void setGpaValue(double gpa)
+    {
+        this.gpa = gpa; 
+    }
+
+    public void setProductivityValue(int productivity)
+    {
+        this.productivity = productivity; 
+    }
+
+    public void setHappinessValue(double happiness)
+    {
+        this.happiness = happiness; 
+    }
+
     public void setGpaValue(double gpa)
     {
         this.gpa = gpa; 
