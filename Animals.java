@@ -258,18 +258,10 @@ public abstract class Animals extends SuperSmoothMover
     }
 
     /**
-     * Get the current x direction
-     * @return double dx 
+     * Return direction in radians
+     * @return double
      */
-    public double getDx(){
-        return dx;
-    }
-
-    /**
-     * Get current y direction
-     * @return double dy
-     */
-    public double getDy(){
-        return dy;
+    public double getDirectionInRadians(){
+        return movementDirectionInRadians;
     }
 }

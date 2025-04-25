@@ -53,7 +53,7 @@ public class MainWorld extends World {
 
     private SuperStatBar countdownBar;
     private GreenfootSound music;
-    
+
     /**
      * Constructor for MainWorld, called by IntroductionWorld 
      */
@@ -154,7 +154,7 @@ public class MainWorld extends World {
         studentBot.setProductivityValue(SettingsWorldS1Stats.getProductivityNumber()); 
         studentBot.setHappinessValue(SettingsWorldS1Stats.getHappinessNumber()); 
         studentBot.setGpaValue(SettingsWorldS1Stats.getGpaNumber()); 
-        
+
         music.playLoop();
     }
 
@@ -196,6 +196,14 @@ public class MainWorld extends World {
             for (FunctionalItem f: functionalItems){
                 f.stopSound();
             }
+
+            ArrayList<Depression> depressions = (ArrayList<Depression>) getObjects(Depression.class);
+            if (depressions.size() > 0){
+                for (Depression d : depressions){
+                    d.pauseSound();
+                }
+            }
+
             music.stop();
             Greenfoot.setWorld(new AdmissionsWorld(studentTop, studentBot));
         }
@@ -209,9 +217,11 @@ public class MainWorld extends World {
     public void started(){
         // counter2.setValue(120);
         music.playLoop();
-        ArrayList<Depression> depression = (ArrayList<Depression>) getObjects(Depression.class);
-        if (depression.size() > 0){
-            depression.get(0).startSound();
+        ArrayList<Depression> depressions = (ArrayList<Depression>) getObjects(Depression.class);
+        if (depressions.size() > 0){
+            for (Depression d : depressions){
+                d.pauseSound();
+            }
         }
     }
 
@@ -226,7 +236,7 @@ public class MainWorld extends World {
         if (depression.size() > 0){
             depression.get(0).pauseSound();
         }
-        
+
         music.pause();
     }
 
@@ -254,7 +264,7 @@ public class MainWorld extends World {
                 }
 
                 relative = new Relative(fileName, isTop);
-                addObject(relative, 50, 200);
+                addObject(relative, 80, 200);
             } else {
                 //if bottom student
                 //set img based on user selection
@@ -266,8 +276,7 @@ public class MainWorld extends World {
                     fileName = SettingsWorldS2Stats.getRelative3Image();
                 }
                 relative = new Relative(fileName, isTop);
-                System.out.println(fileName);
-                addObject(relative, 50, 600);
+                addObject(relative, 80, 600);
             }
             relativeCountdown = relativeMinCountdown + Greenfoot.getRandomNumber(200);
         }
