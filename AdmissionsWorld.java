@@ -113,6 +113,7 @@ public class AdmissionsWorld extends World
         if (isPlaying){
             music.play();
         }
+        //assuming sfx are too short + insignificant to continue playing </3
     }
     
     /**
@@ -121,6 +122,8 @@ public class AdmissionsWorld extends World
      */
     public void stopped(){
         music.pause();
+        acceptedSound.pause();
+        rejectedSound.pause();
     }
     
     /**

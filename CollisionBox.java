@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * A box that detects for collision. Used when relatives enter/exit the world.
  * 
- * @author Zachary Zhao
+ * @author Zachary Zhao, Ethan Ren
  */
 public class CollisionBox extends Item
 {

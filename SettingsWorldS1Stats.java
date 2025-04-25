@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SettingsWorldS1Stats here.
+ * Setting screen for Student 1 - GPA, happiness, productivity, relative images. 
+ * Known bug: start at cat --> right = mom but start at cat --> left = also mom?
  * 
  * @author Stephanie Xia
  * @version 4.23.2025
@@ -18,6 +19,10 @@ public class SettingsWorldS1Stats extends SettingsWorld
     private SettingsWorldGeneral worldGeneral;
     private SettingsWorldS2Stats world2;
 
+    /**
+     * SettingsWorldS1Stats constructor
+     * @param worldGeneral  Previous setting screen, to go back to if necessary
+     */
     public SettingsWorldS1Stats(SettingsWorldGeneral worldGeneral)
     {
         //creating the buttons for back and forth; passing the cursor into the button constructor so it can deduct mouse clicking
@@ -65,7 +70,10 @@ public class SettingsWorldS1Stats extends SettingsWorld
         relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
     }
 
-    //going back to the previous world that is saved
+    /**
+     * Go back to the previous world that is saved
+     * @return void
+     */
     public void backWorld()
     {
         if (Greenfoot.mouseClicked(back))
@@ -74,7 +82,10 @@ public class SettingsWorldS1Stats extends SettingsWorld
         }
     }
 
-    //going to the next world, creating one if the next world has not been created yet
+    /**
+     * Go to the next world, creating one if the next world has not been created yet
+     * @return void
+     */
     public void nextWorld()
     {
         if (Greenfoot.mouseClicked(next))
@@ -86,31 +97,55 @@ public class SettingsWorldS1Stats extends SettingsWorld
         }
     }
 
+    /**
+     * Get Student 1 happiness
+     * @return happiness.getNumber()    ?? Student 1 selected happiness
+     */
     public static int getHappinessNumber()
     {
         return happiness.getNumber(); 
     }
 
+    /**
+     * Get Student 1 preset GPA
+     * @return gpa.getNumber()  User-chosen GPA for student 1
+     */
     public static int getGpaNumber()
     {
         return gpa.getNumber(); 
     }
 
+    /**
+     * Get Student 1 preset productivity
+     * @return productivity.getNumber() User-chosen productivity for student 1
+     */
     public static int getProductivityNumber()
     {
         return productivity.getNumber(); 
     }
 
+    /**
+     * Get Student 1 relative 1 image file name
+     * @return relative1.getChoosenImage()  File name for user selected image for Relative 1
+     */
     public static String getRelative1Image()
     {
         return relative1.getChoosenImage();
     }
 
+    /**
+     * Get Student 1 relative 2 image file name
+     * @return relative2.getChoosenImage()  File name for user selected image for relative 2
+     */
     public static String getRelative2Image()
     {
         return relative2.getChoosenImage();
     }
 
+    /**
+     * Get Student 1 relative 3 image file name
+     * @return relative3.getChoosenImage()  File name for user selected image for relative 3
+     */
     public static String getRelative3Image()
     {
         return relative3.getChoosenImage();

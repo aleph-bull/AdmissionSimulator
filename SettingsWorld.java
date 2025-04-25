@@ -1,8 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * @Stephanie Xia
- * @ 4.23.2025
+ * Parent class for Setting worlds.
+ * 
+ * @author Stephanie Xia
+ * @version 4.23.2025
  */
 public abstract class SettingsWorld extends World
 {
@@ -20,6 +22,10 @@ public abstract class SettingsWorld extends World
 
     protected abstract void nextWorld();
 
+    /**
+     * SettingsWorld Constructor - creates cursor object for hoverable buttons + sets 
+     * up graphics
+     */
     public SettingsWorld()
     {    
         super(1024, 800, 1); 
@@ -32,13 +38,23 @@ public abstract class SettingsWorld extends World
         minimumValueReachedGraphic = new SettingsImages();
         minimumValueReachedGraphic.maxMinDisplayText("Minimum Value Reached"); 
 
-        music.playLoop();
+        if (!music.isPlaying()){
+            music.playLoop();
+        }
     }
 
+    /**
+     * Play music when Greenfoot is run
+     * @return void
+     */
     public void started(){
         music.playLoop();
     }
 
+    /**
+     * Pause music when Greenfoot is paused
+     * @return void
+     */
     public void stopped(){
         music.pause();
     }

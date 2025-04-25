@@ -1,7 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SettingsWorldS2Stats here.
+ * Settings screen for Student 2 - GPA, happiness, productivity, relative imgs. 
+ * Same error as S1Stats with relative images appearing in weird orders sometimes?
  * 
  * @author Stephanie Xia
  * @version 4.23.2025
@@ -16,6 +17,10 @@ public class SettingsWorldS2Stats extends SettingsWorld
     
     private SettingsWorldS1Stats world1;
 
+    /**
+     * SettingsWorldS2Stats constructor
+     * @param world1    Previous setting screen, to go back to if necessary
+     */
     public SettingsWorldS2Stats(SettingsWorldS1Stats world1)
     {
         next = new Button (cursor, false);
@@ -62,7 +67,10 @@ public class SettingsWorldS2Stats extends SettingsWorld
         relative3.choose("Cat.png", "Mom.png", "amongus_run1.png", "minicapy_run1.png", "brother.png", "sister.png"); 
     }
 
-    //going back to the previous world
+    /**
+     * Go back to the previous world
+     * @return void
+     */
     public void backWorld(){
         if (Greenfoot.mouseClicked(back))
         {
@@ -70,7 +78,10 @@ public class SettingsWorldS2Stats extends SettingsWorld
         }
     }
 
-    //going to the main world
+    /**
+     * Go to MainWorld and start simulation
+     * @return void
+     */
     public void nextWorld()
     {
         if (Greenfoot.mouseClicked(next))
@@ -80,31 +91,55 @@ public class SettingsWorldS2Stats extends SettingsWorld
         }
     }
 
+    /**
+     * Get Student 2 Happiness
+     * @return happiness.getNumber()
+     */
     public static int getHappinessNumber()
     {
         return happiness.getNumber(); 
     }
 
+    /**
+     * Get Student 2 GPA
+     * @return gpa.getNumber();
+     */
     public static int getGpaNumber()
     {
         return gpa.getNumber(); 
     }
 
+    /**
+     * Get Student 2 Productivity
+     * @return productivity.getNumber()
+     */
     public static int getProductivityNumber()
     {
         return productivity.getNumber(); 
     }
 
+    /**
+     * Get file name of Student 2 Relative 1 image
+     * @return relative1.getChoosenImage()  String filename of Student 2's relative 1 img
+     */
     public static String getRelative1Image()
     {
         return relative1.getChoosenImage();
     }
 
+    /**
+     * Get file name of student 2 relative 2 image
+     * @return relative2.getChoosenImage()  String filename of Student 2's relative 2 img
+     */
     public static String getRelative2Image()
     {
         return relative2.getChoosenImage();
     }
 
+    /**
+     * Get File name of Student 2 Relative 3 image
+     * @return relative3.getChoosenImage()  String filename of Student 2's Relative 3 img
+     */
     public static String getRelative3Image()
     {
         return relative3.getChoosenImage();
