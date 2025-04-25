@@ -54,7 +54,7 @@ public class Depression extends Effect
             shadow.fade(10);
             
             //once screen is pretty much faded, stop sound
-            if (image.getTransparency() < 20){
+            if (image.getTransparency() < 30){
                 sound.stop();
             }
         }
